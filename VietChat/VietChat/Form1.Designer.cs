@@ -198,6 +198,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "VietChat";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "VietChat";
             Load += VietChat_Load;
             panel1.ResumeLayout(false);
