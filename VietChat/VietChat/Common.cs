@@ -1,6 +1,4 @@
-﻿using System.Web;
-
-namespace VietChat
+﻿namespace VietChat
 {
     internal class Common
     {
