@@ -57,7 +57,7 @@
             btn_login.BackColor = Color.FromArgb(35, 142, 250);
             btn_login.FlatAppearance.BorderColor = Color.Black;
             btn_login.FlatStyle = FlatStyle.Flat;
-            btn_login.Font = new Font("MS UI Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_login.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             btn_login.ForeColor = Color.Transparent;
             btn_login.Location = new Point(104, 327);
             btn_login.Margin = new Padding(18, 3, 3, 3);
@@ -75,7 +75,7 @@
             btn_register.BackColor = Color.FromArgb(165, 255, 165);
             btn_register.FlatAppearance.BorderColor = Color.Black;
             btn_register.FlatStyle = FlatStyle.Flat;
-            btn_register.Font = new Font("MS UI Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_register.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point);
             btn_register.ForeColor = Color.Black;
             btn_register.Location = new Point(104, 398);
             btn_register.Margin = new Padding(18, 3, 3, 3);
@@ -111,10 +111,10 @@
             // 
             label1.BackColor = Color.FromArgb(61, 164, 140);
             label1.BorderStyle = BorderStyle.FixedSingle;
-            label1.Font = new Font("MS UI Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(31, 76);
             label1.Name = "label1";
-            label1.Size = new Size(112, 31);
+            label1.Size = new Size(112, 32);
             label1.TabIndex = 115;
             label1.Text = "Password";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -123,10 +123,10 @@
             // 
             lbl_Account.BackColor = Color.FromArgb(61, 164, 140);
             lbl_Account.BorderStyle = BorderStyle.FixedSingle;
-            lbl_Account.Font = new Font("MS UI Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_Account.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_Account.Location = new Point(31, 21);
             lbl_Account.Name = "lbl_Account";
-            lbl_Account.Size = new Size(112, 31);
+            lbl_Account.Size = new Size(112, 32);
             lbl_Account.TabIndex = 114;
             lbl_Account.Text = "Account";
             lbl_Account.TextAlign = ContentAlignment.MiddleCenter;
@@ -135,11 +135,11 @@
             // 
             txt_pass.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txt_pass.BorderStyle = BorderStyle.FixedSingle;
-            txt_pass.Font = new Font("MS UI Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_pass.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             txt_pass.Location = new Point(149, 76);
             txt_pass.MaxLength = 200;
             txt_pass.Name = "txt_pass";
-            txt_pass.Size = new Size(164, 31);
+            txt_pass.Size = new Size(164, 32);
             txt_pass.TabIndex = 2;
             txt_pass.UseSystemPasswordChar = true;
             // 
@@ -147,11 +147,11 @@
             // 
             txt_user.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txt_user.BorderStyle = BorderStyle.FixedSingle;
-            txt_user.Font = new Font("MS UI Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_user.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             txt_user.Location = new Point(149, 21);
             txt_user.MaxLength = 200;
             txt_user.Name = "txt_user";
-            txt_user.Size = new Size(164, 31);
+            txt_user.Size = new Size(164, 32);
             txt_user.TabIndex = 1;
             // 
             // pnl_register
@@ -172,7 +172,7 @@
             // 
             // lbl_error2
             // 
-            lbl_error2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_error2.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_error2.Location = new Point(7, 178);
             lbl_error2.Name = "lbl_error2";
             lbl_error2.Size = new Size(262, 33);
@@ -184,7 +184,7 @@
             btn_register2.BackColor = Color.FromArgb(165, 255, 165);
             btn_register2.FlatAppearance.BorderColor = Color.Black;
             btn_register2.FlatStyle = FlatStyle.Flat;
-            btn_register2.Font = new Font("MS UI Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_register2.Font = new Font("Times New Roman", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btn_register2.ForeColor = Color.Black;
             btn_register2.Location = new Point(91, 235);
             btn_register2.Margin = new Padding(18, 3, 3, 3);
@@ -200,10 +200,10 @@
             // 
             lbl_confirm.BackColor = Color.FromArgb(61, 164, 140);
             lbl_confirm.BorderStyle = BorderStyle.FixedSingle;
-            lbl_confirm.Font = new Font("MS UI Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_confirm.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_confirm.Location = new Point(7, 130);
             lbl_confirm.Name = "lbl_confirm";
-            lbl_confirm.Size = new Size(136, 31);
+            lbl_confirm.Size = new Size(136, 32);
             lbl_confirm.TabIndex = 117;
             lbl_confirm.Text = "Confirm pass";
             lbl_confirm.TextAlign = ContentAlignment.MiddleCenter;
@@ -212,11 +212,11 @@
             // 
             txt_confirm.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txt_confirm.BorderStyle = BorderStyle.FixedSingle;
-            txt_confirm.Font = new Font("MS UI Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_confirm.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             txt_confirm.Location = new Point(149, 130);
             txt_confirm.MaxLength = 200;
             txt_confirm.Name = "txt_confirm";
-            txt_confirm.Size = new Size(184, 31);
+            txt_confirm.Size = new Size(184, 32);
             txt_confirm.TabIndex = 7;
             txt_confirm.UseSystemPasswordChar = true;
             // 
@@ -224,10 +224,10 @@
             // 
             label2.BackColor = Color.FromArgb(61, 164, 140);
             label2.BorderStyle = BorderStyle.FixedSingle;
-            label2.Font = new Font("MS UI Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label2.Location = new Point(7, 76);
             label2.Name = "label2";
-            label2.Size = new Size(136, 31);
+            label2.Size = new Size(136, 32);
             label2.TabIndex = 115;
             label2.Text = "Password";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -236,10 +236,10 @@
             // 
             label3.BackColor = Color.FromArgb(61, 164, 140);
             label3.BorderStyle = BorderStyle.FixedSingle;
-            label3.Font = new Font("MS UI Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label3.Location = new Point(7, 21);
             label3.Name = "label3";
-            label3.Size = new Size(136, 31);
+            label3.Size = new Size(136, 32);
             label3.TabIndex = 114;
             label3.Text = "User";
             label3.TextAlign = ContentAlignment.MiddleCenter;
@@ -248,11 +248,11 @@
             // 
             txt_pass_register.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txt_pass_register.BorderStyle = BorderStyle.FixedSingle;
-            txt_pass_register.Font = new Font("MS UI Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_pass_register.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             txt_pass_register.Location = new Point(149, 76);
             txt_pass_register.MaxLength = 200;
             txt_pass_register.Name = "txt_pass_register";
-            txt_pass_register.Size = new Size(184, 31);
+            txt_pass_register.Size = new Size(184, 32);
             txt_pass_register.TabIndex = 6;
             txt_pass_register.UseSystemPasswordChar = true;
             // 
@@ -260,16 +260,16 @@
             // 
             txt_user_register.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txt_user_register.BorderStyle = BorderStyle.FixedSingle;
-            txt_user_register.Font = new Font("MS UI Gothic", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_user_register.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             txt_user_register.Location = new Point(149, 21);
             txt_user_register.MaxLength = 200;
             txt_user_register.Name = "txt_user_register";
-            txt_user_register.Size = new Size(184, 31);
+            txt_user_register.Size = new Size(184, 32);
             txt_user_register.TabIndex = 5;
             // 
             // lbl_error
             // 
-            lbl_error.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_error.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             lbl_error.Location = new Point(12, 278);
             lbl_error.Name = "lbl_error";
             lbl_error.Size = new Size(216, 34);
@@ -288,6 +288,7 @@
             Controls.Add(lbl_icon);
             Controls.Add(btn_register);
             Controls.Add(btn_login);
+            MaximizeBox = false;
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";

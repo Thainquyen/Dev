@@ -197,6 +197,7 @@
             ClientSize = new Size(1116, 691);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            MaximizeBox = false;
             Name = "VietChat";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "VietChat";
