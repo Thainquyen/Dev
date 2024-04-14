@@ -46,6 +46,12 @@ namespace VietChat
                 txt_pass.Clear();
                 lbl_error.Text = "Error login";
             }
+            if (Common.error_flag == 0)
+            {
+                Form form = new VietChat();
+                form.ShowDialog();
+                this.Hide();
+            }
         }
 
         private void btn_register_Click(object sender, EventArgs e)
@@ -87,5 +93,9 @@ namespace VietChat
 
         }
 
+        private void btn_back_Click(object sender, EventArgs e)
+        {
+            pnl_register.Visible = false;
+        }
     }
 }

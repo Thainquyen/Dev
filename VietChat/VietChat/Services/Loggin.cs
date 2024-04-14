@@ -42,8 +42,7 @@ namespace VietChat.Services
                 else
                 {
                     /// MessageBox.Show($"Failed with status code {response.StatusCode}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Form form = new VietChat();
-                    form.ShowDialog();
+                   
                 }
             }
             catch (HttpRequestException ex)
