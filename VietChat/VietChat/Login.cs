@@ -49,7 +49,7 @@ namespace VietChat
             if (Common.error_flag == 0)
             {
                 Form form = new VietChat();
-                form.ShowDialog();
+                form.Show();
                 this.Hide();
             }
         }
@@ -96,6 +96,11 @@ namespace VietChat
         private void btn_back_Click(object sender, EventArgs e)
         {
             pnl_register.Visible = false;
+        }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

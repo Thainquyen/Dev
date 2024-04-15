@@ -308,10 +308,12 @@
             Controls.Add(lbl_icon);
             Controls.Add(btn_register);
             Controls.Add(btn_login);
+            Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point);
             MaximizeBox = false;
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Login";
+            Text = "Đăng nhập";
+            FormClosed += Login_FormClosed;
             Load += Login_Load;
             pnl_login.ResumeLayout(false);
             pnl_login.PerformLayout();

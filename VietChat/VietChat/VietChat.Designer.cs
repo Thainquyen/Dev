@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VietChat));
             panel1 = new Panel();
             label3 = new Label();
-            label2 = new Label();
+            lbl_out = new Label();
             label1 = new Label();
             lbl_bb = new Label();
             panel2 = new Panel();
@@ -54,7 +54,7 @@
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
+            panel1.Controls.Add(lbl_out);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(lbl_bb);
             panel1.Location = new Point(3, 3);
@@ -70,16 +70,17 @@
             label3.Size = new Size(55, 49);
             label3.TabIndex = 5;
             // 
-            // label2
+            // lbl_out
             // 
-            label2.BackColor = SystemColors.ActiveCaption;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Image = (Image)resources.GetObject("label2.Image");
-            label2.Location = new Point(22, 642);
-            label2.Name = "label2";
-            label2.Size = new Size(27, 26);
-            label2.TabIndex = 4;
-            label2.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_out.BackColor = Color.FromArgb(255, 192, 128);
+            lbl_out.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_out.Location = new Point(3, 625);
+            lbl_out.Name = "lbl_out";
+            lbl_out.Size = new Size(70, 43);
+            lbl_out.TabIndex = 4;
+            lbl_out.Text = "Đăng xuất";
+            lbl_out.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_out.Click += lbl_out_Click;
             // 
             // label1
             // 
@@ -184,9 +185,9 @@
             // textBox1
             // 
             textBox1.Font = new Font("Times New Roman", 15.75F, FontStyle.Italic, GraphicsUnit.Point);
-            textBox1.Location = new Point(27, 16);
+            textBox1.Location = new Point(7, 16);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(186, 32);
+            textBox1.Size = new Size(214, 32);
             textBox1.TabIndex = 4;
             textBox1.Text = "Tìm kiếm";
             // 
@@ -202,7 +203,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "VietChat";
             FormClosed += VietChat_FormClosed;
-            Load += VietChat_Load;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel5.ResumeLayout(false);
@@ -217,7 +217,7 @@
         private Panel panel1;
         private Label label1;
         private Label lbl_bb;
-        private Label label2;
+        private Label lbl_out;
         private Panel panel2;
         private TextBox textBox1;
         private Label label5;
