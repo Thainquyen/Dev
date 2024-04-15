@@ -35,6 +35,9 @@ namespace VietChat.Services
                 Common.error_flag = (int)jObject["err"];
                 Common.msg = (string)jObject["msg"];
 
+                JObject jObject2 = JObject.Parse(jObject["data"].ToString());
+                Common.token = (string)jObject2["token"];
+
                 if (Common.error_flag > 0)
                 {
                     MessageBox.Show(Common.msg, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

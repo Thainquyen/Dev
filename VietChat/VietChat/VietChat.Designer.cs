@@ -203,6 +203,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "VietChat";
             FormClosed += VietChat_FormClosed;
+            Load += VietChat_Load;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel5.ResumeLayout(false);

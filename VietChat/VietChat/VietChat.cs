@@ -1,3 +1,5 @@
+using VietChat.Services;
+
 namespace VietChat
 {
     public partial class VietChat : Form
@@ -17,6 +19,12 @@ namespace VietChat
         private void VietChat_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void VietChat_Load(object sender, EventArgs e)
+        {
+            ChatList chatlist = new ChatList();
+            chatlist.getChatList();
         }
     }
 }
