@@ -4,7 +4,7 @@ using VietChat.Constants;
 
 namespace VietChat.Services
 {
-	public class ChatList
+    public class ChatList
     {
         private readonly HttpClient _client;
         public ChatList() 
@@ -22,6 +22,7 @@ namespace VietChat.Services
                 // Add request body if needed
                 string requestBody = "{\"username\": \"@username@\", \"password\": \"@password@\", \"client_id\": \"\", \"_token\": \"\", \"_agent_id\": \"1\", \"mobileCode\": \"0\", \"type\": \"REGISTER\"}";
                 requestBody = requestBody.Replace("@_token@", Common.token);
+
                 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await _client.SendAsync(request);

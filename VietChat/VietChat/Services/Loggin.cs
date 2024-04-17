@@ -25,6 +25,8 @@ namespace VietChat.Services
                 requestBody = requestBody.Replace("@password@", pass);
                 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
 
+                Common.user = username;
+                Common.pass = pass;
 
                 HttpResponseMessage response = await _client.SendAsync(request);
 
