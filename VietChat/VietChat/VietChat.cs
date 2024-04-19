@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Drawing.Imaging;
+﻿using chat;
 using System.Net;
 using VietChat.Services;
 
@@ -116,6 +115,12 @@ namespace VietChat
                 chatlist.getListFriend();
                 timer1.Stop();
             }
+        }
+
+        private void lbl_name_Click(object sender, EventArgs e)
+        {
+            Form1 form = new Form1();
+            form.ShowDialog();
         }
     }
 }

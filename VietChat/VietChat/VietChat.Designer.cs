@@ -162,6 +162,7 @@
             lbl_name.TabIndex = 5;
             lbl_name.Text = "Name";
             lbl_name.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_name.Click += lbl_name_Click;
             // 
             // panel5
             // 
