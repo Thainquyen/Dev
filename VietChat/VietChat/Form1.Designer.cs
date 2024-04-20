@@ -29,544 +29,548 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.searchBox1 = new chat.SearchBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.users7 = new chat.Users();
-            this.users8 = new chat.Users();
-            this.users9 = new chat.Users();
-            this.users10 = new chat.Users();
-            this.users11 = new chat.Users();
-            this.users6 = new chat.Users();
-            this.users5 = new chat.Users();
-            this.users4 = new chat.Users();
-            this.users3 = new chat.Users();
-            this.users2 = new chat.Users();
-            this.users1 = new chat.Users();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.typingBox1 = new chat.TypingBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.meBubble2 = new chat.MeBubble();
-            this.youBubble1 = new chat.YouBubble();
-            this.meBubble1 = new chat.MeBubble();
-            this.meBubble3 = new chat.MeBubble();
-            this.meBubble4 = new chat.MeBubble();
-            this.meBubble5 = new chat.MeBubble();
-            this.chatHeader1 = new chat.ChatHeader();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.SuspendLayout();
+            panel1 = new Panel();
+            label2 = new Label();
+            label1 = new Label();
+            panel2 = new Panel();
+            searchBox1 = new SearchBox();
+            panel5 = new Panel();
+            users7 = new Users();
+            users8 = new Users();
+            users9 = new Users();
+            users10 = new Users();
+            users11 = new Users();
+            users6 = new Users();
+            users5 = new Users();
+            users4 = new Users();
+            users3 = new Users();
+            users2 = new Users();
+            users1 = new Users();
+            label3 = new Label();
+            panel3 = new Panel();
+            typingBox1 = new TypingBox();
+            panel4 = new Panel();
+            meBubble2 = new MeBubble();
+            youBubble1 = new YouBubble();
+            meBubble1 = new MeBubble();
+            meBubble3 = new MeBubble();
+            meBubble4 = new MeBubble();
+            meBubble5 = new MeBubble();
+            chatHeader1 = new ChatHeader();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
+            panel5.SuspendLayout();
+            panel3.SuspendLayout();
+            panel4.SuspendLayout();
+            SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(974, 24);
-            this.panel1.TabIndex = 0;
-            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDownMoveForm);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(label1);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(3, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(974, 24);
+            panel1.TabIndex = 0;
+            panel1.MouseDown += OnMouseDownMoveForm;
             // 
             // label2
             // 
-            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(904, 0);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 11);
-            this.label2.Size = new System.Drawing.Size(35, 24);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "__";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            label2.Cursor = Cursors.Hand;
+            label2.Dock = DockStyle.Right;
+            label2.ForeColor = SystemColors.ControlLightLight;
+            label2.Location = new Point(904, 0);
+            label2.Name = "label2";
+            label2.Padding = new Padding(0, 0, 0, 11);
+            label2.Size = new Size(35, 24);
+            label2.TabIndex = 1;
+            label2.Text = "__";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            label2.Click += label2_Click;
             // 
             // label1
             // 
-            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(939, 0);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.label1.Size = new System.Drawing.Size(35, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "X";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            label1.Cursor = Cursors.Hand;
+            label1.Dock = DockStyle.Right;
+            label1.ForeColor = SystemColors.ControlLightLight;
+            label1.Location = new Point(939, 0);
+            label1.Name = "label1";
+            label1.Padding = new Padding(0, 0, 0, 5);
+            label1.Size = new Size(35, 24);
+            label1.TabIndex = 0;
+            label1.Text = "X";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            label1.Click += label1_Click;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.searchBox1);
-            this.panel2.Controls.Add(this.panel5);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(3, 27);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(2, 0, 2, 5);
-            this.panel2.Size = new System.Drawing.Size(206, 674);
-            this.panel2.TabIndex = 1;
+            panel2.Controls.Add(searchBox1);
+            panel2.Controls.Add(panel5);
+            panel2.Controls.Add(label3);
+            panel2.Dock = DockStyle.Left;
+            panel2.Location = new Point(3, 27);
+            panel2.Name = "panel2";
+            panel2.Padding = new Padding(2, 0, 2, 5);
+            panel2.Size = new Size(206, 674);
+            panel2.TabIndex = 1;
             // 
             // searchBox1
             // 
-            this.searchBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.searchBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.searchBox1.FocusedColor = System.Drawing.Color.WhiteSmoke;
-            this.searchBox1.Location = new System.Drawing.Point(2, 640);
-            this.searchBox1.Name = "searchBox1";
-            this.searchBox1.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.searchBox1.Size = new System.Drawing.Size(202, 29);
-            this.searchBox1.TabIndex = 2;
-            this.searchBox1.TextColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.searchBox1.UnFocusedColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.searchBox1.Value = "Search...";
+            searchBox1.BackColor = Color.FromArgb(80, 80, 80);
+            searchBox1.Dock = DockStyle.Bottom;
+            searchBox1.FocusedColor = Color.WhiteSmoke;
+            searchBox1.Location = new Point(2, 640);
+            searchBox1.Margin = new Padding(4, 3, 4, 3);
+            searchBox1.Name = "searchBox1";
+            searchBox1.Padding = new Padding(5, 0, 5, 0);
+            searchBox1.Size = new Size(202, 29);
+            searchBox1.TabIndex = 2;
+            searchBox1.TextColor = SystemColors.GradientActiveCaption;
+            searchBox1.UnFocusedColor = SystemColors.GradientActiveCaption;
+            searchBox1.Value = "Search...";
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.users7);
-            this.panel5.Controls.Add(this.users8);
-            this.panel5.Controls.Add(this.users9);
-            this.panel5.Controls.Add(this.users10);
-            this.panel5.Controls.Add(this.users11);
-            this.panel5.Controls.Add(this.users6);
-            this.panel5.Controls.Add(this.users5);
-            this.panel5.Controls.Add(this.users4);
-            this.panel5.Controls.Add(this.users3);
-            this.panel5.Controls.Add(this.users2);
-            this.panel5.Controls.Add(this.users1);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(2, 42);
-            this.panel5.Name = "panel5";
-            this.panel5.Padding = new System.Windows.Forms.Padding(0, 5, 0, 10);
-            this.panel5.Size = new System.Drawing.Size(202, 578);
-            this.panel5.TabIndex = 1;
+            panel5.Controls.Add(users7);
+            panel5.Controls.Add(users8);
+            panel5.Controls.Add(users9);
+            panel5.Controls.Add(users10);
+            panel5.Controls.Add(users11);
+            panel5.Controls.Add(users6);
+            panel5.Controls.Add(users5);
+            panel5.Controls.Add(users4);
+            panel5.Controls.Add(users3);
+            panel5.Controls.Add(users2);
+            panel5.Controls.Add(users1);
+            panel5.Dock = DockStyle.Top;
+            panel5.Location = new Point(2, 42);
+            panel5.Name = "panel5";
+            panel5.Padding = new Padding(0, 5, 0, 10);
+            panel5.Size = new Size(202, 578);
+            panel5.TabIndex = 1;
             // 
             // users7
             // 
-            this.users7.BackColor = System.Drawing.Color.Transparent;
-            this.users7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.users7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.users7.Location = new System.Drawing.Point(0, 495);
-            this.users7.Margin = new System.Windows.Forms.Padding(0);
-            this.users7.Name = "users7";
-            this.users7.ProfileImageCursor = System.Windows.Forms.Cursors.Hand;
-            this.users7.Size = new System.Drawing.Size(202, 49);
-            this.users7.StatusMessage = "Online";
-            this.users7.TabIndex = 10;
-            this.users7.UserImage = global::VietChat.Properties.Resources._2_32;
-            this.users7.Username = "Kasimu Da.";
-            this.users7.UserStatus = chat.Status.Online;
+            users7.BackColor = Color.Transparent;
+            users7.Cursor = Cursors.Hand;
+            users7.Dock = DockStyle.Top;
+            users7.Location = new Point(0, 495);
+            users7.Margin = new Padding(0);
+            users7.Name = "users7";
+            users7.ProfileImageCursor = Cursors.Hand;
+            users7.Size = new Size(202, 49);
+            users7.StatusMessage = "Online";
+            users7.TabIndex = 10;
+            users7.UserImage = VietChat.Properties.Resources._2_32;
+            users7.Username = "Kasimu Da.";
+            users7.UserStatus = Status.Online;
             // 
             // users8
             // 
-            this.users8.BackColor = System.Drawing.Color.Transparent;
-            this.users8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.users8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.users8.Location = new System.Drawing.Point(0, 446);
-            this.users8.Margin = new System.Windows.Forms.Padding(0);
-            this.users8.Name = "users8";
-            this.users8.ProfileImageCursor = System.Windows.Forms.Cursors.Hand;
-            this.users8.Size = new System.Drawing.Size(202, 49);
-            this.users8.StatusMessage = "Offline";
-            this.users8.TabIndex = 9;
-            this.users8.UserImage = global::VietChat.Properties.Resources._1_32;
-            this.users8.Username = "Sacdiyo Xir.";
-            this.users8.UserStatus = chat.Status.Offline;
+            users8.BackColor = Color.Transparent;
+            users8.Cursor = Cursors.Hand;
+            users8.Dock = DockStyle.Top;
+            users8.Location = new Point(0, 446);
+            users8.Margin = new Padding(0);
+            users8.Name = "users8";
+            users8.ProfileImageCursor = Cursors.Hand;
+            users8.Size = new Size(202, 49);
+            users8.StatusMessage = "Offline";
+            users8.TabIndex = 9;
+            users8.UserImage = VietChat.Properties.Resources._1_32;
+            users8.Username = "Sacdiyo Xir.";
+            users8.UserStatus = Status.Offline;
             // 
             // users9
             // 
-            this.users9.BackColor = System.Drawing.Color.Transparent;
-            this.users9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.users9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.users9.Location = new System.Drawing.Point(0, 397);
-            this.users9.Margin = new System.Windows.Forms.Padding(0);
-            this.users9.Name = "users9";
-            this.users9.ProfileImageCursor = System.Windows.Forms.Cursors.Hand;
-            this.users9.Size = new System.Drawing.Size(202, 49);
-            this.users9.StatusMessage = "Away";
-            this.users9.TabIndex = 8;
-            this.users9.UserImage = global::VietChat.Properties.Resources._3_32;
-            this.users9.Username = "Isma Ali";
-            this.users9.UserStatus = chat.Status.Away;
+            users9.BackColor = Color.Transparent;
+            users9.Cursor = Cursors.Hand;
+            users9.Dock = DockStyle.Top;
+            users9.Location = new Point(0, 397);
+            users9.Margin = new Padding(0);
+            users9.Name = "users9";
+            users9.ProfileImageCursor = Cursors.Hand;
+            users9.Size = new Size(202, 49);
+            users9.StatusMessage = "Away";
+            users9.TabIndex = 8;
+            users9.UserImage = VietChat.Properties.Resources._3_32;
+            users9.Username = "Isma Ali";
+            users9.UserStatus = Status.Away;
             // 
             // users10
             // 
-            this.users10.BackColor = System.Drawing.Color.Transparent;
-            this.users10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.users10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.users10.Location = new System.Drawing.Point(0, 348);
-            this.users10.Margin = new System.Windows.Forms.Padding(0);
-            this.users10.Name = "users10";
-            this.users10.ProfileImageCursor = System.Windows.Forms.Cursors.Hand;
-            this.users10.Size = new System.Drawing.Size(202, 49);
-            this.users10.StatusMessage = "Away";
-            this.users10.TabIndex = 7;
-            this.users10.UserImage = ((System.Drawing.Image)(resources.GetObject("users10.UserImage")));
-            this.users10.Username = "Baba BE.";
-            this.users10.UserStatus = chat.Status.Away;
+            users10.BackColor = Color.Transparent;
+            users10.Cursor = Cursors.Hand;
+            users10.Dock = DockStyle.Top;
+            users10.Location = new Point(0, 348);
+            users10.Margin = new Padding(0);
+            users10.Name = "users10";
+            users10.ProfileImageCursor = Cursors.Hand;
+            users10.Size = new Size(202, 49);
+            users10.StatusMessage = "Away";
+            users10.TabIndex = 7;
+            users10.UserImage = (Image)resources.GetObject("users10.UserImage");
+            users10.Username = "Baba BE.";
+            users10.UserStatus = Status.Away;
             // 
             // users11
             // 
-            this.users11.BackColor = System.Drawing.Color.Transparent;
-            this.users11.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.users11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.users11.Location = new System.Drawing.Point(0, 299);
-            this.users11.Margin = new System.Windows.Forms.Padding(0);
-            this.users11.Name = "users11";
-            this.users11.ProfileImageCursor = System.Windows.Forms.Cursors.Hand;
-            this.users11.Size = new System.Drawing.Size(202, 49);
-            this.users11.StatusMessage = "Online";
-            this.users11.TabIndex = 6;
-            this.users11.UserImage = global::VietChat.Properties.Resources._2_32;
-            this.users11.Username = "Kasimu Da.";
-            this.users11.UserStatus = chat.Status.Online;
+            users11.BackColor = Color.Transparent;
+            users11.Cursor = Cursors.Hand;
+            users11.Dock = DockStyle.Top;
+            users11.Location = new Point(0, 299);
+            users11.Margin = new Padding(0);
+            users11.Name = "users11";
+            users11.ProfileImageCursor = Cursors.Hand;
+            users11.Size = new Size(202, 49);
+            users11.StatusMessage = "Online";
+            users11.TabIndex = 6;
+            users11.UserImage = VietChat.Properties.Resources._2_32;
+            users11.Username = "Kasimu Da.";
+            users11.UserStatus = Status.Online;
             // 
             // users6
             // 
-            this.users6.BackColor = System.Drawing.Color.Transparent;
-            this.users6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.users6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.users6.Location = new System.Drawing.Point(0, 250);
-            this.users6.Margin = new System.Windows.Forms.Padding(0);
-            this.users6.Name = "users6";
-            this.users6.ProfileImageCursor = System.Windows.Forms.Cursors.Hand;
-            this.users6.Size = new System.Drawing.Size(202, 49);
-            this.users6.StatusMessage = "Offline";
-            this.users6.TabIndex = 5;
-            this.users6.UserImage = global::VietChat.Properties.Resources._2;
-            this.users6.Username = "Tusbaxle A.";
-            this.users6.UserStatus = chat.Status.Offline;
-            this.users6.OnClick += new chat.Users.Clicked(this.OnUserClick);
+            users6.BackColor = Color.Transparent;
+            users6.Cursor = Cursors.Hand;
+            users6.Dock = DockStyle.Top;
+            users6.Location = new Point(0, 250);
+            users6.Margin = new Padding(0);
+            users6.Name = "users6";
+            users6.ProfileImageCursor = Cursors.Hand;
+            users6.Size = new Size(202, 49);
+            users6.StatusMessage = "Offline";
+            users6.TabIndex = 5;
+            users6.UserImage = VietChat.Properties.Resources._2;
+            users6.Username = "Tusbaxle A.";
+            users6.UserStatus = Status.Offline;
+            users6.OnClick += OnUserClick;
             // 
             // users5
             // 
-            this.users5.BackColor = System.Drawing.Color.Transparent;
-            this.users5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.users5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.users5.Location = new System.Drawing.Point(0, 201);
-            this.users5.Margin = new System.Windows.Forms.Padding(0);
-            this.users5.Name = "users5";
-            this.users5.ProfileImageCursor = System.Windows.Forms.Cursors.Hand;
-            this.users5.Size = new System.Drawing.Size(202, 49);
-            this.users5.StatusMessage = "Offline";
-            this.users5.TabIndex = 4;
-            this.users5.UserImage = global::VietChat.Properties.Resources._1_32;
-            this.users5.Username = "Sacdiyo Xir.";
-            this.users5.UserStatus = chat.Status.Offline;
-            this.users5.OnClick += new chat.Users.Clicked(this.OnUserClick);
+            users5.BackColor = Color.Transparent;
+            users5.Cursor = Cursors.Hand;
+            users5.Dock = DockStyle.Top;
+            users5.Location = new Point(0, 201);
+            users5.Margin = new Padding(0);
+            users5.Name = "users5";
+            users5.ProfileImageCursor = Cursors.Hand;
+            users5.Size = new Size(202, 49);
+            users5.StatusMessage = "Offline";
+            users5.TabIndex = 4;
+            users5.UserImage = VietChat.Properties.Resources._1_32;
+            users5.Username = "Sacdiyo Xir.";
+            users5.UserStatus = Status.Offline;
+            users5.OnClick += OnUserClick;
             // 
             // users4
             // 
-            this.users4.BackColor = System.Drawing.Color.Transparent;
-            this.users4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.users4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.users4.Location = new System.Drawing.Point(0, 152);
-            this.users4.Margin = new System.Windows.Forms.Padding(0);
-            this.users4.Name = "users4";
-            this.users4.ProfileImageCursor = System.Windows.Forms.Cursors.Hand;
-            this.users4.Size = new System.Drawing.Size(202, 49);
-            this.users4.StatusMessage = "Away";
-            this.users4.TabIndex = 3;
-            this.users4.UserImage = global::VietChat.Properties.Resources._3_32;
-            this.users4.Username = "Isma Ali";
-            this.users4.UserStatus = chat.Status.Away;
-            this.users4.OnClick += new chat.Users.Clicked(this.OnUserClick);
+            users4.BackColor = Color.Transparent;
+            users4.Cursor = Cursors.Hand;
+            users4.Dock = DockStyle.Top;
+            users4.Location = new Point(0, 152);
+            users4.Margin = new Padding(0);
+            users4.Name = "users4";
+            users4.ProfileImageCursor = Cursors.Hand;
+            users4.Size = new Size(202, 49);
+            users4.StatusMessage = "Away";
+            users4.TabIndex = 3;
+            users4.UserImage = VietChat.Properties.Resources._3_32;
+            users4.Username = "Isma Ali";
+            users4.UserStatus = Status.Away;
+            users4.OnClick += OnUserClick;
             // 
             // users3
             // 
-            this.users3.BackColor = System.Drawing.Color.Transparent;
-            this.users3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.users3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.users3.Location = new System.Drawing.Point(0, 103);
-            this.users3.Margin = new System.Windows.Forms.Padding(0);
-            this.users3.Name = "users3";
-            this.users3.ProfileImageCursor = System.Windows.Forms.Cursors.Hand;
-            this.users3.Size = new System.Drawing.Size(202, 49);
-            this.users3.StatusMessage = "Away";
-            this.users3.TabIndex = 2;
-            this.users3.UserImage = ((System.Drawing.Image)(resources.GetObject("users3.UserImage")));
-            this.users3.Username = "Baba BE.";
-            this.users3.UserStatus = chat.Status.Away;
-            this.users3.OnClick += new chat.Users.Clicked(this.OnUserClick);
+            users3.BackColor = Color.Transparent;
+            users3.Cursor = Cursors.Hand;
+            users3.Dock = DockStyle.Top;
+            users3.Location = new Point(0, 103);
+            users3.Margin = new Padding(0);
+            users3.Name = "users3";
+            users3.ProfileImageCursor = Cursors.Hand;
+            users3.Size = new Size(202, 49);
+            users3.StatusMessage = "Away";
+            users3.TabIndex = 2;
+            users3.UserImage = (Image)resources.GetObject("users3.UserImage");
+            users3.Username = "Baba BE.";
+            users3.UserStatus = Status.Away;
+            users3.OnClick += OnUserClick;
+            users3.Load += users3_Load;
             // 
             // users2
             // 
-            this.users2.BackColor = System.Drawing.Color.Transparent;
-            this.users2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.users2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.users2.Location = new System.Drawing.Point(0, 54);
-            this.users2.Margin = new System.Windows.Forms.Padding(0);
-            this.users2.Name = "users2";
-            this.users2.ProfileImageCursor = System.Windows.Forms.Cursors.Hand;
-            this.users2.Size = new System.Drawing.Size(202, 49);
-            this.users2.StatusMessage = "Online";
-            this.users2.TabIndex = 1;
-            this.users2.UserImage = global::VietChat.Properties.Resources._2_32;
-            this.users2.Username = "Kasimu Da.";
-            this.users2.UserStatus = chat.Status.Online;
-            this.users2.OnClick += new chat.Users.Clicked(this.OnUserClick);
+            users2.BackColor = Color.Transparent;
+            users2.Cursor = Cursors.Hand;
+            users2.Dock = DockStyle.Top;
+            users2.Location = new Point(0, 54);
+            users2.Margin = new Padding(0);
+            users2.Name = "users2";
+            users2.ProfileImageCursor = Cursors.Hand;
+            users2.Size = new Size(202, 49);
+            users2.StatusMessage = "Online";
+            users2.TabIndex = 1;
+            users2.UserImage = VietChat.Properties.Resources._2_32;
+            users2.Username = "Kasimu Da.";
+            users2.UserStatus = Status.Online;
+            users2.OnClick += OnUserClick;
             // 
             // users1
             // 
-            this.users1.BackColor = System.Drawing.Color.Transparent;
-            this.users1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.users1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.users1.Location = new System.Drawing.Point(0, 5);
-            this.users1.Margin = new System.Windows.Forms.Padding(0);
-            this.users1.Name = "users1";
-            this.users1.ProfileImageCursor = System.Windows.Forms.Cursors.Hand;
-            this.users1.Size = new System.Drawing.Size(202, 49);
-            this.users1.StatusMessage = "Online";
-            this.users1.TabIndex = 0;
-            this.users1.UserImage = global::VietChat.Properties.Resources._4_32;
-            this.users1.Username = "A.Samad M.";
-            this.users1.UserStatus = chat.Status.Online;
-            this.users1.OnClick += new chat.Users.Clicked(this.OnUserClick);
-            this.users1.Load += new System.EventHandler(this.users1_Load);
+            users1.BackColor = Color.Transparent;
+            users1.Cursor = Cursors.Hand;
+            users1.Dock = DockStyle.Top;
+            users1.Location = new Point(0, 5);
+            users1.Margin = new Padding(0);
+            users1.Name = "users1";
+            users1.ProfileImageCursor = Cursors.Hand;
+            users1.Size = new Size(202, 49);
+            users1.StatusMessage = "Online";
+            users1.TabIndex = 0;
+            users1.UserImage = null;
+            users1.Username = "";
+            users1.UserStatus = Status.Online;
+            users1.OnClick += OnUserClick;
+            users1.Load += users1_Load;
             // 
             // label3
             // 
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Silver;
-            this.label3.Location = new System.Drawing.Point(2, 0);
-            this.label3.Name = "label3";
-            this.label3.Padding = new System.Windows.Forms.Padding(5, 5, 0, 0);
-            this.label3.Size = new System.Drawing.Size(202, 42);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Recent";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label3.BackColor = Color.FromArgb(102, 102, 102);
+            label3.Dock = DockStyle.Top;
+            label3.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = Color.Silver;
+            label3.Location = new Point(2, 0);
+            label3.Name = "label3";
+            label3.Padding = new Padding(5, 5, 0, 0);
+            label3.Size = new Size(202, 42);
+            label3.TabIndex = 0;
+            label3.Text = "Recent";
+            label3.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.typingBox1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(209, 663);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.panel3.Size = new System.Drawing.Size(768, 38);
-            this.panel3.TabIndex = 3;
+            panel3.Controls.Add(typingBox1);
+            panel3.Dock = DockStyle.Bottom;
+            panel3.Location = new Point(209, 663);
+            panel3.Name = "panel3";
+            panel3.Padding = new Padding(5, 0, 5, 5);
+            panel3.Size = new Size(768, 38);
+            panel3.TabIndex = 3;
             // 
             // typingBox1
             // 
-            this.typingBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.typingBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.typingBox1.Location = new System.Drawing.Point(5, 9);
-            this.typingBox1.Name = "typingBox1";
-            this.typingBox1.Size = new System.Drawing.Size(758, 24);
-            this.typingBox1.TabIndex = 0;
-            this.typingBox1.Value = "Type here...";
-            this.typingBox1.OnHitEnter += new chat.TypingBox.HitEnter(this.typingBox1_OnHitEnter);
+            typingBox1.BackColor = Color.FromArgb(102, 102, 102);
+            typingBox1.Dock = DockStyle.Bottom;
+            typingBox1.Location = new Point(5, 9);
+            typingBox1.Margin = new Padding(4, 3, 4, 3);
+            typingBox1.Name = "typingBox1";
+            typingBox1.Size = new Size(758, 24);
+            typingBox1.TabIndex = 0;
+            typingBox1.Value = "Type here...";
+            typingBox1.OnHitEnter += typingBox1_OnHitEnter;
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.meBubble2);
-            this.panel4.Controls.Add(this.youBubble1);
-            this.panel4.Controls.Add(this.meBubble1);
-            this.panel4.Controls.Add(this.meBubble3);
-            this.panel4.Controls.Add(this.meBubble4);
-            this.panel4.Controls.Add(this.meBubble5);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(209, 69);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(768, 594);
-            this.panel4.TabIndex = 4;
+            panel4.Controls.Add(meBubble2);
+            panel4.Controls.Add(youBubble1);
+            panel4.Controls.Add(meBubble1);
+            panel4.Controls.Add(meBubble3);
+            panel4.Controls.Add(meBubble4);
+            panel4.Controls.Add(meBubble5);
+            panel4.Dock = DockStyle.Fill;
+            panel4.Location = new Point(209, 69);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(768, 594);
+            panel4.TabIndex = 4;
             // 
             // meBubble2
             // 
-            this.meBubble2.AutoSize = true;
-            this.meBubble2.BackColor = System.Drawing.Color.Transparent;
-            this.meBubble2.Body = " This is a sample text message. This is a sample text message. This is a sample t" +
-    "ext message. \r\n\r\nThis is a sample text message. \r\n";
-            this.meBubble2.ChatImageCursor = System.Windows.Forms.Cursors.Default;
-            this.meBubble2.ChatTextCursor = System.Windows.Forms.Cursors.IBeam;
-            this.meBubble2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.meBubble2.Location = new System.Drawing.Point(0, 24);
-            this.meBubble2.MinimumSize = new System.Drawing.Size(0, 95);
-            this.meBubble2.MsgColor = System.Drawing.Color.DodgerBlue;
-            this.meBubble2.MsgTextColor = System.Drawing.SystemColors.ControlLightLight;
-            this.meBubble2.Name = "meBubble2";
-            this.meBubble2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.meBubble2.Size = new System.Drawing.Size(768, 95);
-            this.meBubble2.Status = chat.MessageStatus.Custom;
-            this.meBubble2.StatusImage = ((System.Drawing.Image)(resources.GetObject("meBubble2.StatusImage")));
-            this.meBubble2.TabIndex = 2;
-            this.meBubble2.Time = "11:44 PM";
-            this.meBubble2.TimeColor = System.Drawing.Color.White;
-            this.meBubble2.UserImage = ((System.Drawing.Image)(resources.GetObject("meBubble2.UserImage")));
+            meBubble2.AutoSize = true;
+            meBubble2.BackColor = Color.Transparent;
+            meBubble2.Body = " This is a sample text message. This is a sample text message. This is a sample text message. \r\n\r\nThis is a sample text message. \r\n";
+            meBubble2.ChatImageCursor = Cursors.Default;
+            meBubble2.ChatTextCursor = Cursors.IBeam;
+            meBubble2.Dock = DockStyle.Bottom;
+            meBubble2.Location = new Point(0, 24);
+            meBubble2.Margin = new Padding(4, 3, 4, 3);
+            meBubble2.MinimumSize = new Size(0, 95);
+            meBubble2.MsgColor = Color.DodgerBlue;
+            meBubble2.MsgTextColor = SystemColors.ControlLightLight;
+            meBubble2.Name = "meBubble2";
+            meBubble2.Padding = new Padding(0, 5, 0, 5);
+            meBubble2.Size = new Size(768, 95);
+            meBubble2.Status = MessageStatus.Custom;
+            meBubble2.StatusImage = (Image)resources.GetObject("meBubble2.StatusImage");
+            meBubble2.TabIndex = 2;
+            meBubble2.Time = "11:44 PM";
+            meBubble2.TimeColor = Color.White;
+            meBubble2.UserImage = (Image)resources.GetObject("meBubble2.UserImage");
             // 
             // youBubble1
             // 
-            this.youBubble1.BackColor = System.Drawing.Color.Transparent;
-            this.youBubble1.Body = " This is a sample text message. This is a sample text message. This is a sample t" +
-    "ext message. \n\nThis is a sample text message. ";
-            this.youBubble1.ChatImageCursor = System.Windows.Forms.Cursors.Default;
-            this.youBubble1.ChatTextCursor = System.Windows.Forms.Cursors.IBeam;
-            this.youBubble1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.youBubble1.Location = new System.Drawing.Point(0, 119);
-            this.youBubble1.MinimumSize = new System.Drawing.Size(0, 95);
-            this.youBubble1.MsgColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.youBubble1.MsgTextColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.youBubble1.Name = "youBubble1";
-            this.youBubble1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.youBubble1.Size = new System.Drawing.Size(768, 95);
-            this.youBubble1.Status = chat.MessageStatus.Custom;
-            this.youBubble1.StatusImage = null;
-            this.youBubble1.TabIndex = 1;
-            this.youBubble1.Time = "11:46 PM";
-            this.youBubble1.TimeColor = System.Drawing.Color.White;
-            this.youBubble1.UserImage = global::VietChat.Properties.Resources._2_32;
+            youBubble1.BackColor = Color.Transparent;
+            youBubble1.Body = " This is a sample text message. This is a sample text message. This is a sample text message. \n\nThis is a sample text message. ";
+            youBubble1.ChatImageCursor = Cursors.Default;
+            youBubble1.ChatTextCursor = Cursors.IBeam;
+            youBubble1.Dock = DockStyle.Bottom;
+            youBubble1.Location = new Point(0, 119);
+            youBubble1.Margin = new Padding(4, 3, 4, 3);
+            youBubble1.MinimumSize = new Size(0, 95);
+            youBubble1.MsgColor = Color.FromArgb(244, 244, 244);
+            youBubble1.MsgTextColor = SystemColors.ControlDarkDark;
+            youBubble1.Name = "youBubble1";
+            youBubble1.Padding = new Padding(0, 5, 0, 5);
+            youBubble1.Size = new Size(768, 95);
+            youBubble1.Status = MessageStatus.Custom;
+            youBubble1.StatusImage = null;
+            youBubble1.TabIndex = 1;
+            youBubble1.Time = "11:46 PM";
+            youBubble1.TimeColor = Color.White;
+            youBubble1.UserImage = VietChat.Properties.Resources._2_32;
             // 
             // meBubble1
             // 
-            this.meBubble1.AutoSize = true;
-            this.meBubble1.BackColor = System.Drawing.Color.Transparent;
-            this.meBubble1.Body = " This is a sample text message. This is a sample text message. This is a sample t" +
-    "ext message. \r\n\r\nThis is a sample text message. \r\n";
-            this.meBubble1.ChatImageCursor = System.Windows.Forms.Cursors.Default;
-            this.meBubble1.ChatTextCursor = System.Windows.Forms.Cursors.IBeam;
-            this.meBubble1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.meBubble1.Location = new System.Drawing.Point(0, 214);
-            this.meBubble1.MinimumSize = new System.Drawing.Size(0, 95);
-            this.meBubble1.MsgColor = System.Drawing.Color.DodgerBlue;
-            this.meBubble1.MsgTextColor = System.Drawing.SystemColors.ControlLightLight;
-            this.meBubble1.Name = "meBubble1";
-            this.meBubble1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.meBubble1.Size = new System.Drawing.Size(768, 95);
-            this.meBubble1.Status = chat.MessageStatus.Custom;
-            this.meBubble1.StatusImage = ((System.Drawing.Image)(resources.GetObject("meBubble1.StatusImage")));
-            this.meBubble1.TabIndex = 0;
-            this.meBubble1.Time = "11:50 PM";
-            this.meBubble1.TimeColor = System.Drawing.Color.White;
-            this.meBubble1.UserImage = ((System.Drawing.Image)(resources.GetObject("meBubble1.UserImage")));
+            meBubble1.AutoSize = true;
+            meBubble1.BackColor = Color.Transparent;
+            meBubble1.Body = " This is a sample text message. This is a sample text message. This is a sample text message. \r\n\r\nThis is a sample text message. \r\n";
+            meBubble1.ChatImageCursor = Cursors.Default;
+            meBubble1.ChatTextCursor = Cursors.IBeam;
+            meBubble1.Dock = DockStyle.Bottom;
+            meBubble1.Location = new Point(0, 214);
+            meBubble1.Margin = new Padding(4, 3, 4, 3);
+            meBubble1.MinimumSize = new Size(0, 95);
+            meBubble1.MsgColor = Color.DodgerBlue;
+            meBubble1.MsgTextColor = SystemColors.ControlLightLight;
+            meBubble1.Name = "meBubble1";
+            meBubble1.Padding = new Padding(0, 5, 0, 5);
+            meBubble1.Size = new Size(768, 95);
+            meBubble1.Status = MessageStatus.Custom;
+            meBubble1.StatusImage = (Image)resources.GetObject("meBubble1.StatusImage");
+            meBubble1.TabIndex = 0;
+            meBubble1.Time = "11:50 PM";
+            meBubble1.TimeColor = Color.White;
+            meBubble1.UserImage = (Image)resources.GetObject("meBubble1.UserImage");
             // 
             // meBubble3
             // 
-            this.meBubble3.AutoSize = true;
-            this.meBubble3.BackColor = System.Drawing.Color.Transparent;
-            this.meBubble3.Body = " This is a sample text message. This is a sample text message. This is a sample t" +
-    "ext message. \r\n\r\nThis is a sample text message. \r\n";
-            this.meBubble3.ChatImageCursor = System.Windows.Forms.Cursors.Default;
-            this.meBubble3.ChatTextCursor = System.Windows.Forms.Cursors.IBeam;
-            this.meBubble3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.meBubble3.Location = new System.Drawing.Point(0, 309);
-            this.meBubble3.MinimumSize = new System.Drawing.Size(0, 95);
-            this.meBubble3.MsgColor = System.Drawing.Color.DodgerBlue;
-            this.meBubble3.MsgTextColor = System.Drawing.SystemColors.ControlLightLight;
-            this.meBubble3.Name = "meBubble3";
-            this.meBubble3.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.meBubble3.Size = new System.Drawing.Size(768, 95);
-            this.meBubble3.Status = chat.MessageStatus.Custom;
-            this.meBubble3.StatusImage = ((System.Drawing.Image)(resources.GetObject("meBubble3.StatusImage")));
-            this.meBubble3.TabIndex = 3;
-            this.meBubble3.Time = "11:52 PM";
-            this.meBubble3.TimeColor = System.Drawing.Color.White;
-            this.meBubble3.UserImage = ((System.Drawing.Image)(resources.GetObject("meBubble3.UserImage")));
+            meBubble3.AutoSize = true;
+            meBubble3.BackColor = Color.Transparent;
+            meBubble3.Body = " This is a sample text message. This is a sample text message. This is a sample text message. \r\n\r\nThis is a sample text message. \r\n";
+            meBubble3.ChatImageCursor = Cursors.Default;
+            meBubble3.ChatTextCursor = Cursors.IBeam;
+            meBubble3.Dock = DockStyle.Bottom;
+            meBubble3.Location = new Point(0, 309);
+            meBubble3.Margin = new Padding(4, 3, 4, 3);
+            meBubble3.MinimumSize = new Size(0, 95);
+            meBubble3.MsgColor = Color.DodgerBlue;
+            meBubble3.MsgTextColor = SystemColors.ControlLightLight;
+            meBubble3.Name = "meBubble3";
+            meBubble3.Padding = new Padding(0, 5, 0, 5);
+            meBubble3.Size = new Size(768, 95);
+            meBubble3.Status = MessageStatus.Custom;
+            meBubble3.StatusImage = (Image)resources.GetObject("meBubble3.StatusImage");
+            meBubble3.TabIndex = 3;
+            meBubble3.Time = "11:52 PM";
+            meBubble3.TimeColor = Color.White;
+            meBubble3.UserImage = (Image)resources.GetObject("meBubble3.UserImage");
             // 
             // meBubble4
             // 
-            this.meBubble4.AutoSize = true;
-            this.meBubble4.BackColor = System.Drawing.Color.Transparent;
-            this.meBubble4.Body = " This is a sample text message. This is a sample text message. This is a sample t" +
-    "ext message. \r\n\r\nThis is a sample text message. \r\n";
-            this.meBubble4.ChatImageCursor = System.Windows.Forms.Cursors.Default;
-            this.meBubble4.ChatTextCursor = System.Windows.Forms.Cursors.IBeam;
-            this.meBubble4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.meBubble4.Location = new System.Drawing.Point(0, 404);
-            this.meBubble4.MinimumSize = new System.Drawing.Size(0, 95);
-            this.meBubble4.MsgColor = System.Drawing.Color.DodgerBlue;
-            this.meBubble4.MsgTextColor = System.Drawing.SystemColors.ControlLightLight;
-            this.meBubble4.Name = "meBubble4";
-            this.meBubble4.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.meBubble4.Size = new System.Drawing.Size(768, 95);
-            this.meBubble4.Status = chat.MessageStatus.Custom;
-            this.meBubble4.StatusImage = ((System.Drawing.Image)(resources.GetObject("meBubble4.StatusImage")));
-            this.meBubble4.TabIndex = 4;
-            this.meBubble4.Time = "11:52 PM";
-            this.meBubble4.TimeColor = System.Drawing.Color.White;
-            this.meBubble4.UserImage = ((System.Drawing.Image)(resources.GetObject("meBubble4.UserImage")));
+            meBubble4.AutoSize = true;
+            meBubble4.BackColor = Color.Transparent;
+            meBubble4.Body = " This is a sample text message. This is a sample text message. This is a sample text message. \r\n\r\nThis is a sample text message. \r\n";
+            meBubble4.ChatImageCursor = Cursors.Default;
+            meBubble4.ChatTextCursor = Cursors.IBeam;
+            meBubble4.Dock = DockStyle.Bottom;
+            meBubble4.Location = new Point(0, 404);
+            meBubble4.Margin = new Padding(4, 3, 4, 3);
+            meBubble4.MinimumSize = new Size(0, 95);
+            meBubble4.MsgColor = Color.DodgerBlue;
+            meBubble4.MsgTextColor = SystemColors.ControlLightLight;
+            meBubble4.Name = "meBubble4";
+            meBubble4.Padding = new Padding(0, 5, 0, 5);
+            meBubble4.Size = new Size(768, 95);
+            meBubble4.Status = MessageStatus.Custom;
+            meBubble4.StatusImage = (Image)resources.GetObject("meBubble4.StatusImage");
+            meBubble4.TabIndex = 4;
+            meBubble4.Time = "11:52 PM";
+            meBubble4.TimeColor = Color.White;
+            meBubble4.UserImage = (Image)resources.GetObject("meBubble4.UserImage");
             // 
             // meBubble5
             // 
-            this.meBubble5.AutoSize = true;
-            this.meBubble5.BackColor = System.Drawing.Color.Transparent;
-            this.meBubble5.Body = " This is a sample text message. This is a sample text message. This is a sample t" +
-    "ext message. \r\n\r\nThis is a sample text message. \r\n";
-            this.meBubble5.ChatImageCursor = System.Windows.Forms.Cursors.Default;
-            this.meBubble5.ChatTextCursor = System.Windows.Forms.Cursors.IBeam;
-            this.meBubble5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.meBubble5.Location = new System.Drawing.Point(0, 499);
-            this.meBubble5.MinimumSize = new System.Drawing.Size(0, 95);
-            this.meBubble5.MsgColor = System.Drawing.Color.DodgerBlue;
-            this.meBubble5.MsgTextColor = System.Drawing.SystemColors.ControlLightLight;
-            this.meBubble5.Name = "meBubble5";
-            this.meBubble5.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.meBubble5.Size = new System.Drawing.Size(768, 95);
-            this.meBubble5.Status = chat.MessageStatus.Custom;
-            this.meBubble5.StatusImage = ((System.Drawing.Image)(resources.GetObject("meBubble5.StatusImage")));
-            this.meBubble5.TabIndex = 5;
-            this.meBubble5.Time = "11:52 PM";
-            this.meBubble5.TimeColor = System.Drawing.Color.White;
-            this.meBubble5.UserImage = ((System.Drawing.Image)(resources.GetObject("meBubble5.UserImage")));
+            meBubble5.AutoSize = true;
+            meBubble5.BackColor = Color.Transparent;
+            meBubble5.Body = " This is a sample text message. This is a sample text message. This is a sample text message. \r\n\r\nThis is a sample text message. \r\n";
+            meBubble5.ChatImageCursor = Cursors.Default;
+            meBubble5.ChatTextCursor = Cursors.IBeam;
+            meBubble5.Dock = DockStyle.Bottom;
+            meBubble5.Location = new Point(0, 499);
+            meBubble5.Margin = new Padding(4, 3, 4, 3);
+            meBubble5.MinimumSize = new Size(0, 95);
+            meBubble5.MsgColor = Color.DodgerBlue;
+            meBubble5.MsgTextColor = SystemColors.ControlLightLight;
+            meBubble5.Name = "meBubble5";
+            meBubble5.Padding = new Padding(0, 5, 0, 5);
+            meBubble5.Size = new Size(768, 95);
+            meBubble5.Status = MessageStatus.Custom;
+            meBubble5.StatusImage = (Image)resources.GetObject("meBubble5.StatusImage");
+            meBubble5.TabIndex = 5;
+            meBubble5.Time = "11:52 PM";
+            meBubble5.TimeColor = Color.White;
+            meBubble5.UserImage = (Image)resources.GetObject("meBubble5.UserImage");
             // 
             // chatHeader1
             // 
-            this.chatHeader1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.chatHeader1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chatHeader1.Location = new System.Drawing.Point(209, 27);
-            this.chatHeader1.Name = "chatHeader1";
-            this.chatHeader1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.chatHeader1.Size = new System.Drawing.Size(768, 42);
-            this.chatHeader1.TabIndex = 2;
-            this.chatHeader1.UserImage = global::VietChat.Properties.Resources._2_32;
-            this.chatHeader1.UserStatusText = "Typing...";
-            this.chatHeader1.UserTitle = "Kassimu Da.";
+            chatHeader1.BackColor = Color.FromArgb(102, 102, 102);
+            chatHeader1.Dock = DockStyle.Top;
+            chatHeader1.Location = new Point(209, 27);
+            chatHeader1.Margin = new Padding(4, 3, 4, 3);
+            chatHeader1.Name = "chatHeader1";
+            chatHeader1.Padding = new Padding(0, 2, 0, 2);
+            chatHeader1.Size = new Size(768, 42);
+            chatHeader1.TabIndex = 2;
+            chatHeader1.UserImage = VietChat.Properties.Resources._2_32;
+            chatHeader1.UserStatusText = "Typing...";
+            chatHeader1.UserTitle = "Kassimu Da.";
             // 
             // Form1
             // 
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.ClientSize = new System.Drawing.Size(980, 704);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.chatHeader1);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
-            this.Padding = new System.Windows.Forms.Padding(3);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.ResumeLayout(false);
-
+            BackColor = Color.FromArgb(80, 80, 80);
+            ClientSize = new Size(980, 704);
+            Controls.Add(panel4);
+            Controls.Add(panel3);
+            Controls.Add(chatHeader1);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "Form1";
+            Padding = new Padding(3);
+            StartPosition = FormStartPosition.CenterScreen;
+            Load += Form1_Load;
+            panel1.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel5.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            ResumeLayout(false);
         }
 
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private Panel panel1;
+        private Panel panel2;
         private ChatHeader chatHeader1;
-        private System.Windows.Forms.Panel panel3;
+        private Panel panel3;
         private TypingBox typingBox1;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel5;
+        private Panel panel4;
+        private Label label2;
+        private Label label1;
+        private Label label3;
+        private Panel panel5;
         private SearchBox searchBox1;
         private Users users6;
         private Users users5;

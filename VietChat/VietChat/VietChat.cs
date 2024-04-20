@@ -80,10 +80,21 @@ namespace VietChat
                 b_image = (Bitmap)Bitmap.FromFile(URL_IMAGE + file_name);
 
                 b_image = new Bitmap(b_image, new Size(pic_photo.Width, pic_photo.Height));
+
+                Common.b_image_user = (Bitmap)Bitmap.FromFile(URL_IMAGE + file_name);
+
+                Common.b_image_user = new Bitmap(Common.b_image_user, new Size(pic_photo.Width, pic_photo.Height));
+
                 pic_photo.Image = b_image;
                 pnl_bb.Visible = true;
                 lbl_name.Text = Common.name_friend;
             }
+
+            ChatList chatlist = new ChatList();
+            chatlist.getChatData();
+
+            Form1 form = new Form1();
+            form.ShowDialog();
         }
 
         public void SaveImage(string imageUrl, string filename)
@@ -112,7 +123,7 @@ namespace VietChat
             {
                 ChatList chatlist = new ChatList();
                 chatlist.getChatList();
-                chatlist.getListFriend();
+                chatlist.getListFriend();              
                 timer1.Stop();
             }
         }

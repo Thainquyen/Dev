@@ -1,4 +1,9 @@
-﻿namespace chat
+﻿using Newtonsoft.Json.Linq;
+using System.Reflection.Metadata;
+using System.Text;
+using VietChat;
+
+namespace chat
 {
     public partial class Form1 : BeautyForm //Inherited from Beauty, which a custom form.
     {
@@ -15,7 +20,7 @@
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -23,7 +28,7 @@
             this.WindowState = FormWindowState.Minimized;
         }
 
-        
+
 
         private void typingBox1_OnTypingTextChanged(string newVal)
         {
@@ -39,7 +44,7 @@
                 MeBubble bubble = new MeBubble();
                 bubble.Dock = DockStyle.Bottom;//Dock to bottom  so that the bubbles can align themselves in a horizontal grid. You dont have to worry about responsiveness when window resizes.
                 bubble.SendToBack();//Send back so that it will be lowest control... Use bubble.BringToFront() if u r docking up.
-               
+
                 bubble.Body = typingBox1.Value;
 
                 panel4.Controls.Add(bubble);
@@ -47,7 +52,7 @@
                 typingBox1.Value = "";
 
                 FakeRecieving();
-               
+
             }
         }
 
@@ -59,7 +64,7 @@
             bubble.Body = "This is a message received.";
             panel4.Controls.Add(bubble);
         }
-        
+
         private void label1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -85,12 +90,24 @@
 
         private void users1_Load(object sender, EventArgs e)
         {
-
+            youBubble1.Body = Common.last_msg;
+            youBubble1.UserImage = Common.b_image_user;
         }
 
         private void meBubble2_Load(object sender, EventArgs e)
         {
 
         }
+
+        private void users3_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            users1.Username = Common.name_friend;
+            users1.UserImage = Common.b_image_user;
+        }      
     }
 }
