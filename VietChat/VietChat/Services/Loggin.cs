@@ -1,19 +1,20 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Text;
 using VietChat.Constants;
+using VietChat.Model;
 
 namespace VietChat.Services
 {
-	public partial class Logging
-	{
+    public partial class Logging
+    {
         private readonly HttpClient _client;
-        public Logging() 
+        public Logging()
         {
             _client = new HttpClient();
         }
 
-		public async void Signing(string username, string pass) 
-		{
+        public async void Signing(string username, string pass)
+        {
             try
             {
                 string apiUrl = Constant.LOGGIN_API;
@@ -37,27 +38,24 @@ namespace VietChat.Services
                 Common.error_flag = (int)jObject["err"];
                 Common.msg = (string)jObject["msg"];
 
-                JObject jObject2 = JObject.Parse(jObject["data"].ToString());
-                Common.token = (string)jObject2["token"];
-
-                BaseInfo baseInfo = new BaseInfo();
-                baseInfo.GetBase();
-
-
                 if (Common.error_flag > 0)
                 {
                     MessageBox.Show(Common.msg, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    /// MessageBox.Show($"Failed with status code {response.StatusCode}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                   
+                    JObject jObject2 = JObject.Parse(jObject["data"].ToString());
+                    Common.token = (string)jObject2["token"];
+
+                    BaseInfo baseInfo = new BaseInfo();
+                    baseInfo.GetBase();
+
                 }
             }
             catch (HttpRequestException ex)
             {
                 MessageBox.Show($"Request exception: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-		}
-	}
+        }
+    }
 }

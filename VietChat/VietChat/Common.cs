@@ -1,4 +1,6 @@
-﻿namespace VietChat
+﻿using Newtonsoft.Json.Linq;
+
+namespace VietChat
 {
     internal class Common
     {
@@ -7,6 +9,7 @@
         public static string user = string.Empty;
         public static string pass = string.Empty;
         public static int uId = 0;
+        public static string nickname = string.Empty;
 
         public static Bitmap b_image_user;
 
@@ -21,5 +24,10 @@
         public static string list_id = string.Empty;
         public static string chat_id = string.Empty;
         public static string last_msg = string.Empty;
+
+        public static JArray list_friend = new JArray();
+
+        public static JObject job_friend = new JObject();
+
     }
 }

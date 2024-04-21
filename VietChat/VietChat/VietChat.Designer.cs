@@ -37,8 +37,6 @@
             lbl_bb = new Label();
             panel2 = new Panel();
             pnl_bb = new Panel();
-            pic_photo = new PictureBox();
-            lbl_name = new Label();
             panel5 = new Panel();
             label7 = new Label();
             label4 = new Label();
@@ -57,8 +55,6 @@
             timer1 = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            pnl_bb.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pic_photo).BeginInit();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
@@ -135,34 +131,12 @@
             // 
             // pnl_bb
             // 
+            pnl_bb.AutoScroll = true;
             pnl_bb.BorderStyle = BorderStyle.FixedSingle;
-            pnl_bb.Controls.Add(pic_photo);
-            pnl_bb.Controls.Add(lbl_name);
             pnl_bb.Location = new Point(6, 189);
             pnl_bb.Name = "pnl_bb";
             pnl_bb.Size = new Size(214, 477);
             pnl_bb.TabIndex = 9;
-            // 
-            // pic_photo
-            // 
-            pic_photo.Image = (Image)resources.GetObject("pic_photo.Image");
-            pic_photo.Location = new Point(3, 3);
-            pic_photo.Name = "pic_photo";
-            pic_photo.Size = new Size(57, 48);
-            pic_photo.TabIndex = 7;
-            pic_photo.TabStop = false;
-            // 
-            // lbl_name
-            // 
-            lbl_name.BackColor = Color.White;
-            lbl_name.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_name.Location = new Point(66, 9);
-            lbl_name.Name = "lbl_name";
-            lbl_name.Size = new Size(139, 38);
-            lbl_name.TabIndex = 5;
-            lbl_name.Text = "Name";
-            lbl_name.TextAlign = ContentAlignment.MiddleCenter;
-            lbl_name.Click += lbl_name_Click;
             // 
             // panel5
             // 
@@ -353,8 +327,6 @@
             Load += VietChat_Load;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
-            pnl_bb.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pic_photo).EndInit();
             panel5.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel3.ResumeLayout(false);
@@ -389,8 +361,6 @@
         private Panel pnl_group;
         private Button button1;
         private Panel pnl_bb;
-        private Label lbl_name;
-        private PictureBox pic_photo;
         private System.Windows.Forms.Timer timer1;
     }
 }

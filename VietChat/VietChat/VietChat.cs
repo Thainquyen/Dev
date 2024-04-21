@@ -1,7 +1,6 @@
 ﻿using chat;
+using Newtonsoft.Json.Linq;
 using System.Net;
-using VietChat.Model;
-using VietChat.Properties;
 using VietChat.Services;
 
 namespace VietChat
@@ -73,23 +72,64 @@ namespace VietChat
 
         private void lbl_bb_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(Common.photo))
+
+            int start_pic_photo_X = 3;
+            int start_pic_photo_Y = 3;
+
+            int startX = 66;
+            int startY = 3;
+
+            foreach (var section in Common.job_friend)
             {
-                string file_name = Path.GetFileName(Common.GET_PHOTO_API + Common.photo);
+                var zone = section.Key;
 
-                SaveImage(Common.GET_PHOTO_API + Common.photo, file_name);
+                JObject obj = (JObject)Common.job_friend[zone];
 
-                b_image = (Bitmap)Bitmap.FromFile(URL_IMAGE + file_name);
+                Common.name_friend = obj["name"].ToString();
+                Common.user_id_friend = obj["user_id"].ToString();
+                Common.photo = obj["photo"].ToString();
 
-                b_image = new Bitmap(b_image, new Size(pic_photo.Width, pic_photo.Height));
+                if (!string.IsNullOrEmpty(Common.name_friend))
+                {
 
-                Common.b_image_user = (Bitmap)Bitmap.FromFile(URL_IMAGE + file_name);
+                    PictureBox pic_photo = new PictureBox();
+                    pic_photo.Location = new Point(start_pic_photo_X, start_pic_photo_Y);
+                    pic_photo.Size = new Size(57, 38);
+                    pic_photo.TabIndex = 7;
+                    pic_photo.TabStop = false;
 
-                Common.b_image_user = new Bitmap(Common.b_image_user, new Size(pic_photo.Width, pic_photo.Height));
+                    if (!string.IsNullOrEmpty(Common.photo))
+                    {
+                        string file_name = Path.GetFileName(Common.GET_PHOTO_API + Common.photo);
 
-                pic_photo.Image = b_image;
-              //  pnl_bb.Visible = true;
-              //  lbl_name.Text = Common.name_friend;
+                        SaveImage(Common.GET_PHOTO_API + Common.photo, file_name);
+
+                        b_image = (Bitmap)Bitmap.FromFile(URL_IMAGE + file_name);
+
+                        b_image = new Bitmap(b_image, new Size(pic_photo.Width, pic_photo.Height));
+                        pic_photo.Image = b_image;
+                        Common.b_image_user = (Bitmap)Bitmap.FromFile(URL_IMAGE + file_name);
+                        Common.b_image_user = new Bitmap(Common.b_image_user, new Size(pic_photo.Width, pic_photo.Height));
+                    }
+
+
+                    start_pic_photo_Y = start_pic_photo_Y + pic_photo.Width;
+
+                    Label lbl_name = new Label();
+                    lbl_name.BackColor = Color.White;
+                    lbl_name.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+                    lbl_name.Location = new Point(startX, startY);
+                    lbl_name.Size = new Size(139, 38);
+                    lbl_name.TabIndex = 5;
+                    lbl_name.Text = Common.name_friend;
+                    lbl_name.TextAlign = ContentAlignment.MiddleCenter;
+                    lbl_name.Click += lbl_name_Click;
+                    startY = startY + 12 + lbl_name.Height;
+
+                    pnl_bb.Controls.Add(pic_photo);
+                    pnl_bb.Controls.Add(lbl_name);
+                    pnl_bb.Visible = true;
+                }
             }
 
             Form1 form = new Form1();

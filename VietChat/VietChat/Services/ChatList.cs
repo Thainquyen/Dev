@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Text;
-using System.Text.Json.Nodes;
-using System.Windows.Forms;
 using VietChat.Constants;
 using VietChat.Model;
 
@@ -72,24 +69,18 @@ namespace VietChat.Services
                 var request = new HttpRequestMessage(HttpMethod.Post, apiUrl);
 
                 // Add request body if needed
-                // string requestBody = "{\"username\": \"@username@\", \"password\": \"@password@\", \"client_id\": \"\", \"_token\": \"\", \"_agent_id\": \"1\"}";
-                //  requestBody = requestBody.Replace("@username@", username);
-                string requestBody = "{\"_token\": \"@token@\", \"_agent_id\": \"1\" , \"list_id\": \"@list_id@\" , \"content\": \"@content@\" , \"content_type\": \"0\"}";
-                requestBody = requestBody.Replace("@token@", Common.token);
-                requestBody = requestBody.Replace("@list_id@", Common.list_id);
+                string content = "{\"text\": \"@msg@\"}";
+                content = content.Replace("@msg@", msg.Trim());
+                var formContent = new FormUrlEncodedContent(new[]
+                                  {
+                                   new KeyValuePair<string, string>("_token", Common.token),
+                                   new KeyValuePair<string, string>("_agent_id", "1"),
+                                   new KeyValuePair<string, string>("list_id", Common.list_id),
+                                   new KeyValuePair<string, string>("content_type", "0"),
+                                  new KeyValuePair<string, string>("content", content)
+                                    });
 
-                var content = new JsonObject
-                {
-                    ["text"] = msg
-                };
-
-                requestBody = requestBody.Replace("@content@", content.ToString());
-
-
-                request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = await _client.SendAsync(request);
-
+                HttpResponseMessage response = await _client.PostAsync(apiUrl, formContent);
 
                 string responseBody = await response.Content.ReadAsStringAsync();
 
@@ -99,19 +90,6 @@ namespace VietChat.Services
                 {
                     return;
                 }
-                else
-                {
-                    JArray jarr = jObject["data"].ToObject<JArray>();
-
-                    //for (int i = 0; i < jarr.Count; i++)
-                    //{
-                    //    JObject obj = (JObject)jarr[i]; //nhận obj thứ i
-                    //    Common.list_id = obj["list_id"].ToString();
-                    //    Common.chat_id = obj["chat_id"].ToString();
-                    //    Common.last_msg = obj["last_msg"].ToString();
-                    //}
-                }
-
 
             }
             catch (HttpRequestException ex)
@@ -181,16 +159,22 @@ namespace VietChat.Services
 
                 JObject jObject2 = (JObject)jObject1["data"];
 
-                JObject jObject3 = (JObject)jObject2["19"];
-
-                JArray jarr = jObject3["data"].ToObject<JArray>();
-
-                for (int i = 0; i < jarr.Count; i++)
+                foreach (var section in jObject2)
                 {
-                    JObject obj = (JObject)jarr[i]; //nhận obj thứ i
-                    Common.name_friend = obj["name"].ToString();
-                    Common.user_id_friend = obj["user_id"].ToString();
-                    Common.photo = obj["photo"].ToString();
+                    var zone = section.Key;
+
+                    JObject jObject3 = (JObject)jObject2[zone];
+
+                    JArray jarr = jObject3["data"].ToObject<JArray>();
+
+                    for (int i = 0; i < jarr.Count; i++)
+                    {
+                        JObject obj = (JObject)jarr[i]; //nhận obj thứ i
+                        //Common.name_friend = obj["name"].ToString();
+                        Common.user_id_friend = obj["user_id"].ToString();
+                        //Common.photo = obj["photo"].ToString();
+                        Common.job_friend.Add(new JProperty(Common.user_id_friend, obj));
+                    }
                 }
 
             }

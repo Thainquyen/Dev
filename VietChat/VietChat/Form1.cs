@@ -1,9 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Net.WebSockets;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Windows.Forms;
 using VietChat;
 using VietChat.Model;
 using VietChat.Services;
@@ -69,6 +64,8 @@ namespace chat
                     meBubble.TimeColor = Color.White;
                     panel4.Controls.Add(meBubble);
                 }
+
+                panel4.AutoScrollPosition = new Point(0, panel4.VerticalScroll.Maximum);
             }
         }
 
@@ -106,31 +103,20 @@ namespace chat
         {
             if (!string.IsNullOrEmpty(typingBox1.Value))
             {
-                MeBubble bubble = new MeBubble();
-                bubble.Dock = DockStyle.Bottom;//Dock to bottom  so that the bubbles can align themselves in a horizontal grid. You dont have to worry about responsiveness when window resizes.
-                bubble.SendToBack();//Send back so that it will be lowest control... Use bubble.BringToFront() if u r docking up.
+               // MeBubble bubble = new MeBubble();
+               // bubble.Dock = DockStyle.Bottom;//Dock to bottom  so that the bubbles can align themselves in a horizontal grid. You dont have to worry about responsiveness when window resizes.
+               // bubble.SendToBack();//Send back so that it will be lowest control... Use bubble.BringToFront() if u r docking up.
 
-                bubble.Body = typingBox1.Value;
+               // bubble.Body = typingBox1.Value;
 
-                panel4.Controls.Add(bubble);
+               // panel4.Controls.Add(bubble);
 
-                typingBox1.Value = "";
-
+                //typingBox1.Value = "";
+                
                 ChatList chatlist = new ChatList();
-                chatlist.getTextMsg(bubble.Body);
-
-                // FakeRecieving();
-
+                chatlist.getTextMsg(typingBox1.Value);
+                typingBox1.Value = "";
             }
-        }
-
-        private void FakeRecieving()
-        {
-            //YouBubble bubble = new YouBubble();
-            //bubble.Dock = DockStyle.Bottom;
-            //bubble.SendToBack();
-            //bubble.Body = "This is a message received.";
-            //panel4.Controls.Add(bubble);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -179,6 +165,21 @@ namespace chat
 
             chatHeader1.UserTitle = Common.name_friend;
             chatHeader1.UserImage = Common.b_image_user;
+
+            //Users users2 = new Users();
+            //users2.BackColor = Color.Transparent;
+            //users2.Cursor = Cursors.Hand;
+            //users2.Dock = DockStyle.Top;
+            //users2.Location = new Point(0, 5);
+            //users2.Margin = new Padding(0);
+            //users2.ProfileImageCursor = Cursors.Hand;
+            //users2.Size = new Size(202, 49);
+            //users2.StatusMessage = "Online";
+            //users2.TabIndex = 0;
+            //users2.UserImage = null;
+            //users2.Username = "";
+            //users2.UserStatus = Status.Online;
+
 
             ChatList chatlist = new ChatList();
             ChatDataRespone chatDataRespone = await chatlist.getChatData();
@@ -230,8 +231,9 @@ namespace chat
                         panel4.Controls.Add(youBubble);
                     }
                 }
-                Thread.Sleep(3000);
+
                 panel4.AutoScrollMinSize = new Size(0, panel4.Height);
+                panel4.AutoScrollPosition = new Point(0, panel4.VerticalScroll.Maximum);
                 panel4.ResumeLayout();
                 this.PerformLayout();
             }

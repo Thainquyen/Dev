@@ -41,11 +41,11 @@ namespace VietChat.Model
     public class Message
     {
         public int type { get; set; }
-        public string id {  get; set; } 
+        public string id { get; set; }
         public int time { get; set; }
         public int is_niming { get; set; }
 
-        public Content content { get; set; }
+        public Content? content { get; set; }
 
         public UserInfo user_info { get; set; }
     }
