@@ -48,6 +48,11 @@ namespace VietChat
             }
             if (Common.error_flag == 0)
             {
+                if (!Directory.Exists(Common.URL_IMAGE))
+                {
+                    Directory.CreateDirectory(Common.URL_IMAGE);
+                }
+
                 Form form = new VietChat();
                 form.Show();
                 this.Hide();

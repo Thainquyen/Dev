@@ -29,5 +29,7 @@ namespace VietChat
 
         public static JObject job_friend = new JObject();
 
+        public static string URL_IMAGE = Application.StartupPath + @"\PHOTO\";
+
     }
 }

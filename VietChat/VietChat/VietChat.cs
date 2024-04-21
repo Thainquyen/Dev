@@ -9,7 +9,7 @@ namespace VietChat
     {
         public Bitmap b_image;
 
-        public string URL_IMAGE = Application.StartupPath + @"\PHOTO\";
+       
 
         public VietChat()
         {
@@ -34,9 +34,9 @@ namespace VietChat
             chatlist.getChatList();
             chatlist.getListFriend();
             // ファイルが存在するか
-            if (!Directory.Exists(URL_IMAGE))
+            if (!Directory.Exists(Common.URL_IMAGE))
             {
-                Directory.CreateDirectory(URL_IMAGE);
+                Directory.CreateDirectory(Common.URL_IMAGE);
             }
             pnl_add.Visible = false;
             pnl_group.Visible = false;
@@ -104,11 +104,11 @@ namespace VietChat
 
                         SaveImage(Common.GET_PHOTO_API + Common.photo, file_name);
 
-                        b_image = (Bitmap)Bitmap.FromFile(URL_IMAGE + file_name);
+                        b_image = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + file_name);
 
                         b_image = new Bitmap(b_image, new Size(pic_photo.Width, pic_photo.Height));
                         pic_photo.Image = b_image;
-                        Common.b_image_user = (Bitmap)Bitmap.FromFile(URL_IMAGE + file_name);
+                        Common.b_image_user = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + file_name);
                         Common.b_image_user = new Bitmap(Common.b_image_user, new Size(pic_photo.Width, pic_photo.Height));
                     }
 
@@ -143,11 +143,11 @@ namespace VietChat
             Bitmap bitmap;
             bitmap = new Bitmap(stream);
 
-            if (!File.Exists(URL_IMAGE + filename))
+            if (!File.Exists(Common.URL_IMAGE + filename))
             {
                 if (bitmap != null)
                 {
-                    bitmap.Save(URL_IMAGE + filename);
+                    bitmap.Save(Common.URL_IMAGE + filename);
                 }
             }
 
