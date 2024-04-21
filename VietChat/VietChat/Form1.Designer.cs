@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panel1 = new Panel();
             label2 = new Label();
             label1 = new Label();
@@ -40,15 +39,11 @@
             panel3 = new Panel();
             typingBox1 = new TypingBox();
             panel4 = new Panel();
-            meBubble2 = new MeBubble();
-            youBubble1 = new YouBubble();
-            meBubble5 = new MeBubble();
             chatHeader1 = new ChatHeader();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel5.SuspendLayout();
             panel3.SuspendLayout();
-            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -173,10 +168,10 @@
             // 
             typingBox1.BackColor = Color.FromArgb(102, 102, 102);
             typingBox1.Dock = DockStyle.Bottom;
-            typingBox1.Location = new Point(5, 9);
+            typingBox1.Location = new Point(5, 0);
             typingBox1.Margin = new Padding(4, 3, 4, 3);
             typingBox1.Name = "typingBox1";
-            typingBox1.Size = new Size(910, 24);
+            typingBox1.Size = new Size(910, 33);
             typingBox1.TabIndex = 0;
             typingBox1.Value = "Type here...";
             typingBox1.OnHitEnter += typingBox1_OnHitEnter;
@@ -185,82 +180,11 @@
             // 
             panel4.AutoScroll = true;
             panel4.AutoSize = true;
-            panel4.Controls.Add(meBubble2);
-            panel4.Controls.Add(youBubble1);
-            panel4.Controls.Add(meBubble5);
             panel4.Dock = DockStyle.Fill;
             panel4.Location = new Point(209, 69);
             panel4.Name = "panel4";
             panel4.Size = new Size(920, 620);
             panel4.TabIndex = 4;
-            // 
-            // meBubble2
-            // 
-            meBubble2.AutoSize = true;
-            meBubble2.BackColor = Color.Transparent;
-            meBubble2.Body = " This is a sample text message. This is a sample text message. This is a sample text message. \r\n\r\nThis is a sample text message. \r\n";
-            meBubble2.ChatImageCursor = Cursors.Default;
-            meBubble2.ChatTextCursor = Cursors.IBeam;
-            meBubble2.Dock = DockStyle.Bottom;
-            meBubble2.Location = new Point(0, 335);
-            meBubble2.Margin = new Padding(4, 3, 4, 3);
-            meBubble2.MinimumSize = new Size(0, 95);
-            meBubble2.MsgColor = Color.DodgerBlue;
-            meBubble2.MsgTextColor = SystemColors.ControlLightLight;
-            meBubble2.Name = "meBubble2";
-            meBubble2.Padding = new Padding(0, 5, 0, 5);
-            meBubble2.Size = new Size(920, 95);
-            meBubble2.Status = MessageStatus.Custom;
-            meBubble2.StatusImage = (Image)resources.GetObject("meBubble2.StatusImage");
-            meBubble2.TabIndex = 2;
-            meBubble2.Time = "11:44 PM";
-            meBubble2.TimeColor = Color.White;
-            meBubble2.UserImage = (Image)resources.GetObject("meBubble2.UserImage");
-            // 
-            // youBubble1
-            // 
-            youBubble1.BackColor = Color.Transparent;
-            youBubble1.Body = " This is a sample text message. This is a sample text message. This is a sample text message. \n\nThis is a sample text message. ";
-            youBubble1.ChatImageCursor = Cursors.Default;
-            youBubble1.ChatTextCursor = Cursors.IBeam;
-            youBubble1.Dock = DockStyle.Bottom;
-            youBubble1.Location = new Point(0, 430);
-            youBubble1.Margin = new Padding(4, 3, 4, 3);
-            youBubble1.MinimumSize = new Size(0, 95);
-            youBubble1.MsgColor = Color.FromArgb(244, 244, 244);
-            youBubble1.MsgTextColor = SystemColors.ControlDarkDark;
-            youBubble1.Name = "youBubble1";
-            youBubble1.Padding = new Padding(0, 5, 0, 5);
-            youBubble1.Size = new Size(920, 95);
-            youBubble1.Status = MessageStatus.Custom;
-            youBubble1.StatusImage = null;
-            youBubble1.TabIndex = 1;
-            youBubble1.Time = "11:46 PM";
-            youBubble1.TimeColor = Color.White;
-            youBubble1.UserImage = VietChat.Properties.Resources._2_32;
-            // 
-            // meBubble5
-            // 
-            meBubble5.AutoSize = true;
-            meBubble5.BackColor = Color.Transparent;
-            meBubble5.Body = " This is a sample text message. This is a sample text message. This is a sample text message. \r\n\r\nThis is a sample text message. \r\n";
-            meBubble5.ChatImageCursor = Cursors.Default;
-            meBubble5.ChatTextCursor = Cursors.IBeam;
-            meBubble5.Dock = DockStyle.Bottom;
-            meBubble5.Location = new Point(0, 525);
-            meBubble5.Margin = new Padding(4, 3, 4, 3);
-            meBubble5.MinimumSize = new Size(0, 95);
-            meBubble5.MsgColor = Color.DodgerBlue;
-            meBubble5.MsgTextColor = SystemColors.ControlLightLight;
-            meBubble5.Name = "meBubble5";
-            meBubble5.Padding = new Padding(0, 5, 0, 5);
-            meBubble5.Size = new Size(920, 95);
-            meBubble5.Status = MessageStatus.Custom;
-            meBubble5.StatusImage = (Image)resources.GetObject("meBubble5.StatusImage");
-            meBubble5.TabIndex = 5;
-            meBubble5.Time = "11:52 PM";
-            meBubble5.TimeColor = Color.White;
-            meBubble5.UserImage = (Image)resources.GetObject("meBubble5.UserImage");
             // 
             // chatHeader1
             // 
@@ -294,8 +218,6 @@
             panel2.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -315,8 +237,5 @@
         private Panel panel5;
         private SearchBox searchBox1;
         private Users users1;
-        private MeBubble meBubble2;
-        private YouBubble youBubble1;
-        private MeBubble meBubble5;
     }
 }

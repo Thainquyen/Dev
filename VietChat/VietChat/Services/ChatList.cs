@@ -78,12 +78,10 @@ namespace VietChat.Services
                 requestBody = requestBody.Replace("@token@", Common.token);
                 requestBody = requestBody.Replace("@list_id@", Common.list_id);
 
-                // string content = @"{ 'text': '{0}' }", msg;
                 var content = new JsonObject
                 {
                     ["text"] = msg
                 };
-                //   string content = string.Format("text : '{0}'", msg);
 
                 requestBody = requestBody.Replace("@content@", content.ToString());
 
