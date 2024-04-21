@@ -55,9 +55,10 @@ namespace VietChat.Services
 
 
             }
-            catch (HttpRequestException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Request exception: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //  MessageBox.Show($"Request exception: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -92,9 +93,10 @@ namespace VietChat.Services
                 }
 
             }
-            catch (HttpRequestException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Request exception: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show($"Request exception: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -123,9 +125,9 @@ namespace VietChat.Services
 
                 chatDataRespone = JsonConvert.DeserializeObject<ChatDataRespone>(responseBody);
             }
-            catch (HttpRequestException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Request exception: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
 
             return chatDataRespone;
@@ -178,7 +180,7 @@ namespace VietChat.Services
                 }
 
             }
-            catch (HttpRequestException ex)
+            catch (Exception ex)
             {
                 return;
             }
