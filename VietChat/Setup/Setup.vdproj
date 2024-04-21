@@ -43,6 +43,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -172,7 +180,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_6CA487561C3B44519A49C828153F638E"
             {
-            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:C:\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -199,7 +207,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:VietChat"
         "ProductCode" = "8:{F73AD636-F427-4115-9E9E-43B36DDE0B54}"
-        "PackageCode" = "8:{25F91E62-7393-4B61-B0AA-65B3780E3C6A}"
+        "PackageCode" = "8:{082196F0-4ADB-4CAB-A9B6-B233FE31CE86}"
         "UpgradeCode" = "8:{F30F506A-5BBB-4767-BEE2-3F3239ED4877}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

@@ -77,5 +77,13 @@
     <None Include="Resources\MsgRead_32.png" />
     <EmbeddedResource Include="Resources\4.jfif" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PHOTO\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="PHOTO\01.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>
