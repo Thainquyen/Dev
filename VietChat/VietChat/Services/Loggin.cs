@@ -40,6 +40,10 @@ namespace VietChat.Services
                 JObject jObject2 = JObject.Parse(jObject["data"].ToString());
                 Common.token = (string)jObject2["token"];
 
+                BaseInfo baseInfo = new BaseInfo();
+                baseInfo.GetBase();
+
+
                 if (Common.error_flag > 0)
                 {
                     MessageBox.Show(Common.msg, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

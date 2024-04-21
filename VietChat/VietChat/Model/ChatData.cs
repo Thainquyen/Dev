@@ -6,12 +6,30 @@ using System.Threading.Tasks;
 
 namespace VietChat.Model
 {
+    public class SocketMesssageRespone
+    {
+        public string action { get; set; }
+        public SocketMesssage data { get; set; }
+    }
+
+    public class SocketMesssage
+    {
+        public string list_id { get; set; }
+        public DataList data { get; set; }
+    }
+
+    public class ChatDataRespone
+    {
+        public int err { get; set; }
+        public ChatData data { get; set; }
+    }
+
     public class ChatData
     {
         public string list_id { get; set; }
         public int type { get; set; }
         public string show_name { get; set; }
-        public DataList list { get; set; }
+        public List<DataList> list { get; set; }
     }
 
     public class DataList
@@ -37,6 +55,7 @@ namespace VietChat.Model
         public int uid { get; set; }
 
         public string username { get; set; }
+        public string name { get; set; }
 
         public string face { get; set; }
     }

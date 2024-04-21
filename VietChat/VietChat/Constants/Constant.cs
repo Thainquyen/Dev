@@ -10,6 +10,10 @@
 
         public const string ONLINE_LIST_API = "https://bat.vietvozchat.online/im/agent/getOnlineList";
         public const string GET_FRIEND_LIST_API = "https://bat.vietvozchat.online/im/get/friendList";
-        
+
+        public const string GET_BASE_API = "https://bat.vietvozchat.online/im/get/base";
+
+        public const string GET_TEXTMSG_API = "https://bat.vietvozchat.online/im/message/textMsg";
+
     }
 }

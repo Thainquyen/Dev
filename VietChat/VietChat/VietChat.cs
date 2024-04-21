@@ -1,5 +1,7 @@
 ﻿using chat;
 using System.Net;
+using VietChat.Model;
+using VietChat.Properties;
 using VietChat.Services;
 
 namespace VietChat
@@ -86,12 +88,9 @@ namespace VietChat
                 Common.b_image_user = new Bitmap(Common.b_image_user, new Size(pic_photo.Width, pic_photo.Height));
 
                 pic_photo.Image = b_image;
-                pnl_bb.Visible = true;
-                lbl_name.Text = Common.name_friend;
+              //  pnl_bb.Visible = true;
+              //  lbl_name.Text = Common.name_friend;
             }
-
-            ChatList chatlist = new ChatList();
-            chatlist.getChatData();
 
             Form1 form = new Form1();
             form.ShowDialog();
@@ -123,7 +122,7 @@ namespace VietChat
             {
                 ChatList chatlist = new ChatList();
                 chatlist.getChatList();
-                chatlist.getListFriend();              
+                chatlist.getListFriend();
                 timer1.Stop();
             }
         }
@@ -132,6 +131,7 @@ namespace VietChat
         {
             Form1 form = new Form1();
             form.ShowDialog();
+
         }
     }
 }

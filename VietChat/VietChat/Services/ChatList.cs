@@ -2,8 +2,10 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Text;
+using System.Text.Json.Nodes;
 using System.Windows.Forms;
 using VietChat.Constants;
+using VietChat.Model;
 
 namespace VietChat.Services
 {
@@ -62,16 +64,30 @@ namespace VietChat.Services
             }
         }
 
-        public async void getChatData()
+        public async void getTextMsg(string msg)
         {
             try
             {
-                string apiUrl = Constant.CHATDATA_API;
+                string apiUrl = Constant.GET_TEXTMSG_API;
                 var request = new HttpRequestMessage(HttpMethod.Post, apiUrl);
 
-                string requestBody = "{\"list_id\": \"@list_id@\", \"is_up\": \"1\", \"is_action_data\": \"1\", \"_agent_id\": \"1\", \"_token\": \"@token@\", \"time\": \"0\"}";
-                requestBody = requestBody.Replace("@list_id@", Common.list_id);
+                // Add request body if needed
+                // string requestBody = "{\"username\": \"@username@\", \"password\": \"@password@\", \"client_id\": \"\", \"_token\": \"\", \"_agent_id\": \"1\"}";
+                //  requestBody = requestBody.Replace("@username@", username);
+                string requestBody = "{\"_token\": \"@token@\", \"_agent_id\": \"1\" , \"list_id\": \"@list_id@\" , \"content\": \"@content@\" , \"content_type\": \"0\"}";
                 requestBody = requestBody.Replace("@token@", Common.token);
+                requestBody = requestBody.Replace("@list_id@", Common.list_id);
+
+                // string content = @"{ 'text': '{0}' }", msg;
+                var content = new JsonObject
+                {
+                    ["text"] = msg
+                };
+                //   string content = string.Format("text : '{0}'", msg);
+
+                requestBody = requestBody.Replace("@content@", content.ToString());
+
+
                 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await _client.SendAsync(request);
@@ -87,22 +103,15 @@ namespace VietChat.Services
                 }
                 else
                 {
+                    JArray jarr = jObject["data"].ToObject<JArray>();
 
-                   // var result = JsonConvert.DeserializeObject<T>(responseBody);
-
-
-                    JObject jObject1 = (JObject)jObject["data"];
-                    JArray jarr = jObject1["list"].ToObject<JArray>();
-
-                    
-
-                    for (int i = 0; i < jarr.Count; i++)
-                    {
-                        //JObject obj = (JObject)jarr[i]; //nhận obj thứ i
-                        //Common.list_id = obj["list_id"].ToString();
-                        //Common.chat_id = obj["chat_id"].ToString();
-                        //Common.last_msg = obj["last_msg"].ToString();
-                    }
+                    //for (int i = 0; i < jarr.Count; i++)
+                    //{
+                    //    JObject obj = (JObject)jarr[i]; //nhận obj thứ i
+                    //    Common.list_id = obj["list_id"].ToString();
+                    //    Common.chat_id = obj["chat_id"].ToString();
+                    //    Common.last_msg = obj["last_msg"].ToString();
+                    //}
                 }
 
 
@@ -111,6 +120,39 @@ namespace VietChat.Services
             {
                 MessageBox.Show($"Request exception: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public async Task<ChatDataRespone> getChatData()
+        {
+            ChatDataRespone chatDataRespone = new ChatDataRespone();
+            try
+            {
+                string apiUrl = Constant.CHATDATA_API;
+                var request = new HttpRequestMessage(HttpMethod.Post, apiUrl);
+
+                string requestBody = "{\"list_id\": \"@list_id@\", \"is_up\": \"1\", \"is_action_data\": \"1\", \"_agent_id\": \"1\", \"_token\": \"@token@\", \"time\": \"0\"}";
+                requestBody = requestBody.Replace("@list_id@", Common.list_id);
+                requestBody = requestBody.Replace("@token@", Common.token);
+                request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await _client.SendAsync(request);
+
+
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                if (string.IsNullOrEmpty(responseBody))
+                {
+                    return chatDataRespone;
+                }
+
+                chatDataRespone = JsonConvert.DeserializeObject<ChatDataRespone>(responseBody);
+            }
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show($"Request exception: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return chatDataRespone;
         }
 
         public async void getListFriend()

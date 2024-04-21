@@ -6,6 +6,7 @@
 
         public static string user = string.Empty;
         public static string pass = string.Empty;
+        public static int uId = 0;
 
         public static Bitmap b_image_user;
 
