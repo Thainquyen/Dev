@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using VietChat.Model;
 
 namespace VietChat
 {
@@ -25,11 +26,13 @@ namespace VietChat
         public static string chat_id = string.Empty;
         public static string last_msg = string.Empty;
 
-        public static JArray list_friend = new JArray();
+        public static JArray search_friend = new JArray();
 
         public static JObject job_friend = new JObject();
 
         public static string URL_IMAGE = Application.StartupPath + @"\PHOTO\";
+
+        public static DataInfo DatasearchUser = new DataInfo();
 
     }
 }

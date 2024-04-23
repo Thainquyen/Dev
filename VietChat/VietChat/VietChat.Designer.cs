@@ -46,12 +46,12 @@
             panel3 = new Panel();
             textBox1 = new TextBox();
             pnl_add = new Panel();
+            lbl_photosearch = new Label();
+            lbl_searchuser = new Label();
             lbl_msg = new Label();
             txt_input = new TextBox();
             btn_no = new Button();
             btn_yes = new Button();
-            pnl_group = new Panel();
-            button1 = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -59,7 +59,6 @@
             panel4.SuspendLayout();
             panel3.SuspendLayout();
             pnl_add.SuspendLayout();
-            pnl_group.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -166,7 +165,6 @@
             label4.TabIndex = 2;
             label4.Text = "Danh sách nhóm";
             label4.TextAlign = ContentAlignment.MiddleCenter;
-            label4.Click += label4_Click;
             // 
             // panel4
             // 
@@ -220,21 +218,41 @@
             // 
             pnl_add.BackColor = Color.FromArgb(153, 255, 153);
             pnl_add.BorderStyle = BorderStyle.FixedSingle;
+            pnl_add.Controls.Add(lbl_photosearch);
+            pnl_add.Controls.Add(lbl_searchuser);
             pnl_add.Controls.Add(lbl_msg);
             pnl_add.Controls.Add(txt_input);
             pnl_add.Controls.Add(btn_no);
             pnl_add.Controls.Add(btn_yes);
-            pnl_add.Location = new Point(406, 137);
+            pnl_add.Location = new Point(339, 20);
             pnl_add.Name = "pnl_add";
-            pnl_add.Size = new Size(558, 259);
+            pnl_add.Size = new Size(765, 596);
             pnl_add.TabIndex = 149;
             pnl_add.Visible = false;
+            // 
+            // lbl_photosearch
+            // 
+            lbl_photosearch.Image = (Image)resources.GetObject("lbl_photosearch.Image");
+            lbl_photosearch.Location = new Point(182, 124);
+            lbl_photosearch.Name = "lbl_photosearch";
+            lbl_photosearch.Size = new Size(55, 49);
+            lbl_photosearch.TabIndex = 108;
+            // 
+            // lbl_searchuser
+            // 
+            lbl_searchuser.BackColor = SystemColors.ButtonHighlight;
+            lbl_searchuser.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_searchuser.Location = new Point(231, 124);
+            lbl_searchuser.Name = "lbl_searchuser";
+            lbl_searchuser.Size = new Size(411, 49);
+            lbl_searchuser.TabIndex = 107;
+            lbl_searchuser.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lbl_msg
             // 
             lbl_msg.BackColor = Color.FromArgb(153, 255, 153);
             lbl_msg.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_msg.Location = new Point(73, 53);
+            lbl_msg.Location = new Point(182, 53);
             lbl_msg.Name = "lbl_msg";
             lbl_msg.Size = new Size(460, 29);
             lbl_msg.TabIndex = 106;
@@ -244,10 +262,11 @@
             // txt_input
             // 
             txt_input.Font = new Font("Times New Roman", 15.75F, FontStyle.Italic, GraphicsUnit.Point);
-            txt_input.Location = new Point(73, 85);
+            txt_input.Location = new Point(182, 85);
             txt_input.Name = "txt_input";
             txt_input.Size = new Size(460, 32);
             txt_input.TabIndex = 105;
+            txt_input.TextChanged += txt_input_TextChanged;
             // 
             // btn_no
             // 
@@ -255,7 +274,7 @@
             btn_no.FlatStyle = FlatStyle.Flat;
             btn_no.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             btn_no.ForeColor = Color.Black;
-            btn_no.Location = new Point(312, 167);
+            btn_no.Location = new Point(406, 324);
             btn_no.Name = "btn_no";
             btn_no.Size = new Size(154, 53);
             btn_no.TabIndex = 104;
@@ -270,7 +289,7 @@
             btn_yes.FlatStyle = FlatStyle.Flat;
             btn_yes.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             btn_yes.ForeColor = Color.Transparent;
-            btn_yes.Location = new Point(137, 167);
+            btn_yes.Location = new Point(231, 324);
             btn_yes.Name = "btn_yes";
             btn_yes.Size = new Size(134, 53);
             btn_yes.TabIndex = 104;
@@ -278,31 +297,6 @@
             btn_yes.Text = "Kết bạn";
             btn_yes.UseVisualStyleBackColor = false;
             btn_yes.Click += btn_yes_Click;
-            // 
-            // pnl_group
-            // 
-            pnl_group.BackColor = Color.FromArgb(139, 232, 232);
-            pnl_group.BorderStyle = BorderStyle.FixedSingle;
-            pnl_group.Controls.Add(button1);
-            pnl_group.Location = new Point(309, 3);
-            pnl_group.Name = "pnl_group";
-            pnl_group.Size = new Size(307, 676);
-            pnl_group.TabIndex = 150;
-            // 
-            // button1
-            // 
-            button1.BackColor = SystemColors.Info;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Times New Roman", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = Color.Black;
-            button1.Location = new Point(195, 633);
-            button1.Name = "button1";
-            button1.Size = new Size(107, 38);
-            button1.TabIndex = 106;
-            button1.TabStop = false;
-            button1.Text = "Close";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click_1;
             // 
             // timer1
             // 
@@ -315,7 +309,6 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1116, 691);
-            Controls.Add(pnl_group);
             Controls.Add(pnl_add);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -333,7 +326,6 @@
             panel3.PerformLayout();
             pnl_add.ResumeLayout(false);
             pnl_add.PerformLayout();
-            pnl_group.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -358,9 +350,9 @@
         private Button btn_yes;
         private Label lbl_msg;
         private TextBox txt_input;
-        private Panel pnl_group;
-        private Button button1;
         private Panel pnl_bb;
         private System.Windows.Forms.Timer timer1;
+        private Label lbl_photosearch;
+        private Label lbl_searchuser;
     }
 }

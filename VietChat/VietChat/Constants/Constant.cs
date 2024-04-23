@@ -15,5 +15,7 @@
 
         public const string GET_TEXTMSG_API = "https://bat.vietvozchat.online/im/message/textMsg";
 
+        public const string GET_SEARCH_USER_API = "https://bat.vietvozchat.online/im/get/searchUser";
+
     }
 }
