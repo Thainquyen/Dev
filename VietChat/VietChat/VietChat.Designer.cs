@@ -31,7 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VietChat));
             panel1 = new Panel();
-            label3 = new Label();
+            lbl_photo_me = new Label();
             lbl_out = new Label();
             label1 = new Label();
             lbl_bb = new Label();
@@ -53,18 +53,27 @@
             btn_no = new Button();
             btn_yes = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
+            pnl_details = new Panel();
+            lbl_photo_detail = new Label();
+            lbl_name = new Label();
+            lbl_nickname = new Label();
+            lbl_username = new Label();
+            txt_text = new TextBox();
+            lbl_text = new Label();
+            btn_gui = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
             pnl_add.SuspendLayout();
+            pnl_details.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(label3);
+            panel1.Controls.Add(lbl_photo_me);
             panel1.Controls.Add(lbl_out);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(lbl_bb);
@@ -73,13 +82,13 @@
             panel1.Size = new Size(81, 676);
             panel1.TabIndex = 0;
             // 
-            // label3
+            // lbl_photo_me
             // 
-            label3.Image = (Image)resources.GetObject("label3.Image");
-            label3.Location = new Point(12, 8);
-            label3.Name = "label3";
-            label3.Size = new Size(55, 49);
-            label3.TabIndex = 5;
+            lbl_photo_me.Image = (Image)resources.GetObject("lbl_photo_me.Image");
+            lbl_photo_me.Location = new Point(12, 8);
+            lbl_photo_me.Name = "lbl_photo_me";
+            lbl_photo_me.Size = new Size(55, 49);
+            lbl_photo_me.TabIndex = 5;
             // 
             // lbl_out
             // 
@@ -216,24 +225,23 @@
             // 
             // pnl_add
             // 
-            pnl_add.BackColor = Color.FromArgb(153, 255, 153);
+            pnl_add.BackColor = Color.FromArgb(224, 224, 224);
             pnl_add.BorderStyle = BorderStyle.FixedSingle;
+            pnl_add.Controls.Add(pnl_details);
             pnl_add.Controls.Add(lbl_photosearch);
             pnl_add.Controls.Add(lbl_searchuser);
             pnl_add.Controls.Add(lbl_msg);
             pnl_add.Controls.Add(txt_input);
-            pnl_add.Controls.Add(btn_no);
-            pnl_add.Controls.Add(btn_yes);
-            pnl_add.Location = new Point(339, 20);
+            pnl_add.Location = new Point(319, 10);
             pnl_add.Name = "pnl_add";
-            pnl_add.Size = new Size(765, 596);
+            pnl_add.Size = new Size(785, 669);
             pnl_add.TabIndex = 149;
             pnl_add.Visible = false;
             // 
             // lbl_photosearch
             // 
             lbl_photosearch.Image = (Image)resources.GetObject("lbl_photosearch.Image");
-            lbl_photosearch.Location = new Point(182, 124);
+            lbl_photosearch.Location = new Point(140, 124);
             lbl_photosearch.Name = "lbl_photosearch";
             lbl_photosearch.Size = new Size(55, 49);
             lbl_photosearch.TabIndex = 108;
@@ -242,29 +250,30 @@
             // 
             lbl_searchuser.BackColor = SystemColors.ButtonHighlight;
             lbl_searchuser.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_searchuser.Location = new Point(231, 124);
+            lbl_searchuser.Location = new Point(189, 124);
             lbl_searchuser.Name = "lbl_searchuser";
-            lbl_searchuser.Size = new Size(411, 49);
+            lbl_searchuser.Size = new Size(453, 49);
             lbl_searchuser.TabIndex = 107;
             lbl_searchuser.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_searchuser.Click += lbl_searchuser_Click;
             // 
             // lbl_msg
             // 
-            lbl_msg.BackColor = Color.FromArgb(153, 255, 153);
+            lbl_msg.BackColor = Color.White;
             lbl_msg.Font = new Font("Times New Roman", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_msg.Location = new Point(182, 53);
+            lbl_msg.Location = new Point(138, 53);
             lbl_msg.Name = "lbl_msg";
-            lbl_msg.Size = new Size(460, 29);
+            lbl_msg.Size = new Size(504, 29);
             lbl_msg.TabIndex = 106;
-            lbl_msg.Text = "Please input account";
+            lbl_msg.Text = "Nhập tên người dùng\\email\\điện thoại di động của bạn bè";
             lbl_msg.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txt_input
             // 
             txt_input.Font = new Font("Times New Roman", 15.75F, FontStyle.Italic, GraphicsUnit.Point);
-            txt_input.Location = new Point(182, 85);
+            txt_input.Location = new Point(138, 85);
             txt_input.Name = "txt_input";
-            txt_input.Size = new Size(460, 32);
+            txt_input.Size = new Size(504, 32);
             txt_input.TabIndex = 105;
             txt_input.TextChanged += txt_input_TextChanged;
             // 
@@ -274,12 +283,12 @@
             btn_no.FlatStyle = FlatStyle.Flat;
             btn_no.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             btn_no.ForeColor = Color.Black;
-            btn_no.Location = new Point(406, 324);
+            btn_no.Location = new Point(411, 261);
             btn_no.Name = "btn_no";
             btn_no.Size = new Size(154, 53);
             btn_no.TabIndex = 104;
             btn_no.TabStop = false;
-            btn_no.Text = "Cancel";
+            btn_no.Text = "Quay lại";
             btn_no.UseVisualStyleBackColor = false;
             btn_no.Click += btn_no_Click;
             // 
@@ -289,7 +298,7 @@
             btn_yes.FlatStyle = FlatStyle.Flat;
             btn_yes.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             btn_yes.ForeColor = Color.Transparent;
-            btn_yes.Location = new Point(231, 324);
+            btn_yes.Location = new Point(236, 261);
             btn_yes.Name = "btn_yes";
             btn_yes.Size = new Size(134, 53);
             btn_yes.TabIndex = 104;
@@ -303,6 +312,93 @@
             timer1.Enabled = true;
             timer1.Interval = 2000;
             timer1.Tick += timer1_Tick;
+            // 
+            // pnl_details
+            // 
+            pnl_details.Controls.Add(btn_gui);
+            pnl_details.Controls.Add(lbl_text);
+            pnl_details.Controls.Add(txt_text);
+            pnl_details.Controls.Add(lbl_username);
+            pnl_details.Controls.Add(lbl_nickname);
+            pnl_details.Controls.Add(lbl_name);
+            pnl_details.Controls.Add(lbl_photo_detail);
+            pnl_details.Controls.Add(btn_yes);
+            pnl_details.Controls.Add(btn_no);
+            pnl_details.Location = new Point(22, 246);
+            pnl_details.Name = "pnl_details";
+            pnl_details.Size = new Size(729, 355);
+            pnl_details.TabIndex = 110;
+            // 
+            // lbl_photo_detail
+            // 
+            lbl_photo_detail.Image = (Image)resources.GetObject("lbl_photo_detail.Image");
+            lbl_photo_detail.Location = new Point(4, 4);
+            lbl_photo_detail.Name = "lbl_photo_detail";
+            lbl_photo_detail.Size = new Size(91, 82);
+            lbl_photo_detail.TabIndex = 110;
+            // 
+            // lbl_name
+            // 
+            lbl_name.BackColor = SystemColors.ButtonHighlight;
+            lbl_name.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_name.Location = new Point(103, 4);
+            lbl_name.Name = "lbl_name";
+            lbl_name.Size = new Size(197, 29);
+            lbl_name.TabIndex = 111;
+            lbl_name.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lbl_nickname
+            // 
+            lbl_nickname.BackColor = SystemColors.ButtonHighlight;
+            lbl_nickname.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_nickname.Location = new Point(103, 33);
+            lbl_nickname.Name = "lbl_nickname";
+            lbl_nickname.Size = new Size(197, 29);
+            lbl_nickname.TabIndex = 112;
+            lbl_nickname.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lbl_username
+            // 
+            lbl_username.BackColor = SystemColors.ButtonHighlight;
+            lbl_username.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_username.Location = new Point(103, 62);
+            lbl_username.Name = "lbl_username";
+            lbl_username.Size = new Size(197, 29);
+            lbl_username.TabIndex = 113;
+            lbl_username.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // txt_text
+            // 
+            txt_text.Font = new Font("Times New Roman", 15.75F, FontStyle.Italic, GraphicsUnit.Point);
+            txt_text.Location = new Point(112, 161);
+            txt_text.Name = "txt_text";
+            txt_text.Size = new Size(504, 32);
+            txt_text.TabIndex = 114;
+            // 
+            // lbl_text
+            // 
+            lbl_text.BackColor = Color.White;
+            lbl_text.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_text.Location = new Point(112, 129);
+            lbl_text.Name = "lbl_text";
+            lbl_text.Size = new Size(504, 29);
+            lbl_text.TabIndex = 115;
+            lbl_text.Text = "Bạn cần gửi đơn đăng ký xác minh và đợi bên kia xác nhận";
+            lbl_text.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btn_gui
+            // 
+            btn_gui.BackColor = Color.LimeGreen;
+            btn_gui.FlatStyle = FlatStyle.Flat;
+            btn_gui.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_gui.ForeColor = Color.Transparent;
+            btn_gui.Location = new Point(318, 212);
+            btn_gui.Name = "btn_gui";
+            btn_gui.Size = new Size(110, 39);
+            btn_gui.TabIndex = 116;
+            btn_gui.TabStop = false;
+            btn_gui.Text = "Gửi";
+            btn_gui.UseVisualStyleBackColor = false;
             // 
             // VietChat
             // 
@@ -326,6 +422,8 @@
             panel3.PerformLayout();
             pnl_add.ResumeLayout(false);
             pnl_add.PerformLayout();
+            pnl_details.ResumeLayout(false);
+            pnl_details.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -339,7 +437,7 @@
         private TextBox textBox1;
         private Label lbl_ketban;
         private Panel panel3;
-        private Label label3;
+        private Label lbl_photo_me;
         private Panel panel5;
         private Label label4;
         private Panel panel4;
@@ -354,5 +452,13 @@
         private System.Windows.Forms.Timer timer1;
         private Label lbl_photosearch;
         private Label lbl_searchuser;
+        private Panel pnl_details;
+        private Label lbl_username;
+        private Label lbl_nickname;
+        private Label lbl_name;
+        private Label lbl_photo_detail;
+        private Label lbl_text;
+        private TextBox txt_text;
+        private Button btn_gui;
     }
 }

@@ -36,6 +36,8 @@ namespace VietChat.Services
 
             Common.uId = baseUserInfo.data.user_info.id;
             Common.nickname = baseUserInfo.data.user_info.nickname;
+            Common.image = baseUserInfo.data.user_info.photo;
+
         }
     }
 }

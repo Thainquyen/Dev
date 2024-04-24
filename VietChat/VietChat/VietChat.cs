@@ -1,8 +1,10 @@
 ﻿using chat;
 using Newtonsoft.Json.Linq;
 using System.Net;
+using System.Security.Policy;
 using VietChat.Model;
 using VietChat.Services;
+using static System.Collections.Specialized.BitVector32;
 
 namespace VietChat
 {
@@ -41,13 +43,17 @@ namespace VietChat
             }
             pnl_add.Visible = false;
             pnl_bb.Visible = false;
-            lbl_photosearch.Visible = false;
-            lbl_searchuser.Visible = false;
         }
 
         private void lbl_ketban_Click(object sender, EventArgs e)
         {
             pnl_add.Visible = true;
+            btn_yes.Visible = false;
+            btn_no.Visible = false;
+            lbl_photosearch.Visible = false;
+            lbl_searchuser.Visible = false;
+            txt_input.Focus();
+            pnl_details.Visible = false;
         }
 
         private void btn_yes_Click(object sender, EventArgs e)
@@ -92,13 +98,13 @@ namespace VietChat
                     {
                         string file_name = Path.GetFileName(Common.GET_PHOTO_API + Common.photo);
 
-                        SaveImage(Common.GET_PHOTO_API + Common.photo, Common.user_id_friend + file_name);
+                        SaveImage(Common.GET_PHOTO_API + Common.photo, Common.user_id_friend + Common.user_id_friend + file_name);
 
-                        b_image = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + file_name);
+                        b_image = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + Common.user_id_friend + file_name);
 
                         b_image = new Bitmap(b_image, new Size(pic_photo.Width, pic_photo.Height));
                         pic_photo.Image = b_image;
-                        Common.b_image_user = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + file_name);
+                        Common.b_image_user = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + Common.user_id_friend + file_name);
                         Common.b_image_user = new Bitmap(Common.b_image_user, new Size(pic_photo.Width, pic_photo.Height));
                     }
 
@@ -153,6 +159,18 @@ namespace VietChat
                 ChatList chatlist = new ChatList();
                 chatlist.getChatList();
                 chatlist.getListFriend();
+
+                if (!string.IsNullOrEmpty(Common.image))
+                {
+                    string file_name = Path.GetFileName(Common.GET_PHOTO_API + Common.image);
+
+                    SaveImage(Common.GET_PHOTO_API + Common.image, Common.uId + file_name);
+
+                    b_image = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + Common.uId + file_name);
+
+                    b_image = new Bitmap(b_image, new Size(lbl_photo_me.Width, lbl_photo_me.Height));
+                    lbl_photo_me.Image = b_image;
+                }
                 timer1.Stop();
             }
         }
@@ -164,25 +182,25 @@ namespace VietChat
 
         }
 
-        private void txt_input_TextChanged(object sender, EventArgs e)
+        private async void txt_input_TextChanged(object sender, EventArgs e)
         {
             string val = txt_input.Text.Trim();
             if (!string.IsNullOrEmpty(val))
             {
                 SearchUser searchUser = new SearchUser();
-                searchUser.searchUser(val);
+                var data = await searchUser.searchUser(val);
 
-                if (Common.search_friend.Count > 0)
+                if (data != null)
                 {
-                    for (int i = 0; i < Common.search_friend.Count; i++)
+                    foreach (var item in data.data.data)
                     {
-                        JObject obj = (JObject)Common.search_friend[i]; //nhận obj thứ i
-
-                        lbl_searchuser.Text = obj["nickname"].ToString();
-                        SaveImage(Common.GET_PHOTO_API + (string)obj["photo"], obj["id"] + Path.GetFileName((string)obj["photo"]));
-                        b_image = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + obj["id"] + Path.GetFileName((string)obj["photo"]));
+                        Common.user_id_search = item.id;
+                        lbl_searchuser.Text = item.nickname;
+                        SaveImage(Common.GET_PHOTO_API + item.photo, item.id.ToString() + Path.GetFileName(item.photo));
+                        b_image = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + item.id.ToString() + Path.GetFileName(item.photo));
                         b_image = new Bitmap(b_image, new Size(lbl_photosearch.Width, lbl_photosearch.Height));
                         lbl_photosearch.Image = b_image;
+                        searchUser.getDetails(Common.user_id_search.ToString());
                     }
                 }
 
@@ -192,6 +210,22 @@ namespace VietChat
                     lbl_searchuser.Visible = true;
                 }
 
+            }
+        }
+
+        private async void lbl_searchuser_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(lbl_searchuser.Text))
+            {
+                lbl_name.Text = Common.details_friend["nickname"].ToString();
+                lbl_nickname.Text = Common.details_friend["nickname"].ToString();
+                lbl_username.Text = Common.details_friend["username"].ToString();
+                b_image = new Bitmap(b_image, new Size(lbl_photo_detail.Width, lbl_photo_detail.Height));
+                lbl_photo_detail.Image = b_image;
+
+                pnl_details.Location = new Point(22, 30);
+                pnl_details.BringToFront();
+                pnl_details.Visible = true;
             }
         }
     }

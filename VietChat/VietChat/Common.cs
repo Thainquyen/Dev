@@ -11,6 +11,7 @@ namespace VietChat
         public static string pass = string.Empty;
         public static int uId = 0;
         public static string nickname = string.Empty;
+        public static string image = string.Empty;
 
         public static Bitmap b_image_user;
 
@@ -28,7 +29,11 @@ namespace VietChat
 
         public static JArray search_friend = new JArray();
 
+        public static JObject details_friend = new JObject();
+
         public static JObject job_friend = new JObject();
+
+        public static int? user_id_search = 0;
 
         public static string URL_IMAGE = Application.StartupPath + @"\PHOTO\";
 
