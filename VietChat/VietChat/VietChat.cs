@@ -45,6 +45,7 @@ namespace VietChat
 
         private void lbl_ketban_Click(object sender, EventArgs e)
         {
+            txt_input.Text = "";
             pnl_add.Visible = true;
             btn_yes.Visible = false;
             btn_no.Visible = false;
@@ -156,7 +157,7 @@ namespace VietChat
             client.Dispose();
         }
 
-        private async  void timer1_Tick(object sender, EventArgs e)
+        private async void timer1_Tick(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(Common.token))
             {
@@ -173,6 +174,7 @@ namespace VietChat
                     b_image = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + Common.uId + file_name);
 
                     b_image = new Bitmap(b_image, new Size(lbl_photo_me.Width, lbl_photo_me.Height));
+                    Common.b_image_me = b_image;
                     lbl_photo_me.Image = b_image;
                 }
                 timer1.Stop();
@@ -213,7 +215,12 @@ namespace VietChat
                     lbl_photosearch.Visible = true;
                     lbl_searchuser.Visible = true;
                 }
+                else
+                {
 
+                    lbl_photosearch.Visible = false;
+                    lbl_searchuser.Visible = false;
+                }
             }
         }
 
@@ -243,7 +250,7 @@ namespace VietChat
         {
             pnl_details.Visible = false;
         }
-        
+
         private void label1_Click(object sender, EventArgs e)
         {
             LoadGroup();
@@ -316,6 +323,32 @@ namespace VietChat
         {
             Group group = new Group(this);
             group.ShowDialog();
+        }
+
+        private async void btn_gui_Click(object sender, EventArgs e)
+        {
+            FriendList friend_add = new FriendList();
+            bool error_flg = await friend_add.AddFriend(txt_text.Text.Trim(), Common.details_friend["user_id"].ToString());
+
+            if (!error_flg)
+            {
+                MessageBox.Show("Gửi lời kết bạn KHÔNG thành công !!!");
+            }
+            MessageBox.Show("Gửi lời kết bạn thành công !!!");
+
+            lbl_name.Text = "";
+            lbl_nickname.Text = "";
+            lbl_username.Text = "";          
+            lbl_photo_detail.Image = null;
+            pnl_details.Visible = false;
+            lbl_text.Visible = false;
+            txt_text.Visible = false;
+            btn_gui.Visible = false;
+            btn_huy.Visible = false;
+            btn_yes.Visible = false;
+            btn_no.Visible = false;
+            txt_text.Text = "";
+            pnl_add.Visible = false;
         }
     }
 }

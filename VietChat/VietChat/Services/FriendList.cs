@@ -70,5 +70,33 @@ namespace VietChat.Services
             }
             return friendList;
         }
+
+        public async Task<bool> AddFriend(string content, string user_id)
+        {
+            try
+            {
+                string apiUrl = Constant.ADD_FRIEND_API;
+                FriendListData friendList = new FriendListData();
+                var request = new HttpRequestMessage(HttpMethod.Post, apiUrl);
+
+                string requestBody = "{\"content\": \"@content@\" , \"user_id\": \"@user_id@\" , \"_token\": \"@token@\", \"is_type\": \"0\", \"_agent_id\": \"1\"}";
+                requestBody = requestBody.Replace("@content@", content);
+                requestBody = requestBody.Replace("@user_id@", user_id);
+                requestBody = requestBody.Replace("@token@", Common.token);
+
+                request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await _client.SendAsync(request);
+
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+                    
+        }
     }
 }

@@ -15,6 +15,8 @@ namespace VietChat
 
         public static Bitmap b_image_user;
 
+        public static Bitmap b_image_me;
+
         public static int error_flag = 0;
         public static string msg = string.Empty;
         public static string token = string.Empty;

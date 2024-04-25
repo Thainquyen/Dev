@@ -38,18 +38,21 @@
             // 
             lbSelectUsers.AutoSize = true;
             lbSelectUsers.ForeColor = SystemColors.ControlLightLight;
-            lbSelectUsers.Location = new Point(145, 47);
+            lbSelectUsers.Location = new Point(102, 28);
+            lbSelectUsers.Margin = new Padding(2, 0, 2, 0);
             lbSelectUsers.Name = "lbSelectUsers";
-            lbSelectUsers.Size = new Size(270, 25);
+            lbSelectUsers.Size = new Size(178, 15);
             lbSelectUsers.TabIndex = 0;
             lbSelectUsers.Text = "Vui lòng chọn bạn để tạo nhóm!";
             // 
             // btnAddGroup
             // 
             btnAddGroup.BackColor = SystemColors.GradientActiveCaption;
-            btnAddGroup.Location = new Point(99, 468);
+            btnAddGroup.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAddGroup.Location = new Point(55, 283);
+            btnAddGroup.Margin = new Padding(2, 2, 2, 2);
             btnAddGroup.Name = "btnAddGroup";
-            btnAddGroup.Size = new Size(141, 41);
+            btnAddGroup.Size = new Size(113, 33);
             btnAddGroup.TabIndex = 2;
             btnAddGroup.Text = "Thêm Nhóm";
             btnAddGroup.UseVisualStyleBackColor = false;
@@ -58,9 +61,11 @@
             // btnCancelAddGroup
             // 
             btnCancelAddGroup.BackColor = SystemColors.ControlDark;
-            btnCancelAddGroup.Location = new Point(303, 468);
+            btnCancelAddGroup.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCancelAddGroup.Location = new Point(210, 283);
+            btnCancelAddGroup.Margin = new Padding(2, 2, 2, 2);
             btnCancelAddGroup.Name = "btnCancelAddGroup";
-            btnCancelAddGroup.Size = new Size(141, 41);
+            btnCancelAddGroup.Size = new Size(113, 33);
             btnCancelAddGroup.TabIndex = 3;
             btnCancelAddGroup.Text = "Đóng";
             btnCancelAddGroup.UseVisualStyleBackColor = false;
@@ -70,27 +75,30 @@
             // 
             tbUserlist.ColumnCount = 1;
             tbUserlist.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tbUserlist.Location = new Point(34, 120);
+            tbUserlist.Location = new Point(24, 72);
+            tbUserlist.Margin = new Padding(2, 2, 2, 2);
             tbUserlist.Name = "tbUserlist";
             tbUserlist.RowCount = 1;
             tbUserlist.RowStyles.Add(new RowStyle());
-            tbUserlist.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tbUserlist.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tbUserlist.Size = new Size(503, 65);
+            tbUserlist.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
+            tbUserlist.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
+            tbUserlist.Size = new Size(352, 39);
             tbUserlist.TabIndex = 4;
             // 
             // Group
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlDarkDark;
-            ClientSize = new Size(562, 567);
+            ClientSize = new Size(393, 340);
             Controls.Add(tbUserlist);
             Controls.Add(btnCancelAddGroup);
             Controls.Add(btnAddGroup);
             Controls.Add(lbSelectUsers);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(2, 2, 2, 2);
             Name = "Group";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Group";
             Load += Group_Load;
             ResumeLayout(false);

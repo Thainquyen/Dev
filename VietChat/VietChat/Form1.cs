@@ -62,6 +62,7 @@ namespace chat
                     meBubble.TabIndex = 2;
                     meBubble.Time = "11:44 PM";
                     meBubble.TimeColor = Color.White;
+                    meBubble.UserImage = Common.b_image_me;
                     panel4.Controls.Add(meBubble);
                 }
 
@@ -207,6 +208,7 @@ namespace chat
                         meBubble.TabIndex = 2;
                         meBubble.Time = "11:44 PM";
                         meBubble.TimeColor = Color.White;
+                        meBubble.UserImage = Common.b_image_me;
                         panel4.Controls.Add(meBubble);
                     }
                     else

@@ -10,6 +10,7 @@
 
         public const string ONLINE_LIST_API = "https://bat.vietvozchat.online/im/agent/getOnlineList";
         public const string GET_FRIEND_LIST_API = "https://bat.vietvozchat.online/im/get/friendList";
+        public const string ADD_FRIEND_API = "https://bat.vietvozchat.online/im/action/friendAdd";
 
         public const string GET_BASE_API = "https://bat.vietvozchat.online/im/get/base";
 
