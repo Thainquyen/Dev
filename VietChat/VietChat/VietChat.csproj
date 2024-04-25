@@ -81,6 +81,11 @@
     <Folder Include="PHOTO\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="UserGroup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <None Update="PHOTO\01.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -38,8 +38,7 @@
             panel2 = new Panel();
             pnl_bb = new Panel();
             panel5 = new Panel();
-            label7 = new Label();
-            label4 = new Label();
+            lbCreateGroup = new Label();
             panel4 = new Panel();
             label6 = new Label();
             lbl_ketban = new Label();
@@ -62,6 +61,7 @@
             lbl_msg = new Label();
             txt_input = new TextBox();
             timer1 = new System.Windows.Forms.Timer(components);
+            label7 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel5.SuspendLayout();
@@ -78,9 +78,10 @@
             panel1.Controls.Add(lbl_out);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(lbl_bb);
-            panel1.Location = new Point(3, 3);
+            panel1.Location = new Point(4, 5);
+            panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(81, 676);
+            panel1.Size = new Size(115, 1125);
             panel1.TabIndex = 0;
             // 
             // lbl_photo_me
@@ -95,9 +96,10 @@
             // 
             lbl_out.BackColor = Color.FromArgb(255, 192, 128);
             lbl_out.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_out.Location = new Point(3, 625);
+            lbl_out.Location = new Point(4, 1042);
+            lbl_out.Margin = new Padding(4, 0, 4, 0);
             lbl_out.Name = "lbl_out";
-            lbl_out.Size = new Size(70, 43);
+            lbl_out.Size = new Size(100, 72);
             lbl_out.TabIndex = 4;
             lbl_out.Text = "Đăng xuất";
             lbl_out.TextAlign = ContentAlignment.MiddleCenter;
@@ -107,20 +109,23 @@
             // 
             label1.BackColor = SystemColors.ActiveCaption;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(3, 139);
+            label1.Location = new Point(4, 195);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(73, 30);
+            label1.Size = new Size(104, 50);
             label1.TabIndex = 3;
             label1.Text = "Nhóm";
             label1.TextAlign = ContentAlignment.MiddleCenter;
+            label1.Click += label1_Click;
             // 
             // lbl_bb
             // 
             lbl_bb.BackColor = SystemColors.ActiveCaption;
             lbl_bb.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_bb.Location = new Point(3, 77);
+            lbl_bb.Location = new Point(4, 128);
+            lbl_bb.Margin = new Padding(4, 0, 4, 0);
             lbl_bb.Name = "lbl_bb";
-            lbl_bb.Size = new Size(73, 34);
+            lbl_bb.Size = new Size(104, 57);
             lbl_bb.TabIndex = 2;
             lbl_bb.Text = "Bạn bè";
             lbl_bb.TextAlign = ContentAlignment.MiddleCenter;
@@ -133,74 +138,74 @@
             panel2.Controls.Add(panel5);
             panel2.Controls.Add(panel4);
             panel2.Controls.Add(panel3);
-            panel2.Location = new Point(83, 3);
+            panel2.Location = new Point(119, 5);
+            panel2.Margin = new Padding(4, 5, 4, 5);
             panel2.Name = "panel2";
-            panel2.Size = new Size(227, 676);
+            panel2.Size = new Size(323, 1125);
             panel2.TabIndex = 5;
             // 
             // pnl_bb
             // 
             pnl_bb.AutoScroll = true;
             pnl_bb.BorderStyle = BorderStyle.FixedSingle;
-            pnl_bb.Location = new Point(6, 189);
+            pnl_bb.Location = new Point(9, 315);
+            pnl_bb.Margin = new Padding(4, 5, 4, 5);
             pnl_bb.Name = "pnl_bb";
-            pnl_bb.Size = new Size(214, 477);
+            pnl_bb.Size = new Size(305, 794);
             pnl_bb.TabIndex = 9;
             // 
             // panel5
             // 
             panel5.BorderStyle = BorderStyle.FixedSingle;
             panel5.Controls.Add(label7);
-            panel5.Controls.Add(label4);
-            panel5.Location = new Point(-1, 123);
+            panel5.Controls.Add(lbCreateGroup);
+            panel5.Location = new Point(-1, 205);
+            panel5.Margin = new Padding(4, 5, 4, 5);
             panel5.Name = "panel5";
-            panel5.Size = new Size(230, 62);
+            panel5.Size = new Size(328, 102);
             panel5.TabIndex = 8;
             // 
-            // label7
+            // lbCreateGroup
             // 
-            label7.Image = (Image)resources.GetObject("label7.Image");
-            label7.Location = new Point(7, 9);
-            label7.Name = "label7";
-            label7.Size = new Size(44, 43);
-            label7.TabIndex = 4;
-            // 
-            // label4
-            // 
-            label4.BackColor = Color.Bisque;
-            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(57, 17);
-            label4.Name = "label4";
-            label4.Size = new Size(156, 29);
-            label4.TabIndex = 2;
-            label4.Text = "Danh sách nhóm";
-            label4.TextAlign = ContentAlignment.MiddleCenter;
+            lbCreateGroup.BackColor = Color.Bisque;
+            lbCreateGroup.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lbCreateGroup.Location = new Point(81, 28);
+            lbCreateGroup.Margin = new Padding(4, 0, 4, 0);
+            lbCreateGroup.Name = "lbCreateGroup";
+            lbCreateGroup.Size = new Size(223, 48);
+            lbCreateGroup.TabIndex = 2;
+            lbCreateGroup.Text = "Tạo Nhóm";
+            lbCreateGroup.TextAlign = ContentAlignment.MiddleCenter;
+            lbCreateGroup.Click += lbCreateGroup_Click;
             // 
             // panel4
             // 
             panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(label6);
             panel4.Controls.Add(lbl_ketban);
-            panel4.Location = new Point(-1, 62);
+            panel4.Location = new Point(-1, 103);
+            panel4.Margin = new Padding(4, 5, 4, 5);
             panel4.Name = "panel4";
-            panel4.Size = new Size(230, 62);
+            panel4.Size = new Size(328, 102);
             panel4.TabIndex = 7;
             // 
             // label6
             // 
             label6.Image = (Image)resources.GetObject("label6.Image");
-            label6.Location = new Point(2, 9);
+            label6.Location = new Point(3, 15);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(54, 43);
+            label6.Size = new Size(77, 72);
             label6.TabIndex = 3;
             // 
             // lbl_ketban
             // 
             lbl_ketban.BackColor = SystemColors.Info;
             lbl_ketban.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_ketban.Location = new Point(58, 17);
+            lbl_ketban.Location = new Point(83, 28);
+            lbl_ketban.Margin = new Padding(4, 0, 4, 0);
             lbl_ketban.Name = "lbl_ketban";
-            lbl_ketban.Size = new Size(82, 29);
+            lbl_ketban.Size = new Size(117, 48);
             lbl_ketban.TabIndex = 2;
             lbl_ketban.Text = "Kết bạn";
             lbl_ketban.TextAlign = ContentAlignment.MiddleCenter;
@@ -210,17 +215,19 @@
             // 
             panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(textBox1);
-            panel3.Location = new Point(-1, -1);
+            panel3.Location = new Point(-1, -2);
+            panel3.Margin = new Padding(4, 5, 4, 5);
             panel3.Name = "panel3";
-            panel3.Size = new Size(230, 64);
+            panel3.Size = new Size(328, 105);
             panel3.TabIndex = 6;
             // 
             // textBox1
             // 
             textBox1.Font = new Font("Times New Roman", 15.75F, FontStyle.Italic, GraphicsUnit.Point);
-            textBox1.Location = new Point(7, 16);
+            textBox1.Location = new Point(10, 27);
+            textBox1.Margin = new Padding(4, 5, 4, 5);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(214, 32);
+            textBox1.Size = new Size(304, 44);
             textBox1.TabIndex = 4;
             textBox1.Text = "Tìm kiếm";
             // 
@@ -236,6 +243,12 @@
             pnl_add.Location = new Point(319, 10);
             pnl_add.Name = "pnl_add";
             pnl_add.Size = new Size(785, 669);
+            pnl_add.Controls.Add(btn_no);
+            pnl_add.Controls.Add(btn_yes);
+            pnl_add.Location = new Point(484, 33);
+            pnl_add.Margin = new Padding(4, 5, 4, 5);
+            pnl_add.Name = "pnl_add";
+            pnl_add.Size = new Size(1092, 992);
             pnl_add.TabIndex = 149;
             pnl_add.Visible = false;
             // 
@@ -376,8 +389,10 @@
             // 
             lbl_photosearch.Image = (Image)resources.GetObject("lbl_photosearch.Image");
             lbl_photosearch.Location = new Point(140, 124);
+            lbl_photosearch.Location = new Point(260, 207);
+            lbl_photosearch.Margin = new Padding(4, 0, 4, 0);
             lbl_photosearch.Name = "lbl_photosearch";
-            lbl_photosearch.Size = new Size(55, 49);
+            lbl_photosearch.Size = new Size(79, 82);
             lbl_photosearch.TabIndex = 108;
             // 
             // lbl_searchuser
@@ -387,6 +402,10 @@
             lbl_searchuser.Location = new Point(189, 124);
             lbl_searchuser.Name = "lbl_searchuser";
             lbl_searchuser.Size = new Size(453, 49);
+            lbl_searchuser.Location = new Point(330, 207);
+            lbl_searchuser.Margin = new Padding(4, 0, 4, 0);
+            lbl_searchuser.Name = "lbl_searchuser";
+            lbl_searchuser.Size = new Size(587, 82);
             lbl_searchuser.TabIndex = 107;
             lbl_searchuser.TextAlign = ContentAlignment.MiddleCenter;
             lbl_searchuser.Click += lbl_searchuser_Click;
@@ -398,6 +417,10 @@
             lbl_msg.Location = new Point(138, 53);
             lbl_msg.Name = "lbl_msg";
             lbl_msg.Size = new Size(504, 29);
+            lbl_msg.Location = new Point(260, 88);
+            lbl_msg.Margin = new Padding(4, 0, 4, 0);
+            lbl_msg.Name = "lbl_msg";
+            lbl_msg.Size = new Size(657, 48);
             lbl_msg.TabIndex = 106;
             lbl_msg.Text = "Nhập tên người dùng\\email\\điện thoại di động của bạn bè";
             lbl_msg.TextAlign = ContentAlignment.MiddleCenter;
@@ -411,20 +434,69 @@
             txt_input.TabIndex = 105;
             txt_input.TextChanged += txt_input_TextChanged;
             // 
+            txt_input.Location = new Point(260, 142);
+            txt_input.Margin = new Padding(4, 5, 4, 5);
+            txt_input.Name = "txt_input";
+            txt_input.Size = new Size(655, 44);
+            txt_input.TabIndex = 105;
+            txt_input.TextChanged += txt_input_TextChanged;
+            // 
+            // btn_no
+            // 
+            btn_no.BackColor = Color.FromArgb(215, 220, 224);
+            btn_no.FlatStyle = FlatStyle.Flat;
+            btn_no.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_no.ForeColor = Color.Black;
+            btn_no.Location = new Point(580, 540);
+            btn_no.Margin = new Padding(4, 5, 4, 5);
+            btn_no.Name = "btn_no";
+            btn_no.Size = new Size(220, 88);
+            btn_no.TabIndex = 104;
+            btn_no.TabStop = false;
+            btn_no.Text = "Cancel";
+            btn_no.UseVisualStyleBackColor = false;
+            btn_no.Click += btn_no_Click;
+            // 
+            // btn_yes
+            // 
+            btn_yes.BackColor = Color.FromArgb(35, 142, 250);
+            btn_yes.FlatStyle = FlatStyle.Flat;
+            btn_yes.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_yes.ForeColor = Color.Transparent;
+            btn_yes.Location = new Point(330, 540);
+            btn_yes.Margin = new Padding(4, 5, 4, 5);
+            btn_yes.Name = "btn_yes";
+            btn_yes.Size = new Size(191, 88);
+            btn_yes.TabIndex = 104;
+            btn_yes.TabStop = false;
+            btn_yes.Text = "Kết bạn";
+            btn_yes.UseVisualStyleBackColor = false;
+            btn_yes.Click += btn_yes_Click;
+            // 
             // timer1
             // 
             timer1.Enabled = true;
             timer1.Interval = 2000;
             timer1.Tick += timer1_Tick;
             // 
+            // label7
+            // 
+            label7.Image = (Image)resources.GetObject("label7.Image");
+            label7.Location = new Point(10, 15);
+            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(63, 72);
+            label7.TabIndex = 4;
+            // 
             // VietChat
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1116, 691);
+            ClientSize = new Size(1594, 1152);
             Controls.Add(pnl_add);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Margin = new Padding(4, 5, 4, 5);
             MaximizeBox = false;
             Name = "VietChat";
             StartPosition = FormStartPosition.CenterScreen;
@@ -456,10 +528,9 @@
         private Panel panel3;
         private Label lbl_photo_me;
         private Panel panel5;
-        private Label label4;
+        private Label lbCreateGroup;
         private Panel panel4;
         private Label label6;
-        private Label label7;
         private Panel pnl_add;
         private Button btn_no;
         private Button btn_yes;
@@ -478,5 +549,6 @@
         private TextBox txt_text;
         private Button btn_gui;
         private Button btn_huy;
+        private Label label7;
     }
 }

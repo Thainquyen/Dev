@@ -14,7 +14,7 @@ namespace VietChat.Services
             _client = new HttpClient();
         }
 
-        public async void getChatList()
+        public async Task getChatList()
         {
             try
             {
@@ -33,6 +33,8 @@ namespace VietChat.Services
 
 
                 string responseBody = await response.Content.ReadAsStringAsync();
+                Common.chatList = JsonConvert.DeserializeObject<ChatDataResponse>(responseBody);
+
 
                 JObject jObject = JObject.Parse(responseBody);
 

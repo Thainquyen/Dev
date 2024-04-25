@@ -39,5 +39,9 @@ namespace VietChat
 
         public static DataInfo DatasearchUser = new DataInfo();
 
+        public static List<int> selectedUserID = new List<int>();
+
+        public static ChatDataResponse chatList = new ChatDataResponse();
+
     }
 }

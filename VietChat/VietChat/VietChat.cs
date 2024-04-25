@@ -1,10 +1,8 @@
 ﻿using chat;
 using Newtonsoft.Json.Linq;
 using System.Net;
-using System.Security.Policy;
 using VietChat.Model;
 using VietChat.Services;
-using static System.Collections.Specialized.BitVector32;
 
 namespace VietChat
 {
@@ -31,10 +29,10 @@ namespace VietChat
             Application.Exit();
         }
 
-        private void VietChat_Load(object sender, EventArgs e)
+        private async void VietChat_Load(object sender, EventArgs e)
         {
             ChatList chatlist = new ChatList();
-            chatlist.getChatList();
+            await chatlist.getChatList();
             chatlist.getListFriend();
             // ファイルが存在するか
             if (!Directory.Exists(Common.URL_IMAGE))
@@ -158,12 +156,12 @@ namespace VietChat
             client.Dispose();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private async  void timer1_Tick(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(Common.token))
             {
                 ChatList chatlist = new ChatList();
-                chatlist.getChatList();
+                await chatlist.getChatList();
                 chatlist.getListFriend();
 
                 if (!string.IsNullOrEmpty(Common.image))
@@ -244,6 +242,80 @@ namespace VietChat
         private void btn_huy_Click(object sender, EventArgs e)
         {
             pnl_details.Visible = false;
+        }
+        
+        private void label1_Click(object sender, EventArgs e)
+        {
+            LoadGroup();
+        }
+
+        public void LoadGroup()
+        {
+            pnl_bb.Controls.Clear();
+
+            if (Common.chatList.data.Count > 0)
+            {
+                int start_pic_photo_X = 3;
+                int start_pic_photo_Y = 3;
+
+                int startX = 66;
+                int startY = 3;
+                foreach (var item in Common.chatList.data)
+                {
+                    if (item.type == 1)
+                    {
+                        PictureBox pic_photo = new PictureBox();
+                        pic_photo.Location = new Point(start_pic_photo_X, start_pic_photo_Y);
+                        pic_photo.Size = new Size(57, 38);
+                        pic_photo.TabIndex = 7;
+                        pic_photo.TabStop = false;
+
+                        if (!string.IsNullOrEmpty(item.photo_path))
+                        {
+                            string file_name = Path.GetFileName(Common.GET_PHOTO_API + item.photo_path);
+
+                            SaveImage(Common.GET_PHOTO_API + item.photo_path, file_name);
+
+                            b_image = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + file_name);
+
+                            b_image = new Bitmap(b_image, new Size(pic_photo.Width, pic_photo.Height));
+                            pic_photo.Image = b_image;
+                        }
+
+
+                        start_pic_photo_Y = start_pic_photo_Y + pic_photo.Width;
+
+                        Label lbl_name = new Label();
+                        lbl_name.BackColor = Color.White;
+                        lbl_name.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+                        lbl_name.Location = new Point(startX, startY);
+                        lbl_name.Size = new Size(139, 38);
+                        lbl_name.TabIndex = 5;
+                        lbl_name.Text = item.show_name;
+                        lbl_name.TextAlign = ContentAlignment.MiddleCenter;
+                        //lbl_name.Click += lbl_name_Click;
+                        lbl_name.Click += delegate (object sender, EventArgs e) { label_Click(sender, e, item); };
+                        startY = startY + 12 + lbl_name.Height;
+
+                        pnl_bb.Controls.Add(pic_photo);
+                        pnl_bb.Controls.Add(lbl_name);
+                        pnl_bb.Visible = true;
+                    }
+                }
+            }
+        }
+
+        void label_Click(object sender, EventArgs e, ChatDetail chat)
+        {
+            Common.list_id = chat.list_id;
+            Form1 form = new Form1();
+            form.ShowDialog();
+        }
+
+        private void lbCreateGroup_Click(object sender, EventArgs e)
+        {
+            Group group = new Group(this);
+            group.ShowDialog();
         }
     }
 }
