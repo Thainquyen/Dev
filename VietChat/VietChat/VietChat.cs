@@ -58,7 +58,10 @@ namespace VietChat
 
         private void btn_yes_Click(object sender, EventArgs e)
         {
-
+            btn_yes.Visible = false;
+            btn_no.Visible = false;
+            btn_huy.Visible = true;
+            btn_gui.Visible = true;
         }
 
         private void btn_no_Click(object sender, EventArgs e)
@@ -227,6 +230,14 @@ namespace VietChat
                 pnl_details.BringToFront();
                 pnl_details.Visible = true;
             }
+        }
+
+        private void btn_huy_Click(object sender, EventArgs e)
+        {
+            lbl_text.Visible = false;
+            txt_text.Visible = false;
+            btn_gui.Visible = false;
+            btn_huy.Visible = false;
         }
     }
 }
