@@ -1,0 +1,10 @@
+# Autosave files
+*~
+
+# build
+[Oo]bj/
+[Bb]in/
+packages/
+*.user
+*.tar.gz
+.vs/
