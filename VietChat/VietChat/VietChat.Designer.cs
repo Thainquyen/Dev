@@ -158,13 +158,15 @@
             // 
             // lbFriendNum
             // 
-            lbFriendNum.BackColor = Color.Transparent;
-            lbFriendNum.ForeColor = Color.Firebrick;
-            lbFriendNum.Location = new Point(204, 9);
+            lbFriendNum.BackColor = Color.Red;
+            lbFriendNum.Font = new Font("Times New Roman", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbFriendNum.ForeColor = Color.White;
+            lbFriendNum.Location = new Point(207, 7);
             lbFriendNum.Margin = new Padding(2, 0, 2, 0);
             lbFriendNum.Name = "lbFriendNum";
-            lbFriendNum.Size = new Size(10, 15);
+            lbFriendNum.Size = new Size(18, 18);
             lbFriendNum.TabIndex = 6;
+            lbFriendNum.TextAlign = ContentAlignment.MiddleCenter;
             lbFriendNum.Visible = false;
             // 
             // panel2
