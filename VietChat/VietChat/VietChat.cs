@@ -159,6 +159,7 @@ namespace VietChat
 
         private async void lbl_bb_Click(object sender, EventArgs e)
         {
+            pnl_add.Visible = false;
             LoadFriend();
         }
 
@@ -355,6 +356,7 @@ namespace VietChat
 
         private void label1_Click(object sender, EventArgs e)
         {
+            pnl_add.Visible = false;
             LoadChat();
         }
 
@@ -438,6 +440,7 @@ namespace VietChat
 
         private void lbCreateGroup_Click(object sender, EventArgs e)
         {
+            pnl_add.Visible = false;
             Group group = new Group(this);
             group.ShowDialog();
         }
@@ -470,7 +473,7 @@ namespace VietChat
 
         private async void lblNewFriend_Click(object sender, EventArgs e)
         {
-
+            pnl_add.Visible = false;
             ApplyFriend applyFriend = new ApplyFriend();
             var res = await applyFriend.GetListApplyFriend();
 
@@ -549,6 +552,7 @@ namespace VietChat
 
         private void lbChatList_Click(object sender, EventArgs e)
         {
+            pnl_add.Visible = false;
             LoadChat(false);
         }
 

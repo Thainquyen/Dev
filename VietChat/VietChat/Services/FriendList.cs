@@ -39,32 +39,34 @@ namespace VietChat.Services
             }
 
             JObject jObject1 = (JObject)jObject["data"];
-
-            JObject jObject2 = (JObject)jObject1["data"];
-
-            foreach (var section in jObject2)
+            if (jObject1["data"].Count() > 0)
             {
-                var zone = section.Key;
+                JObject jObject2 = (JObject)jObject1["data"];
 
-                JObject jObject3 = (JObject)jObject2[zone];
-
-                JArray jarr = jObject3["data"].ToObject<JArray>();
-
-                for (int i = 0; i < jarr.Count; i++)
+                foreach (var section in jObject2)
                 {
-                    Friend friend = new Friend();
-                    friend.letter = (string)jObject3["letter"];
-                    friend.index = (int)jObject3["index"];
+                    var zone = section.Key;
 
-                    JObject obj = (JObject)jarr[i];
+                    JObject jObject3 = (JObject)jObject2[zone];
 
-                    FriendInfo friendInfo = new FriendInfo();
-                    friendInfo.user_id = (int)obj["user_id"];
-                    friendInfo.photo = (string)obj["photo"];
-                    friendInfo.name = (string)obj["name"];
+                    JArray jarr = jObject3["data"].ToObject<JArray>();
 
-                    friend.data = friendInfo;
-                    friendList.data.Add(friend);
+                    for (int i = 0; i < jarr.Count; i++)
+                    {
+                        Friend friend = new Friend();
+                        friend.letter = (string)jObject3["letter"];
+                        friend.index = (int)jObject3["index"];
+
+                        JObject obj = (JObject)jarr[i];
+
+                        FriendInfo friendInfo = new FriendInfo();
+                        friendInfo.user_id = (int)obj["user_id"];
+                        friendInfo.photo = (string)obj["photo"];
+                        friendInfo.name = (string)obj["name"];
+
+                        friend.data = friendInfo;
+                        friendList.data.Add(friend);
+                    }
                 }
             }
             return friendList;
@@ -95,7 +97,7 @@ namespace VietChat.Services
             {
                 return false;
             }
-                    
+
         }
     }
 }

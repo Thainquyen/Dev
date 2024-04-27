@@ -210,12 +210,12 @@
             // 
             lbCreateGroup.BackColor = Color.Bisque;
             lbCreateGroup.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lbCreateGroup.Location = new Point(52, 13);
+            lbCreateGroup.Location = new Point(55, 17);
             lbCreateGroup.Name = "lbCreateGroup";
             lbCreateGroup.Size = new Size(168, 29);
             lbCreateGroup.TabIndex = 2;
-            lbCreateGroup.Text = "Tạo Nhóm";
-            lbCreateGroup.TextAlign = ContentAlignment.MiddleLeft;
+            lbCreateGroup.Text = "Tạo nhóm";
+            lbCreateGroup.TextAlign = ContentAlignment.MiddleCenter;
             lbCreateGroup.Click += lbCreateGroup_Click;
             // 
             // panel4

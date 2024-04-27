@@ -40,7 +40,7 @@ namespace VietChat.Services
 
                 if (Common.error_flag > 0)
                 {
-                    MessageBox.Show(Common.msg, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(Common.msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
