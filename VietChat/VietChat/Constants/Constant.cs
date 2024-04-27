@@ -4,6 +4,8 @@
     {
         public const string LOGGIN_API = "https://bat.vietvozchat.online/im/in/login";
         public const string REGISTER_API = "https://bat.vietvozchat.online/im/in/reg";
+        public const string UPLOAD_PHOTO_API = "https://bat.vietvozchat.online/im/upload/photo";
+        public const string SET_PROFILE_API = "https://bat.vietvozchat.online/im/set/setProfile";
 
         public const string CHATLIST_API = "https://bat.vietvozchat.online/im/get/chatList";
         public const string CHATDATA_API = "https://bat.vietvozchat.online/im/get/chatData";
@@ -22,6 +24,8 @@
         public const string ADD_GROUP_API = "https://bat.vietvozchat.online/im/message/addGroup";
         public const string APPLY_FRIEND_API = "https://bat.vietvozchat.online/im/get/applyFriend";
         public const string ADD_FRIEND_ACTION_API = "https://bat.vietvozchat.online/im/action/friendAddAction";
+
+        public const string GET_LIST_ID_API = "https://bat.vietvozchat.online/im/message/getListId";
 
     }
 }

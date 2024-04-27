@@ -59,7 +59,7 @@ namespace VietChat
             pnl_register.Visible = true;
         }
 
-        private void btn_register2_Click(object sender, EventArgs e)
+        private async void btn_register2_Click(object sender, EventArgs e)
         {
 
             if (string.IsNullOrEmpty(txt_user_register.Text.Trim()))
@@ -84,13 +84,18 @@ namespace VietChat
                 return;
             }
             Register register = new Register();
-            register.Registering(txt_user_register.Text, txt_pass_register.Text);
+            await register.Registering(txt_user_register.Text, txt_pass_register.Text);
             // 
             if (Common.error_flag == 0)
             {
-                pnl_register.Visible = false;
-            }
+                Logging logging = new Logging();
+                await logging.Signing(txt_user_register.Text, txt_pass_register.Text);
 
+                pnl_register.Visible = false;
+                Form updateProfile = new UpdateProfile();
+                updateProfile.Show();
+                this.Hide();
+            }
         }
 
         private void btn_back_Click(object sender, EventArgs e)

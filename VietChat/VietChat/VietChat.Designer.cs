@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FVietChat));
             panel1 = new Panel();
+            lbChatList = new Label();
             lbl_photo_me = new Label();
             lbl_out = new Label();
             label1 = new Label();
@@ -65,6 +66,15 @@
             lbl_searchuser = new Label();
             lbl_msg = new Label();
             txt_input = new TextBox();
+            pnl_thongtin = new Panel();
+            label4 = new Label();
+            label5 = new Label();
+            btn_dong = new Button();
+            btn_gui_msg = new Button();
+            label_UserName = new Label();
+            label_NickName = new Label();
+            label_Name = new Label();
+            label_Photo = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -73,11 +83,13 @@
             panel3.SuspendLayout();
             pnl_add.SuspendLayout();
             pnl_details.SuspendLayout();
+            pnl_thongtin.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(lbChatList);
             panel1.Controls.Add(lbl_photo_me);
             panel1.Controls.Add(lbl_out);
             panel1.Controls.Add(label1);
@@ -86,6 +98,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(81, 676);
             panel1.TabIndex = 0;
+            // 
+            // lbChatList
+            // 
+            lbChatList.BackColor = SystemColors.ActiveCaption;
+            lbChatList.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            lbChatList.Location = new Point(4, 154);
+            lbChatList.Name = "lbChatList";
+            lbChatList.Size = new Size(73, 52);
+            lbChatList.TabIndex = 6;
+            lbChatList.Text = "Trò chuyện";
+            lbChatList.TextAlign = ContentAlignment.MiddleCenter;
+            lbChatList.Click += lbChatList_Click;
             // 
             // lbl_photo_me
             // 
@@ -134,13 +158,12 @@
             // 
             // lbFriendNum
             // 
-            lbFriendNum.AutoSize = true;
             lbFriendNum.BackColor = Color.Transparent;
             lbFriendNum.ForeColor = Color.Firebrick;
             lbFriendNum.Location = new Point(204, 9);
             lbFriendNum.Margin = new Padding(2, 0, 2, 0);
             lbFriendNum.Name = "lbFriendNum";
-            lbFriendNum.Size = new Size(0, 15);
+            lbFriendNum.Size = new Size(10, 15);
             lbFriendNum.TabIndex = 6;
             lbFriendNum.Visible = false;
             // 
@@ -287,7 +310,7 @@
             pnl_details.Controls.Add(lbl_name);
             pnl_details.Controls.Add(lbl_photo_detail);
             pnl_details.Location = new Point(60, 172);
-            pnl_details.Margin = new Padding(2, 2, 2, 2);
+            pnl_details.Margin = new Padding(2);
             pnl_details.Name = "pnl_details";
             pnl_details.Size = new Size(675, 469);
             pnl_details.TabIndex = 110;
@@ -323,7 +346,7 @@
             btn_huy.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             btn_huy.ForeColor = Color.Black;
             btn_huy.Location = new Point(343, 198);
-            btn_huy.Margin = new Padding(2, 2, 2, 2);
+            btn_huy.Margin = new Padding(2);
             btn_huy.Name = "btn_huy";
             btn_huy.Size = new Size(91, 29);
             btn_huy.TabIndex = 117;
@@ -339,7 +362,7 @@
             btn_gui.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             btn_gui.ForeColor = Color.Transparent;
             btn_gui.Location = new Point(225, 197);
-            btn_gui.Margin = new Padding(2, 2, 2, 2);
+            btn_gui.Margin = new Padding(2);
             btn_gui.Name = "btn_gui";
             btn_gui.Size = new Size(77, 30);
             btn_gui.TabIndex = 116;
@@ -364,7 +387,7 @@
             // 
             txt_text.Font = new Font("Times New Roman", 15.75F, FontStyle.Italic, GraphicsUnit.Point);
             txt_text.Location = new Point(119, 149);
-            txt_text.Margin = new Padding(2, 2, 2, 2);
+            txt_text.Margin = new Padding(2);
             txt_text.Name = "txt_text";
             txt_text.Size = new Size(455, 32);
             txt_text.TabIndex = 114;
@@ -480,6 +503,122 @@
             txt_input.TabIndex = 105;
             txt_input.TextChanged += txt_input_TextChanged;
             // 
+            // pnl_thongtin
+            // 
+            pnl_thongtin.BorderStyle = BorderStyle.FixedSingle;
+            pnl_thongtin.Controls.Add(label4);
+            pnl_thongtin.Controls.Add(label5);
+            pnl_thongtin.Controls.Add(btn_dong);
+            pnl_thongtin.Controls.Add(btn_gui_msg);
+            pnl_thongtin.Controls.Add(label_UserName);
+            pnl_thongtin.Controls.Add(label_NickName);
+            pnl_thongtin.Controls.Add(label_Name);
+            pnl_thongtin.Controls.Add(label_Photo);
+            pnl_thongtin.Location = new Point(414, 87);
+            pnl_thongtin.Margin = new Padding(2);
+            pnl_thongtin.Name = "pnl_thongtin";
+            pnl_thongtin.Size = new Size(538, 312);
+            pnl_thongtin.TabIndex = 150;
+            pnl_thongtin.Visible = false;
+            // 
+            // label4
+            // 
+            label4.BackColor = SystemColors.ButtonHighlight;
+            label4.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(214, 84);
+            label4.Margin = new Padding(2, 0, 2, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(88, 29);
+            label4.TabIndex = 119;
+            label4.Text = "User name:";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            label5.BackColor = SystemColors.ButtonHighlight;
+            label5.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(214, 55);
+            label5.Margin = new Padding(2, 0, 2, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(88, 29);
+            label5.TabIndex = 118;
+            label5.Text = "Nick name:";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btn_dong
+            // 
+            btn_dong.BackColor = Color.FromArgb(215, 220, 224);
+            btn_dong.FlatStyle = FlatStyle.Flat;
+            btn_dong.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_dong.ForeColor = Color.Black;
+            btn_dong.Location = new Point(285, 194);
+            btn_dong.Margin = new Padding(2);
+            btn_dong.Name = "btn_dong";
+            btn_dong.Size = new Size(91, 29);
+            btn_dong.TabIndex = 117;
+            btn_dong.TabStop = false;
+            btn_dong.Text = "Đóng";
+            btn_dong.UseVisualStyleBackColor = false;
+            btn_dong.Click += btn_dong_Click;
+            // 
+            // btn_gui_msg
+            // 
+            btn_gui_msg.BackColor = Color.LimeGreen;
+            btn_gui_msg.FlatStyle = FlatStyle.Flat;
+            btn_gui_msg.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_gui_msg.ForeColor = Color.Transparent;
+            btn_gui_msg.Location = new Point(130, 193);
+            btn_gui_msg.Margin = new Padding(2);
+            btn_gui_msg.Name = "btn_gui_msg";
+            btn_gui_msg.Size = new Size(120, 30);
+            btn_gui_msg.TabIndex = 116;
+            btn_gui_msg.TabStop = false;
+            btn_gui_msg.Text = "Gửi tin nhắn";
+            btn_gui_msg.UseVisualStyleBackColor = false;
+            btn_gui_msg.Click += btn_gui_msg_Click;
+            // 
+            // label_UserName
+            // 
+            label_UserName.BackColor = SystemColors.ButtonHighlight;
+            label_UserName.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label_UserName.Location = new Point(302, 84);
+            label_UserName.Margin = new Padding(2, 0, 2, 0);
+            label_UserName.Name = "label_UserName";
+            label_UserName.Size = new Size(138, 29);
+            label_UserName.TabIndex = 113;
+            label_UserName.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label_NickName
+            // 
+            label_NickName.BackColor = SystemColors.ButtonHighlight;
+            label_NickName.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label_NickName.Location = new Point(302, 55);
+            label_NickName.Margin = new Padding(2, 0, 2, 0);
+            label_NickName.Name = "label_NickName";
+            label_NickName.Size = new Size(138, 29);
+            label_NickName.TabIndex = 112;
+            label_NickName.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label_Name
+            // 
+            label_Name.BackColor = SystemColors.ButtonHighlight;
+            label_Name.Font = new Font("Times New Roman", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label_Name.Location = new Point(214, 26);
+            label_Name.Margin = new Padding(2, 0, 2, 0);
+            label_Name.Name = "label_Name";
+            label_Name.Size = new Size(226, 29);
+            label_Name.TabIndex = 111;
+            label_Name.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label_Photo
+            // 
+            label_Photo.Image = (Image)resources.GetObject("label_Photo.Image");
+            label_Photo.Location = new Point(128, 44);
+            label_Photo.Margin = new Padding(2, 0, 2, 0);
+            label_Photo.Name = "label_Photo";
+            label_Photo.Size = new Size(82, 54);
+            label_Photo.TabIndex = 110;
+            // 
             // timer1
             // 
             timer1.Enabled = true;
@@ -494,6 +633,7 @@
             Controls.Add(pnl_add);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Controls.Add(pnl_thongtin);
             MaximizeBox = false;
             Name = "FVietChat";
             StartPosition = FormStartPosition.CenterScreen;
@@ -504,13 +644,13 @@
             panel2.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel4.ResumeLayout(false);
-            panel4.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             pnl_add.ResumeLayout(false);
             pnl_add.PerformLayout();
             pnl_details.ResumeLayout(false);
             pnl_details.PerformLayout();
+            pnl_thongtin.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -552,5 +692,15 @@
         private Label label3;
         private Label lbFriendNum;
         private Label lblNewFriend;
+        private Label lbChatList;
+        private Panel pnl_thongtin;
+        private Label label4;
+        private Label label5;
+        private Button btn_dong;
+        private Button btn_gui_msg;
+        private Label label_UserName;
+        private Label label_NickName;
+        private Label label_Name;
+        private Label label_Photo;
     }
 }

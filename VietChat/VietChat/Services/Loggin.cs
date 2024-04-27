@@ -48,7 +48,7 @@ namespace VietChat.Services
                     Common.token = (string)jObject2["token"];
 
                     BaseInfo baseInfo = new BaseInfo();
-                    baseInfo.GetBase();
+                    await baseInfo.GetBase();
 
                 }
             }

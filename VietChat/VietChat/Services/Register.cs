@@ -12,7 +12,7 @@ namespace VietChat.Services
             _client = new HttpClient();
         }
 
-		public async void Registering(string username, string pass) 
+		public async Task Registering(string username, string pass) 
 		{
             try
             {
@@ -45,5 +45,50 @@ namespace VietChat.Services
                 MessageBox.Show($"Request exception: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 		}
-	}
+
+        public async Task uploadPhoto(string file)
+        {
+            try
+            {
+                string apiUrl = Constant.UPLOAD_PHOTO_API;
+                var request = new HttpRequestMessage(HttpMethod.Post, apiUrl);
+
+                // Add request body if needed
+                string requestBody = "{\"file\": \"@file@\", \"_token\": \"@token@\"}";
+                requestBody = requestBody.Replace("@file@", file);
+                requestBody = requestBody.Replace("@token@", Common.token);
+                request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await _client.SendAsync(request);
+                string responseBody = await response.Content.ReadAsStringAsync();
+            }
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show($"Request exception: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public async Task setProfile(string file, string nickname)
+        {
+            try
+            {
+                string apiUrl = Constant.SET_PROFILE_API;
+                var request = new HttpRequestMessage(HttpMethod.Post, apiUrl);
+
+                // Add request body if needed
+                string requestBody = "{\"file\": \"@file@\", \"_token\": \"@token@\", \"nickname\": \"@nickname@\", \"_agent_id\": \"1\"}";
+                requestBody = requestBody.Replace("@file@", file);
+                requestBody = requestBody.Replace("@token@", Common.token);
+                requestBody = requestBody.Replace("@nickname@", nickname);
+                request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await _client.SendAsync(request);
+                string responseBody = await response.Content.ReadAsStringAsync();
+            }
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show($"Request exception: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+    }
 }

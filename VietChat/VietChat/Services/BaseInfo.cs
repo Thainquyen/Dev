@@ -17,7 +17,7 @@ namespace VietChat.Services
         {
             _client = new HttpClient();
         }
-        public async void GetBase()
+        public async Task GetBase()
         {
             string apiUrl = Constant.GET_BASE_API;
             var request = new HttpRequestMessage(HttpMethod.Post, apiUrl);

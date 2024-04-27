@@ -89,7 +89,7 @@ namespace VietChat
             MessageBox.Show("Tạo nhóm thành công!!!");
             ChatList chatList = new ChatList();
             await chatList.getChatList();
-            _vietChat.LoadGroup();
+            _vietChat.LoadChat();
             this.Close();
         }
     }

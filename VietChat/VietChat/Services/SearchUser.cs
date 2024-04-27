@@ -49,7 +49,7 @@ namespace VietChat.Services
             //}
         }
 
-        public async void getDetails(string user_id)
+        public async Task getDetails(string user_id)
         {
             string apiUrl = Constant.GET_DETAILS_USER_API;
             var request = new HttpRequestMessage(HttpMethod.Post, apiUrl);

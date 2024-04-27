@@ -105,12 +105,12 @@ namespace chat
 
         }
 
-        private void typingBox1_OnHitEnter(object sender, EventArgs e)
+        private async void typingBox1_OnHitEnter(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(typingBox1.Value))
             {
                 ChatList chatlist = new ChatList();
-                chatlist.getTextMsg(typingBox1.Value);
+                await chatlist.getTextMsg(typingBox1.Value);
                 typingBox1.Value = "";
             }
         }

@@ -64,7 +64,7 @@ namespace VietChat.Services
             }
         }
 
-        public async void getTextMsg(string msg)
+        public async Task getTextMsg(string msg)
         {
             try
             {
@@ -135,7 +135,7 @@ namespace VietChat.Services
             return chatDataRespone;
         }
 
-        public async void getListFriend()
+        public async Task getListFriend()
         {
             try
             {
@@ -181,6 +181,40 @@ namespace VietChat.Services
                     }
                 }
 
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+        }
+
+        public async Task getListId(string user_id)
+        {
+            try
+            {
+                string apiUrl = Constant.GET_LIST_ID_API;
+                var request = new HttpRequestMessage(HttpMethod.Post, apiUrl);
+
+                string requestBody = "{\"user_id\": \"@user_id@\", \"_token\": \"@token@\", \"_agent_id\": \"1\"}";
+                requestBody = requestBody.Replace("@token@", Common.token);
+                requestBody = requestBody.Replace("@user_id@", user_id);
+                request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await _client.SendAsync(request);
+
+
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                JObject jObject = JObject.Parse(responseBody);
+
+                if (!jObject["err"].ToString().Equals("0"))
+                {
+                    return;
+                }
+
+                JObject jObject1 = (JObject)jObject["data"];
+
+                Common.list_id = (string)jObject1["list_id"];
             }
             catch (Exception ex)
             {

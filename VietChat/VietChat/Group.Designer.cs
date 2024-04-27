@@ -48,7 +48,7 @@
             // 
             // btnAddGroup
             // 
-            btnAddGroup.BackColor = SystemColors.GradientActiveCaption;
+            btnAddGroup.BackColor = Color.FromArgb(128, 255, 128);
             btnAddGroup.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddGroup.Location = new Point(55, 283);
             btnAddGroup.Margin = new Padding(2);

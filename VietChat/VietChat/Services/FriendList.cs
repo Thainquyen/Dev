@@ -44,19 +44,18 @@ namespace VietChat.Services
 
             foreach (var section in jObject2)
             {
-                Friend friend = new Friend();
-
                 var zone = section.Key;
 
                 JObject jObject3 = (JObject)jObject2[zone];
-
-                friend.letter = (string)jObject3["letter"];
-                friend.index = (int)jObject3["index"];
 
                 JArray jarr = jObject3["data"].ToObject<JArray>();
 
                 for (int i = 0; i < jarr.Count; i++)
                 {
+                    Friend friend = new Friend();
+                    friend.letter = (string)jObject3["letter"];
+                    friend.index = (int)jObject3["index"];
+
                     JObject obj = (JObject)jarr[i];
 
                     FriendInfo friendInfo = new FriendInfo();
