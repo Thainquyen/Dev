@@ -71,7 +71,7 @@ namespace VietChat
             ChatList chatlist = new ChatList();
             await chatlist.getChatList();
             chatlist.getListFriend();
-            // ファイルが存在するか
+
             if (!Directory.Exists(Common.URL_IMAGE))
             {
                 Directory.CreateDirectory(Common.URL_IMAGE);
@@ -161,8 +161,6 @@ namespace VietChat
         private async void lbl_bb_Click(object sender, EventArgs e)
         {
             LoadFriend();
-            //Form1 form = new Form1(this);
-            //form.ShowDialog();
         }
 
         public async void LoadFriend()
@@ -178,15 +176,7 @@ namespace VietChat
             FriendListData friends = await friendList.GetFriendList();
 
             foreach (var item in friends.data)
-            {
-                // var zone = section.Key;
-
-                //JObject obj = (JObject)Common.job_friend[zone];
-
-                //Common.name_friend = obj["name"].ToString();
-                //Common.user_id_friend = obj["user_id"].ToString();
-                //Common.photo = obj["photo"].ToString();
-
+            {               
                 if (!string.IsNullOrEmpty(item.data.name))
                 {
 
@@ -278,11 +268,10 @@ namespace VietChat
         private void lbl_name_Click(object sender, EventArgs e, Friend item)
         {
             string file_name = Path.GetFileName(item.data.photo);
+            Common.chat_friend = true;
             Common.name_friend = item.data.name;
             Common.user_id_friend = item.data.user_id.ToString();
             Common.b_image_user = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + item.data.user_id + file_name);
-            //Common.b_image_user = new Bitmap(Common.b_image_user, new Size(pic_photo.Width, pic_photo.Height));
-
             Form1 form = new Form1(this);
             form.ShowDialog();
 
@@ -381,9 +370,9 @@ namespace VietChat
                         {
                             string file_name = Path.GetFileName(Common.GET_PHOTO_API + item.photo_path);
 
-                            SaveImage(Common.GET_PHOTO_API + item.photo_path, file_name);
+                            SaveImage(Common.GET_PHOTO_API + item.photo_path, item.list_id + file_name);
 
-                            b_image = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + file_name);
+                            b_image = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + item.list_id + file_name);
 
                             b_image = new Bitmap(b_image, new Size(pic_photo.Width, pic_photo.Height));
                             pic_photo.Image = b_image;
@@ -415,6 +404,11 @@ namespace VietChat
         void label_Click(object sender, EventArgs e, ChatDetail chat)
         {
             Common.list_id = chat.list_id;
+            Common.chat_friend = false;
+            Common.group_name = chat.show_name;
+            string? path = chat.list_id + Path.GetFileName(chat.photo_path);
+            Common.photo_group = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + path);
+
             Form1 form = new Form1(this);
             form.ShowDialog();
         }

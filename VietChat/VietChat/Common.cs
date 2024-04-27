@@ -45,5 +45,11 @@ namespace VietChat
 
         public static ChatDataResponse chatList = new ChatDataResponse();
 
+        public static bool chat_friend = true;
+
+        public static string group_name = string.Empty;
+
+        public static Bitmap photo_group;
+
     }
 }
