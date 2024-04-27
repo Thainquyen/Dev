@@ -220,7 +220,7 @@
             // 
             lbl_confirm.BackColor = Color.FromArgb(61, 164, 140);
             lbl_confirm.BorderStyle = BorderStyle.FixedSingle;
-            lbl_confirm.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_confirm.Font = new Font("Times New Roman", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             lbl_confirm.Location = new Point(7, 130);
             lbl_confirm.Name = "lbl_confirm";
             lbl_confirm.Size = new Size(143, 32);

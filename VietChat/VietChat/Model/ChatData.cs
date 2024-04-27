@@ -12,6 +12,17 @@ namespace VietChat.Model
         public SocketMesssage data { get; set; }
     }
 
+    public class SocketMesssageNewFriendRespone
+    {
+        public string action { get; set; }
+        public NewFriend data { get; set; }
+    }
+
+    public class NewFriend
+    {
+        public int num { get; set; }
+    }
+
     public class SocketMesssage
     {
         public string list_id { get; set; }

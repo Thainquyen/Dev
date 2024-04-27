@@ -75,6 +75,13 @@ namespace chat
             InitializeComponent();
         }
 
+        private FVietChat _vietChat;
+        public Form1(FVietChat vietChat)
+        {
+            _vietChat = vietChat;
+            InitializeComponent();
+        }
+
         //Move Form with the mouse. This method is available in BeautyForm that this form inherits
         protected override void OnMouseDownMoveForm(object sender, MouseEventArgs e)
         {
@@ -104,16 +111,16 @@ namespace chat
         {
             if (!string.IsNullOrEmpty(typingBox1.Value))
             {
-               // MeBubble bubble = new MeBubble();
-               // bubble.Dock = DockStyle.Bottom;//Dock to bottom  so that the bubbles can align themselves in a horizontal grid. You dont have to worry about responsiveness when window resizes.
-               // bubble.SendToBack();//Send back so that it will be lowest control... Use bubble.BringToFront() if u r docking up.
+                // MeBubble bubble = new MeBubble();
+                // bubble.Dock = DockStyle.Bottom;//Dock to bottom  so that the bubbles can align themselves in a horizontal grid. You dont have to worry about responsiveness when window resizes.
+                // bubble.SendToBack();//Send back so that it will be lowest control... Use bubble.BringToFront() if u r docking up.
 
-               // bubble.Body = typingBox1.Value;
+                // bubble.Body = typingBox1.Value;
 
-               // panel4.Controls.Add(bubble);
+                // panel4.Controls.Add(bubble);
 
                 //typingBox1.Value = "";
-                
+
                 ChatList chatlist = new ChatList();
                 chatlist.getTextMsg(typingBox1.Value);
                 typingBox1.Value = "";
@@ -229,7 +236,9 @@ namespace chat
                         youBubble.TabIndex = 2;
                         youBubble.Time = "11:44 PM";
                         youBubble.TimeColor = Color.White;
+                        Common.b_image_user = new Bitmap(Common.b_image_user, new Size(youBubble.Width, youBubble.Height));
                         youBubble.UserImage = Common.b_image_user;
+
                         panel4.Controls.Add(youBubble);
                     }
                 }
@@ -239,6 +248,7 @@ namespace chat
                 panel4.ResumeLayout();
                 this.PerformLayout();
             }
+            typingBox1.Focus();
         }
 
         private void WebSocket_DataReceived(object sender, DataReceivedEventArgs e)

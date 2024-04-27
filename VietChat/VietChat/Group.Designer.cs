@@ -37,11 +37,12 @@
             // lbSelectUsers
             // 
             lbSelectUsers.AutoSize = true;
+            lbSelectUsers.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lbSelectUsers.ForeColor = SystemColors.ControlLightLight;
             lbSelectUsers.Location = new Point(102, 28);
             lbSelectUsers.Margin = new Padding(2, 0, 2, 0);
             lbSelectUsers.Name = "lbSelectUsers";
-            lbSelectUsers.Size = new Size(178, 15);
+            lbSelectUsers.Size = new Size(201, 19);
             lbSelectUsers.TabIndex = 0;
             lbSelectUsers.Text = "Vui lòng chọn bạn để tạo nhóm!";
             // 
@@ -50,7 +51,7 @@
             btnAddGroup.BackColor = SystemColors.GradientActiveCaption;
             btnAddGroup.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddGroup.Location = new Point(55, 283);
-            btnAddGroup.Margin = new Padding(2, 2, 2, 2);
+            btnAddGroup.Margin = new Padding(2);
             btnAddGroup.Name = "btnAddGroup";
             btnAddGroup.Size = new Size(113, 33);
             btnAddGroup.TabIndex = 2;
@@ -62,8 +63,8 @@
             // 
             btnCancelAddGroup.BackColor = SystemColors.ControlDark;
             btnCancelAddGroup.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCancelAddGroup.Location = new Point(210, 283);
-            btnCancelAddGroup.Margin = new Padding(2, 2, 2, 2);
+            btnCancelAddGroup.Location = new Point(206, 283);
+            btnCancelAddGroup.Margin = new Padding(2);
             btnCancelAddGroup.Name = "btnCancelAddGroup";
             btnCancelAddGroup.Size = new Size(113, 33);
             btnCancelAddGroup.TabIndex = 3;
@@ -76,7 +77,7 @@
             tbUserlist.ColumnCount = 1;
             tbUserlist.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tbUserlist.Location = new Point(24, 72);
-            tbUserlist.Margin = new Padding(2, 2, 2, 2);
+            tbUserlist.Margin = new Padding(2);
             tbUserlist.Name = "tbUserlist";
             tbUserlist.RowCount = 1;
             tbUserlist.RowStyles.Add(new RowStyle());
@@ -96,7 +97,7 @@
             Controls.Add(btnAddGroup);
             Controls.Add(lbSelectUsers);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "Group";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Group";

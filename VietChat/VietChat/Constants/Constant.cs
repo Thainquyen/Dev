@@ -20,6 +20,8 @@
 
         public const string GET_DETAILS_USER_API = "https://bat.vietvozchat.online/im/get/details";
         public const string ADD_GROUP_API = "https://bat.vietvozchat.online/im/message/addGroup";
+        public const string APPLY_FRIEND_API = "https://bat.vietvozchat.online/im/get/applyFriend";
+        public const string ADD_FRIEND_ACTION_API = "https://bat.vietvozchat.online/im/action/friendAddAction";
 
     }
 }

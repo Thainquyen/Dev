@@ -1,6 +1,6 @@
 ﻿namespace VietChat
 {
-    partial class VietChat
+    partial class FVietChat
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,18 +29,20 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VietChat));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FVietChat));
             panel1 = new Panel();
             lbl_photo_me = new Label();
             lbl_out = new Label();
             label1 = new Label();
             lbl_bb = new Label();
+            lbFriendNum = new Label();
             panel2 = new Panel();
             pnl_bb = new Panel();
             panel5 = new Panel();
             label7 = new Label();
             lbCreateGroup = new Label();
             panel4 = new Panel();
+            lblNewFriend = new Label();
             label6 = new Label();
             lbl_ketban = new Label();
             panel3 = new Panel();
@@ -130,6 +132,18 @@
             lbl_bb.TextAlign = ContentAlignment.MiddleCenter;
             lbl_bb.Click += lbl_bb_Click;
             // 
+            // lbFriendNum
+            // 
+            lbFriendNum.AutoSize = true;
+            lbFriendNum.BackColor = Color.Transparent;
+            lbFriendNum.ForeColor = Color.Firebrick;
+            lbFriendNum.Location = new Point(204, 9);
+            lbFriendNum.Margin = new Padding(2, 0, 2, 0);
+            lbFriendNum.Name = "lbFriendNum";
+            lbFriendNum.Size = new Size(0, 15);
+            lbFriendNum.TabIndex = 6;
+            lbFriendNum.Visible = false;
+            // 
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.FixedSingle;
@@ -139,7 +153,7 @@
             panel2.Controls.Add(panel3);
             panel2.Location = new Point(83, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(227, 676);
+            panel2.Size = new Size(261, 676);
             panel2.TabIndex = 5;
             // 
             // pnl_bb
@@ -148,7 +162,7 @@
             pnl_bb.BorderStyle = BorderStyle.FixedSingle;
             pnl_bb.Location = new Point(6, 189);
             pnl_bb.Name = "pnl_bb";
-            pnl_bb.Size = new Size(214, 477);
+            pnl_bb.Size = new Size(250, 477);
             pnl_bb.TabIndex = 9;
             // 
             // panel5
@@ -158,7 +172,7 @@
             panel5.Controls.Add(lbCreateGroup);
             panel5.Location = new Point(-1, 123);
             panel5.Name = "panel5";
-            panel5.Size = new Size(230, 62);
+            panel5.Size = new Size(258, 62);
             panel5.TabIndex = 8;
             // 
             // label7
@@ -173,23 +187,37 @@
             // 
             lbCreateGroup.BackColor = Color.Bisque;
             lbCreateGroup.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lbCreateGroup.Location = new Point(57, 17);
+            lbCreateGroup.Location = new Point(52, 13);
             lbCreateGroup.Name = "lbCreateGroup";
-            lbCreateGroup.Size = new Size(156, 29);
+            lbCreateGroup.Size = new Size(168, 29);
             lbCreateGroup.TabIndex = 2;
             lbCreateGroup.Text = "Tạo Nhóm";
-            lbCreateGroup.TextAlign = ContentAlignment.MiddleCenter;
+            lbCreateGroup.TextAlign = ContentAlignment.MiddleLeft;
             lbCreateGroup.Click += lbCreateGroup_Click;
             // 
             // panel4
             // 
             panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Controls.Add(lbFriendNum);
+            panel4.Controls.Add(lblNewFriend);
             panel4.Controls.Add(label6);
             panel4.Controls.Add(lbl_ketban);
             panel4.Location = new Point(-1, 62);
             panel4.Name = "panel4";
-            panel4.Size = new Size(230, 62);
+            panel4.Size = new Size(258, 62);
             panel4.TabIndex = 7;
+            // 
+            // lblNewFriend
+            // 
+            lblNewFriend.BackColor = SystemColors.ControlLight;
+            lblNewFriend.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblNewFriend.Location = new Point(138, 17);
+            lblNewFriend.Name = "lblNewFriend";
+            lblNewFriend.Size = new Size(82, 29);
+            lblNewFriend.TabIndex = 4;
+            lblNewFriend.Text = "Bạn mới";
+            lblNewFriend.TextAlign = ContentAlignment.MiddleCenter;
+            lblNewFriend.Click += lblNewFriend_Click;
             // 
             // label6
             // 
@@ -203,7 +231,7 @@
             // 
             lbl_ketban.BackColor = SystemColors.Info;
             lbl_ketban.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_ketban.Location = new Point(58, 17);
+            lbl_ketban.Location = new Point(50, 17);
             lbl_ketban.Name = "lbl_ketban";
             lbl_ketban.Size = new Size(82, 29);
             lbl_ketban.TabIndex = 2;
@@ -217,7 +245,7 @@
             panel3.Controls.Add(textBox1);
             panel3.Location = new Point(-1, -1);
             panel3.Name = "panel3";
-            panel3.Size = new Size(230, 64);
+            panel3.Size = new Size(258, 64);
             panel3.TabIndex = 6;
             // 
             // textBox1
@@ -225,7 +253,7 @@
             textBox1.Font = new Font("Times New Roman", 15.75F, FontStyle.Italic, GraphicsUnit.Point);
             textBox1.Location = new Point(7, 16);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(214, 32);
+            textBox1.Size = new Size(240, 32);
             textBox1.TabIndex = 4;
             textBox1.Text = "Tìm kiếm";
             // 
@@ -238,9 +266,9 @@
             pnl_add.Controls.Add(lbl_searchuser);
             pnl_add.Controls.Add(lbl_msg);
             pnl_add.Controls.Add(txt_input);
-            pnl_add.Location = new Point(316, 3);
+            pnl_add.Location = new Point(342, 3);
             pnl_add.Name = "pnl_add";
-            pnl_add.Size = new Size(788, 676);
+            pnl_add.Size = new Size(762, 676);
             pnl_add.TabIndex = 149;
             pnl_add.Visible = false;
             // 
@@ -259,7 +287,7 @@
             pnl_details.Controls.Add(lbl_name);
             pnl_details.Controls.Add(lbl_photo_detail);
             pnl_details.Location = new Point(60, 172);
-            pnl_details.Margin = new Padding(2);
+            pnl_details.Margin = new Padding(2, 2, 2, 2);
             pnl_details.Name = "pnl_details";
             pnl_details.Size = new Size(675, 469);
             pnl_details.TabIndex = 110;
@@ -295,7 +323,7 @@
             btn_huy.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             btn_huy.ForeColor = Color.Black;
             btn_huy.Location = new Point(343, 198);
-            btn_huy.Margin = new Padding(2);
+            btn_huy.Margin = new Padding(2, 2, 2, 2);
             btn_huy.Name = "btn_huy";
             btn_huy.Size = new Size(91, 29);
             btn_huy.TabIndex = 117;
@@ -311,7 +339,7 @@
             btn_gui.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             btn_gui.ForeColor = Color.Transparent;
             btn_gui.Location = new Point(225, 197);
-            btn_gui.Margin = new Padding(2);
+            btn_gui.Margin = new Padding(2, 2, 2, 2);
             btn_gui.Name = "btn_gui";
             btn_gui.Size = new Size(77, 30);
             btn_gui.TabIndex = 116;
@@ -336,7 +364,7 @@
             // 
             txt_text.Font = new Font("Times New Roman", 15.75F, FontStyle.Italic, GraphicsUnit.Point);
             txt_text.Location = new Point(119, 149);
-            txt_text.Margin = new Padding(2);
+            txt_text.Margin = new Padding(2, 2, 2, 2);
             txt_text.Name = "txt_text";
             txt_text.Size = new Size(455, 32);
             txt_text.TabIndex = 114;
@@ -458,7 +486,7 @@
             timer1.Interval = 2000;
             timer1.Tick += timer1_Tick;
             // 
-            // VietChat
+            // FVietChat
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -467,7 +495,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             MaximizeBox = false;
-            Name = "VietChat";
+            Name = "FVietChat";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "VietChat";
             FormClosed += VietChat_FormClosed;
@@ -476,6 +504,7 @@
             panel2.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             pnl_add.ResumeLayout(false);
@@ -521,5 +550,7 @@
         private Label label7;
         private Label label2;
         private Label label3;
+        private Label lbFriendNum;
+        private Label lblNewFriend;
     }
 }

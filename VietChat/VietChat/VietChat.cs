@@ -1,18 +1,45 @@
 ﻿using chat;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Net;
+using System.Net.WebSockets;
 using VietChat.Model;
 using VietChat.Services;
+using WebSocket4Net;
+using static System.Windows.Forms.AxHost;
 
 namespace VietChat
 {
-    public partial class VietChat : Form
+    public partial class FVietChat : Form
     {
         public Bitmap b_image;
+        private WebSocket4Net.WebSocket websocket;
+        const string host = "wss://ws.vietvozchat.online";
+        delegate void SetMessageCallback(SocketMesssageNewFriendRespone res);
 
+        private void SetMessage(SocketMesssageNewFriendRespone res)
+        {
+            if (lbFriendNum.InvokeRequired)
+            {
+                SetMessageCallback d = new SetMessageCallback(SetMessage);
+                this.Invoke(d, new object[] { res });
+            }
+            else
+            {
+                if (res.data != null && res.data.num > 0)
+                {
+                    lbFriendNum.Text = res.data.num.ToString();
+                    lbFriendNum.Visible = true;
 
+                    var path = new System.Drawing.Drawing2D.GraphicsPath();
+                    path.AddEllipse(0, 0, lbFriendNum.Width, lbFriendNum.Height);
 
-        public VietChat()
+                    lbFriendNum.Region = new Region(path);
+                }
+            }
+        }
+
+        public FVietChat()
         {
             InitializeComponent();
         }
@@ -31,6 +58,16 @@ namespace VietChat
 
         private async void VietChat_Load(object sender, EventArgs e)
         {
+            // websocket connecting
+            websocket = new WebSocket4Net.WebSocket(host);
+
+            websocket.Opened += WebSocket_Opened;
+            websocket.MessageReceived += WebSocket_MessageReceived;
+            websocket.Error += WebSocket_Error;
+            websocket.Closed += WebSocket_Closed;
+            websocket.DataReceived += WebSocket_DataReceived;
+            websocket.OpenAsync();
+
             ChatList chatlist = new ChatList();
             await chatlist.getChatList();
             chatlist.getListFriend();
@@ -41,6 +78,56 @@ namespace VietChat
             }
             pnl_add.Visible = false;
             pnl_bb.Visible = false;
+        }
+
+        private void WebSocket_DataReceived(object sender, DataReceivedEventArgs e)
+        {
+            //MessageBox.Show("Received message from server: " + e.Data);
+        }
+
+        private void WebSocket_Opened(object sender, EventArgs e)
+        {
+            //MessageBox.Show("WebSocket connection opened.");
+
+            string data = "{\"action\": \"checkToken\", \"data\": \"@data@\" }";
+            data = data.Replace("@data@", Common.token);
+            websocket.Send(data);
+        }
+
+        private void WebSocket_MessageReceived(object sender, MessageReceivedEventArgs e)
+        {
+            //MessageBox.Show("Received message from server: " + e.Message);
+            //string data = "{\"action\": \"ping\", \"data\": \"@data@\", \"msg\": \"hiiii\" \"}";
+            //data = data.Replace("@data@", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozOCwiaXNzIjoiaW1faHR0cCIsImlhdCI6MTcxMzMyMzIxOSwiZXhwIjo3NzEzMzIzMjE5LCJuYmYiOjE3MTMzMjMyMTksInN1YiI6IiIsImp0aSI6ImU3MjkxNGU1YzA5YTY3OWFhZDI2YzI2NzBhMWU3NzlkIn0.oGzFKOSgcnU5qCqJb9hFQn3HoBY8K0m7_9vvGBhfVVs");
+            //websocket.Send(data);
+            try
+            {
+                if (!string.IsNullOrEmpty(e.Message))
+                {
+                    SocketMesssageRespone res = new SocketMesssageRespone();
+                    res = JsonConvert.DeserializeObject<SocketMesssageRespone>(e.Message);
+
+                    if (res != null && res.action == "newFriend")
+                    {
+                        var data = JsonConvert.DeserializeObject<SocketMesssageNewFriendRespone>(e.Message);
+                        SetMessage(data);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void WebSocket_Error(object sender, SuperSocket.ClientEngine.ErrorEventArgs e)
+        {
+            //MessageBox.Show("WebSocket error: " + e.Exception.Message);
+        }
+
+        private void WebSocket_Closed(object sender, EventArgs e)
+        {
+            //MessageBox.Show("WebSocket connection closed.");
+            websocket.Close();
         }
 
         private void lbl_ketban_Click(object sender, EventArgs e)
@@ -71,26 +158,36 @@ namespace VietChat
             pnl_add.Visible = false;
         }
 
-        private void lbl_bb_Click(object sender, EventArgs e)
+        private async void lbl_bb_Click(object sender, EventArgs e)
         {
+            LoadFriend();
+            //Form1 form = new Form1(this);
+            //form.ShowDialog();
+        }
 
+        public async void LoadFriend()
+        {
+            pnl_bb.Controls.Clear();
             int start_pic_photo_X = 3;
             int start_pic_photo_Y = 3;
 
             int startX = 66;
             int startY = 3;
 
-            foreach (var section in Common.job_friend)
+            FriendList friendList = new FriendList();
+            FriendListData friends = await friendList.GetFriendList();
+
+            foreach (var item in friends.data)
             {
-                var zone = section.Key;
+                // var zone = section.Key;
 
-                JObject obj = (JObject)Common.job_friend[zone];
+                //JObject obj = (JObject)Common.job_friend[zone];
 
-                Common.name_friend = obj["name"].ToString();
-                Common.user_id_friend = obj["user_id"].ToString();
-                Common.photo = obj["photo"].ToString();
+                //Common.name_friend = obj["name"].ToString();
+                //Common.user_id_friend = obj["user_id"].ToString();
+                //Common.photo = obj["photo"].ToString();
 
-                if (!string.IsNullOrEmpty(Common.name_friend))
+                if (!string.IsNullOrEmpty(item.data.name))
                 {
 
                     PictureBox pic_photo = new PictureBox();
@@ -99,18 +196,17 @@ namespace VietChat
                     pic_photo.TabIndex = 7;
                     pic_photo.TabStop = false;
 
-                    if (!string.IsNullOrEmpty(Common.photo))
+                    if (!string.IsNullOrEmpty(item.data.photo))
                     {
-                        string file_name = Path.GetFileName(Common.GET_PHOTO_API + Common.photo);
+                        string file_name = Path.GetFileName(Common.GET_PHOTO_API + item.data.photo);
 
-                        SaveImage(Common.GET_PHOTO_API + Common.photo, Common.user_id_friend + Common.user_id_friend + file_name);
+                        SaveImage(Common.GET_PHOTO_API + item.data.photo, item.data.user_id + file_name);
 
-                        b_image = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + Common.user_id_friend + file_name);
+                        b_image = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + item.data.user_id + file_name);
 
                         b_image = new Bitmap(b_image, new Size(pic_photo.Width, pic_photo.Height));
                         pic_photo.Image = b_image;
-                        Common.b_image_user = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + Common.user_id_friend + file_name);
-                        Common.b_image_user = new Bitmap(Common.b_image_user, new Size(pic_photo.Width, pic_photo.Height));
+
                     }
 
 
@@ -122,19 +218,17 @@ namespace VietChat
                     lbl_name.Location = new Point(startX, startY);
                     lbl_name.Size = new Size(139, 38);
                     lbl_name.TabIndex = 5;
-                    lbl_name.Text = Common.name_friend;
+                    lbl_name.Text = item.data.name;
                     lbl_name.TextAlign = ContentAlignment.MiddleCenter;
-                    lbl_name.Click += lbl_name_Click;
-                    startY = startY + 12 + lbl_name.Height;
+                    //lbl_name.Click += lbl_name_Click;
+                    lbl_name.Click += delegate (object sender, EventArgs e) { lbl_name_Click(sender, e, item); };
+                    startY = startY + 20 + lbl_name.Height;
 
                     pnl_bb.Controls.Add(pic_photo);
                     pnl_bb.Controls.Add(lbl_name);
                     pnl_bb.Visible = true;
                 }
             }
-
-            Form1 form = new Form1();
-            form.ShowDialog();
         }
 
         public void SaveImage(string imageUrl, string filename)
@@ -181,9 +275,15 @@ namespace VietChat
             }
         }
 
-        private void lbl_name_Click(object sender, EventArgs e)
+        private void lbl_name_Click(object sender, EventArgs e, Friend item)
         {
-            Form1 form = new Form1();
+            string file_name = Path.GetFileName(item.data.photo);
+            Common.name_friend = item.data.name;
+            Common.user_id_friend = item.data.user_id.ToString();
+            Common.b_image_user = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + item.data.user_id + file_name);
+            //Common.b_image_user = new Bitmap(Common.b_image_user, new Size(pic_photo.Width, pic_photo.Height));
+
+            Form1 form = new Form1(this);
             form.ShowDialog();
 
         }
@@ -302,7 +402,7 @@ namespace VietChat
                         lbl_name.TextAlign = ContentAlignment.MiddleCenter;
                         //lbl_name.Click += lbl_name_Click;
                         lbl_name.Click += delegate (object sender, EventArgs e) { label_Click(sender, e, item); };
-                        startY = startY + 12 + lbl_name.Height;
+                        startY = startY + 20 + lbl_name.Height;
 
                         pnl_bb.Controls.Add(pic_photo);
                         pnl_bb.Controls.Add(lbl_name);
@@ -315,7 +415,7 @@ namespace VietChat
         void label_Click(object sender, EventArgs e, ChatDetail chat)
         {
             Common.list_id = chat.list_id;
-            Form1 form = new Form1();
+            Form1 form = new Form1(this);
             form.ShowDialog();
         }
 
@@ -338,7 +438,7 @@ namespace VietChat
 
             lbl_name.Text = "";
             lbl_nickname.Text = "";
-            lbl_username.Text = "";          
+            lbl_username.Text = "";
             lbl_photo_detail.Image = null;
             pnl_details.Visible = false;
             lbl_text.Visible = false;
@@ -349,6 +449,85 @@ namespace VietChat
             btn_no.Visible = false;
             txt_text.Text = "";
             pnl_add.Visible = false;
+        }
+
+        private async void lblNewFriend_Click(object sender, EventArgs e)
+        {
+
+            ApplyFriend applyFriend = new ApplyFriend();
+            var res = await applyFriend.GetListApplyFriend();
+
+            int start_pic_photo_X = 3;
+            int start_pic_photo_Y = 3;
+
+            int startX = 66;
+            int startY = 3;
+
+            if (res.data.Count > 0)
+            {
+                pnl_bb.Controls.Clear();
+                foreach (var item in res.data)
+                {
+                    PictureBox pic_photo = new PictureBox();
+                    pic_photo.Location = new Point(start_pic_photo_X, start_pic_photo_Y);
+                    pic_photo.Size = new Size(57, 38);
+                    pic_photo.TabIndex = 7;
+                    pic_photo.TabStop = false;
+
+                    if (!string.IsNullOrEmpty(item.photo))
+                    {
+                        string file_name = Path.GetFileName(Common.GET_PHOTO_API + item.photo);
+
+                        SaveImage(Common.GET_PHOTO_API + item.photo, file_name);
+
+                        b_image = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + file_name);
+
+                        b_image = new Bitmap(b_image, new Size(pic_photo.Width, pic_photo.Height));
+                        pic_photo.Image = b_image;
+                    }
+
+
+                    start_pic_photo_Y = start_pic_photo_Y + pic_photo.Width;
+
+                    Label lbl_name = new Label();
+                    lbl_name.BackColor = Color.White;
+                    lbl_name.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+                    lbl_name.Location = new Point(startX, startY);
+                    lbl_name.Size = new Size(100, 38);
+                    lbl_name.TabIndex = 5;
+                    lbl_name.Text = item.nickname;
+                    lbl_name.TextAlign = ContentAlignment.MiddleCenter;
+
+                    // label for apply friend
+                    Label lb_appText = new Label();
+                    lb_appText.BackColor = Color.Aqua;
+                    lb_appText.Font = new Font("Segoe UI", 8F, FontStyle.Italic, GraphicsUnit.Point);
+                    lb_appText.Location = new Point(startX + lbl_name.Width, startY);
+                    lb_appText.Size = new Size(39, 38);
+                    lb_appText.TabIndex = 6;
+                    lb_appText.Text = item.text;
+                    lb_appText.Click += delegate (object sender, EventArgs e) { label_Apply_Click(sender, e, item); };
+                    lb_appText.TextAlign = ContentAlignment.MiddleCenter;
+
+                    startY = startY + 20 + lbl_name.Height;
+
+                    pnl_bb.Controls.Add(pic_photo);
+                    pnl_bb.Controls.Add(lbl_name);
+                    pnl_bb.Controls.Add(lb_appText);
+                    pnl_bb.Visible = true;
+                }
+
+                if (lbFriendNum.Text != "")
+                {
+                    lbFriendNum.Visible = false;
+                    lbFriendNum.Text = "";
+                }
+            }
+        }
+        void label_Apply_Click(object sender, EventArgs e, FriendApplyInfo info)
+        {
+            FriendApplyDialog dialog = new FriendApplyDialog(this, info);
+            dialog.ShowDialog();
         }
     }
 }

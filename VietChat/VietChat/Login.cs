@@ -17,7 +17,7 @@ namespace VietChat
             pnl_register.BringToFront();
         }
 
-        private void btn_login_Click(object sender, EventArgs e)
+        private async void btn_login_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txt_user.Text.Trim()))
             {
@@ -38,7 +38,7 @@ namespace VietChat
                 lbl_error.Text = "";
             }
             Logging logging = new Logging();
-            logging.Signing(txt_user.Text, txt_pass.Text);
+            await logging.Signing(txt_user.Text, txt_pass.Text);
 
             if (Common.error_flag > 0)
             {
@@ -48,7 +48,7 @@ namespace VietChat
             }
             if (Common.error_flag == 0)
             {
-                Form form = new VietChat();
+                Form form = new FVietChat();
                 form.Show();
                 this.Hide();
             }

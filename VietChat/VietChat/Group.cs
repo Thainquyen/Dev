@@ -17,13 +17,13 @@ namespace VietChat
 {
     public partial class Group : Form
     {
-        VietChat _vietChat;
+        FVietChat _vietChat;
         public Group()
         {
             InitializeComponent();
         }
 
-        public Group(VietChat vietChat)
+        public Group(FVietChat vietChat)
         {
             _vietChat = vietChat;
             InitializeComponent();

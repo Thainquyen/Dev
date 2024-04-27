@@ -13,7 +13,7 @@ namespace VietChat.Services
             _client = new HttpClient();
         }
 
-        public async void Signing(string username, string pass)
+        public async Task Signing(string username, string pass)
         {
             try
             {
