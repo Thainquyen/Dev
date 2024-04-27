@@ -273,7 +273,7 @@ namespace VietChat
             Common.chat_friend = true;
             Common.name_friend = item.data.name;
             Common.user_id_friend = item.data.user_id.ToString();
-            Common.b_image_user = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + item.data.user_id + file_name);
+            Common.b_image_user = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + Common.user_id_friend + file_name);
             SearchUser searchUser = new SearchUser();
             await searchUser.getDetails(Common.user_id_friend);
 

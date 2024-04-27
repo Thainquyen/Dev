@@ -154,15 +154,15 @@ namespace chat
             websocket.Closed += WebSocket_Closed;
             websocket.DataReceived += WebSocket_DataReceived;
             websocket.OpenAsync();
-            if(Common.chat_friend)
+            if (Common.chat_friend)
             {
                 LoadChatFriend();
-            }  
+            }
             else
             {
                 LoadChatGroup();
-            }    
-           
+            }
+
         }
 
         private async void LoadChatFriend()
@@ -199,6 +199,7 @@ namespace chat
                         meBubble.TabIndex = 2;
                         meBubble.Time = "11:44 PM";
                         meBubble.TimeColor = Color.White;
+                        Common.b_image_me = new Bitmap(Common.b_image_me, new Size(65, 58));
                         meBubble.UserImage = Common.b_image_me;
                         panel4.Controls.Add(meBubble);
                     }
@@ -222,6 +223,7 @@ namespace chat
                         youBubble.TimeColor = Color.White;
                         if (Common.b_image_user != null)
                         {
+                            Common.b_image_user = new Bitmap(Common.b_image_user, new Size(65, 58));
                             youBubble.UserImage = Common.b_image_user;
                         }
                         panel4.Controls.Add(youBubble);
@@ -270,32 +272,37 @@ namespace chat
                         meBubble.TabIndex = 2;
                         meBubble.Time = "11:44 PM";
                         meBubble.TimeColor = Color.White;
+                        Common.b_image_me = new Bitmap(Common.b_image_me, new Size(65, 58));
                         meBubble.UserImage = Common.b_image_me;
                         panel4.Controls.Add(meBubble);
                     }
                     else
                     {
-                        // you
-                        YouBubble youBubble = new YouBubble();
-                        youBubble.AutoSize = true;
-                        youBubble.BackColor = Color.Transparent;
-                        youBubble.Body = item.msg.content.text + "\r\n";
-                        youBubble.ChatImageCursor = Cursors.Default;
-                        youBubble.ChatTextCursor = Cursors.IBeam;
-                        youBubble.Dock = DockStyle.Bottom;
-                        youBubble.MsgColor = Color.DodgerBlue;
-                        youBubble.MsgTextColor = SystemColors.ControlLightLight;
-                        youBubble.Padding = new Padding(0, 5, 0, 5);
-                        youBubble.Size = new Size(768, 152);
-                        youBubble.Status = MessageStatus.Custom;
-                        youBubble.TabIndex = 2;
-                        youBubble.Time = "11:44 PM";
-                        youBubble.TimeColor = Color.White;
-                        if (Common.photo_group != null)
+                        string folder = Path.GetDirectoryName(item.msg.user_info.face);
+                        if (folder != null && !folder.Equals("default_man"))
                         {
-                            youBubble.UserImage = Common.photo_group;
+                            string photo = Path.GetFileName(item.msg.user_info.face);
+                            Common.b_image_user = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + item.msg.user_info.uid + photo);
+                            // you
+                            YouBubble youBubble = new YouBubble();
+                            youBubble.AutoSize = true;
+                            youBubble.BackColor = Color.Transparent;
+                            youBubble.Body = item.msg.content.text + "\r\n";
+                            youBubble.ChatImageCursor = Cursors.Default;
+                            youBubble.ChatTextCursor = Cursors.IBeam;
+                            youBubble.Dock = DockStyle.Bottom;
+                            youBubble.MsgColor = Color.DodgerBlue;
+                            youBubble.MsgTextColor = SystemColors.ControlLightLight;
+                            youBubble.Padding = new Padding(0, 5, 0, 5);
+                            youBubble.Size = new Size(768, 152);
+                            youBubble.Status = MessageStatus.Custom;
+                            youBubble.TabIndex = 2;
+                            youBubble.Time = "11:44 PM";
+                            youBubble.TimeColor = Color.White;
+                            Common.b_image_user = new Bitmap(Common.b_image_user, new Size(65, 58));
+                            youBubble.UserImage = Common.b_image_user;
+                            panel4.Controls.Add(youBubble);
                         }
-                        panel4.Controls.Add(youBubble);
                     }
                 }
 

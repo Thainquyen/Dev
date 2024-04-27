@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Ico\VietChat.ico</ApplicationIcon>
     <!--<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
 	<EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>-->
   </PropertyGroup>
@@ -64,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Documentation.txt" />
+    <Content Include="Ico\VietChat.ico" />
     <Content Include="Resources\1.png" />
     <Content Include="Resources\2.jfif" />
     <Content Include="Resources\3.jpg" />
