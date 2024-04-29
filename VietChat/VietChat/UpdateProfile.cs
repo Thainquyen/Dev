@@ -81,7 +81,7 @@ namespace VietChat
 
         private async void btn_yes_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txt_input.Text.Trim()) && !string.IsNullOrEmpty(lbl_avatar.Image.ToString()))
+            if (!string.IsNullOrEmpty(txt_input.Text.Trim()) && lbl_avatar.Image is not null )
             {
                 Register register = new Register();
                 await register.uploadPhoto(file_path);
@@ -96,7 +96,7 @@ namespace VietChat
             else
             {
                 MessageBox.Show("Hãy điền đầy đủ thông tin");
-            }    
+            }
         }
     }
 }
