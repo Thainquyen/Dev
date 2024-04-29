@@ -46,20 +46,41 @@ namespace VietChat.Services
             }
 		}
 
-        public async Task uploadPhoto(string file)
+        private string ImageToBase64(string path)
+        {
+            using (Image image = Image.FromFile(path))
+            {
+                using (MemoryStream m = new MemoryStream())
+                {
+                    image.Save(m, image.RawFormat);
+                    byte[] imageBytes = m.ToArray();
+
+                    // Convert byte[] to Base64 String
+                    string base64String = Convert.ToBase64String(imageBytes);
+                    return base64String;
+                }
+            }
+        }
+
+        public async Task uploadPhoto(string path)
         {
             try
             {
                 string apiUrl = Constant.UPLOAD_PHOTO_API;
-                var request = new HttpRequestMessage(HttpMethod.Post, apiUrl);
+                string contents = ImageToBase64(path);
 
-                // Add request body if needed
-                string requestBody = "{\"file\": \"@file@\", \"_token\": \"@token@\"}";
-                requestBody = requestBody.Replace("@file@", file);
-                requestBody = requestBody.Replace("@token@", Common.token);
-                request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+                await using var stream = System.IO.File.OpenRead(path);
+                using var request = new HttpRequestMessage(HttpMethod.Post, apiUrl);
+                using var content = new MultipartFormDataContent
+                {
+                    { new StreamContent(stream), "file", "user.png" },
+                    { new StringContent(Common.token), "_token" },
+                };
+
+                request.Content = content;
 
                 HttpResponseMessage response = await _client.SendAsync(request);
+
                 string responseBody = await response.Content.ReadAsStringAsync();
             }
             catch (HttpRequestException ex)
