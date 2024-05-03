@@ -291,38 +291,46 @@ namespace VietChat
 
         private async void txt_input_TextChanged(object sender, EventArgs e)
         {
-            string val = txt_input.Text.Trim();
-            if (!string.IsNullOrEmpty(val))
+            try
             {
-                SearchUser searchUser = new SearchUser();
-                var data = await searchUser.searchUser(val);
-
-                if (data != null)
+                string val = txt_input.Text.Trim();
+                if (!string.IsNullOrEmpty(val))
                 {
-                    foreach (var item in data.data.data)
+                    SearchUser searchUser = new SearchUser();
+                    var data = await searchUser.searchUser(val);
+
+                    if (data != null)
                     {
-                        Common.user_id_search = item.id;
-                        lbl_searchuser.Text = item.nickname;
-                        SaveImage(Common.GET_PHOTO_API + item.photo, item.id.ToString() + Path.GetFileName(item.photo));
-                        b_image = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + item.id.ToString() + Path.GetFileName(item.photo));
-                        b_image = new Bitmap(b_image, new Size(lbl_photosearch.Width, lbl_photosearch.Height));
-                        lbl_photosearch.Image = b_image;
-                        await searchUser.getDetails(Common.user_id_search.ToString());
+                        foreach (var item in data.data.data)
+                        {
+                            Common.user_id_search = item.id;
+                            lbl_searchuser.Text = item.nickname;
+                            SaveImage(Common.GET_PHOTO_API + item.photo, item.id.ToString() + Path.GetFileName(item.photo));
+                            b_image = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + item.id.ToString() + Path.GetFileName(item.photo));
+                            b_image = new Bitmap(b_image, new Size(lbl_photosearch.Width, lbl_photosearch.Height));
+                            lbl_photosearch.Image = b_image;
+                            await searchUser.getDetails(Common.user_id_search.ToString());
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(lbl_searchuser.Text))
+                    {
+                        lbl_photosearch.Visible = true;
+                        lbl_searchuser.Visible = true;
+                    }
+                    else
+                    {
+
+                        lbl_photosearch.Visible = false;
+                        lbl_searchuser.Visible = false;
                     }
                 }
-
-                if (!string.IsNullOrEmpty(lbl_searchuser.Text))
-                {
-                    lbl_photosearch.Visible = true;
-                    lbl_searchuser.Visible = true;
-                }
-                else
-                {
-
-                    lbl_photosearch.Visible = false;
-                    lbl_searchuser.Visible = false;
-                }
             }
+            catch (Exception)
+            {
+                return;
+            }
+
         }
 
         private async void lbl_searchuser_Click(object sender, EventArgs e)
@@ -458,7 +466,10 @@ namespace VietChat
             {
                 MessageBox.Show("Gửi lời kết bạn KHÔNG thành công !!!");
             }
-            MessageBox.Show("Gửi lời kết bạn thành công !!!");
+            else
+            {
+                MessageBox.Show("Gửi lời kết bạn thành công !!!");
+            }
 
             lbl_name.Text = "";
             lbl_nickname.Text = "";
@@ -477,76 +488,83 @@ namespace VietChat
 
         private async void lblNewFriend_Click(object sender, EventArgs e)
         {
-            pnl_thongtin.Visible = false;
-            pnl_add.Visible = false;
-            ApplyFriend applyFriend = new ApplyFriend();
-            var res = await applyFriend.GetListApplyFriend();
-
-            int start_pic_photo_X = 3;
-            int start_pic_photo_Y = 3;
-
-            int startX = 66;
-            int startY = 3;
-
-            if (res.data.Count > 0)
+            try
             {
-                pnl_bb.Controls.Clear();
-                foreach (var item in res.data)
+                pnl_thongtin.Visible = false;
+                pnl_add.Visible = false;
+                ApplyFriend applyFriend = new ApplyFriend();
+                var res = await applyFriend.GetListApplyFriend();
+
+                int start_pic_photo_X = 3;
+                int start_pic_photo_Y = 3;
+
+                int startX = 66;
+                int startY = 3;
+
+                if (res.data.Count > 0)
                 {
-                    PictureBox pic_photo = new PictureBox();
-                    pic_photo.Location = new Point(start_pic_photo_X, start_pic_photo_Y);
-                    pic_photo.Size = new Size(57, 38);
-                    pic_photo.TabIndex = 7;
-                    pic_photo.TabStop = false;
-
-                    if (!string.IsNullOrEmpty(item.photo))
+                    pnl_bb.Controls.Clear();
+                    foreach (var item in res.data)
                     {
-                        string file_name = Path.GetFileName(Common.GET_PHOTO_API + item.photo);
+                        PictureBox pic_photo = new PictureBox();
+                        pic_photo.Location = new Point(start_pic_photo_X, start_pic_photo_Y);
+                        pic_photo.Size = new Size(57, 38);
+                        pic_photo.TabIndex = 7;
+                        pic_photo.TabStop = false;
 
-                        SaveImage(Common.GET_PHOTO_API + item.photo, item.user_id + file_name);
+                        if (!string.IsNullOrEmpty(item.photo))
+                        {
+                            string file_name = Path.GetFileName(Common.GET_PHOTO_API + item.photo);
 
-                        b_image = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + item.user_id + file_name);
+                            SaveImage(Common.GET_PHOTO_API + item.photo, item.user_id + file_name);
 
-                        b_image = new Bitmap(b_image, new Size(pic_photo.Width, pic_photo.Height));
-                        pic_photo.Image = b_image;
+                            b_image = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + item.user_id + file_name);
+
+                            b_image = new Bitmap(b_image, new Size(pic_photo.Width, pic_photo.Height));
+                            pic_photo.Image = b_image;
+                        }
+
+
+                        start_pic_photo_Y = start_pic_photo_Y + pic_photo.Width;
+
+                        Label lbl_name = new Label();
+                        lbl_name.BackColor = Color.White;
+                        lbl_name.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+                        lbl_name.Location = new Point(startX, startY);
+                        lbl_name.Size = new Size(100, 38);
+                        lbl_name.TabIndex = 5;
+                        lbl_name.Text = item.nickname;
+                        lbl_name.TextAlign = ContentAlignment.MiddleCenter;
+
+                        // label for apply friend
+                        Label lb_appText = new Label();
+                        lb_appText.BackColor = Color.Aqua;
+                        lb_appText.Font = new Font("Segoe UI", 8F, FontStyle.Italic, GraphicsUnit.Point);
+                        lb_appText.Location = new Point(startX + lbl_name.Width, startY);
+                        lb_appText.Size = new Size(39, 38);
+                        lb_appText.TabIndex = 6;
+                        lb_appText.Text = item.text;
+                        lb_appText.Click += delegate (object sender, EventArgs e) { label_Apply_Click(sender, e, item); };
+                        lb_appText.TextAlign = ContentAlignment.MiddleCenter;
+
+                        startY = startY + 20 + lbl_name.Height;
+
+                        pnl_bb.Controls.Add(pic_photo);
+                        pnl_bb.Controls.Add(lbl_name);
+                        pnl_bb.Controls.Add(lb_appText);
+                        pnl_bb.Visible = true;
                     }
 
-
-                    start_pic_photo_Y = start_pic_photo_Y + pic_photo.Width;
-
-                    Label lbl_name = new Label();
-                    lbl_name.BackColor = Color.White;
-                    lbl_name.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-                    lbl_name.Location = new Point(startX, startY);
-                    lbl_name.Size = new Size(100, 38);
-                    lbl_name.TabIndex = 5;
-                    lbl_name.Text = item.nickname;
-                    lbl_name.TextAlign = ContentAlignment.MiddleCenter;
-
-                    // label for apply friend
-                    Label lb_appText = new Label();
-                    lb_appText.BackColor = Color.Aqua;
-                    lb_appText.Font = new Font("Segoe UI", 8F, FontStyle.Italic, GraphicsUnit.Point);
-                    lb_appText.Location = new Point(startX + lbl_name.Width, startY);
-                    lb_appText.Size = new Size(39, 38);
-                    lb_appText.TabIndex = 6;
-                    lb_appText.Text = item.text;
-                    lb_appText.Click += delegate (object sender, EventArgs e) { label_Apply_Click(sender, e, item); };
-                    lb_appText.TextAlign = ContentAlignment.MiddleCenter;
-
-                    startY = startY + 20 + lbl_name.Height;
-
-                    pnl_bb.Controls.Add(pic_photo);
-                    pnl_bb.Controls.Add(lbl_name);
-                    pnl_bb.Controls.Add(lb_appText);
-                    pnl_bb.Visible = true;
+                    if (lbFriendNum.Text != "")
+                    {
+                        lbFriendNum.Visible = false;
+                        lbFriendNum.Text = "";
+                    }
                 }
-
-                if (lbFriendNum.Text != "")
-                {
-                    lbFriendNum.Visible = false;
-                    lbFriendNum.Text = "";
-                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(Common.msg_error);
             }
         }
         void label_Apply_Click(object sender, EventArgs e, FriendApplyInfo info)
@@ -571,10 +589,10 @@ namespace VietChat
         {
             ChatList chatlist = new ChatList();
             await chatlist.getListId(Common.user_id_friend);
-
+            pnl_thongtin.Visible = false;
             Form1 form = new Form1(this);
             form.ShowDialog();
-            pnl_thongtin.Visible = false;
+            
         }
     }
 }

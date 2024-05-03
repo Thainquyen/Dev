@@ -22,16 +22,24 @@ namespace VietChat
 
         private void FriendApplyDialog_Load(object sender, EventArgs e)
         {
-            lbl_username.Text = _friendApplyInfo.nickname;
-            lbl_nickname.Text = _friendApplyInfo.nickname;
-            lbl_name.Text = _friendApplyInfo.nickname;
+            try
+            {
+                lbl_username.Text = _friendApplyInfo.nickname;
+                lbl_nickname.Text = _friendApplyInfo.nickname;
+                lbl_name.Text = _friendApplyInfo.nickname;
 
-            string file_name = Path.GetFileName(Common.GET_PHOTO_API + _friendApplyInfo.photo);
-            SaveImage(Common.GET_PHOTO_API + _friendApplyInfo.photo, Common.uId + file_name);
-            var b = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + _friendApplyInfo.user_id + file_name);
-            b = new Bitmap(b, new Size(lbl_photo_me.Width, lbl_photo_me.Height));
-            Common.b_image_me = b;
-            lbl_photo_me.Image = b;
+                string file_name = Path.GetFileName(Common.GET_PHOTO_API + _friendApplyInfo.photo);
+                SaveImage(Common.GET_PHOTO_API + _friendApplyInfo.photo, Common.uId + file_name);
+                var b = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + _friendApplyInfo.user_id + file_name);
+                b = new Bitmap(b, new Size(lbl_photo_me.Width, lbl_photo_me.Height));
+                Common.b_image_me = b;
+                lbl_photo_me.Image = b;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(Common.msg_error);
+            }
+            
         }
 
         public void SaveImage(string imageUrl, string filename)
@@ -56,16 +64,23 @@ namespace VietChat
 
         private async void btnAddFriend_Click(object sender, EventArgs e)
         {
-            if (_friendApplyInfo.text == "Xem")
+            try
             {
-                AddFriend addFriend = new AddFriend();
-                await addFriend.FriendAddAction(_friendApplyInfo);
-                _vietChat.LoadFriend();
-                this.Close();
+                if (_friendApplyInfo.text == "Xem")
+                {
+                    AddFriend addFriend = new AddFriend();
+                    await addFriend.FriendAddAction(_friendApplyInfo);
+                    _vietChat.LoadFriend();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Đã là bạn bè!!!");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Đã là bạn bè!!!");
+                MessageBox.Show(Common.msg_error);
             }
         }
 

@@ -6,6 +6,7 @@ namespace VietChat
     internal class Common
     {
         public const string GET_PHOTO_API = "https://bat.vietvozchat.online/static/photo/";
+        public const string msg_error = "Đã xảy ra lỗi vui lòng thử lại !!!";
 
         public static string user = string.Empty;
         public static string pass = string.Empty;
