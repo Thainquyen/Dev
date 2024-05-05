@@ -43,8 +43,8 @@ namespace VietChat
                         group.Username = item.data.name;
                         group.UserID = item.data.user_id.ToString();
 
-                        SaveImage(Common.GET_PHOTO_API + item.data.photo, item.data.user_id + Path.GetFileName(item.data.photo));
-                        group.UserImage = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + item.data.user_id + Path.GetFileName(item.data.photo));
+                        SaveImage(Common.GET_PHOTO_API + item.data.photo, group.UserID + Path.GetFileName(item.data.photo));
+                        group.UserImage = (Bitmap)Bitmap.FromFile(Common.URL_IMAGE + group.UserID + Path.GetFileName(item.data.photo));
 
                         tbUserlist.Controls.Add(group, 0, row);
                         row++;

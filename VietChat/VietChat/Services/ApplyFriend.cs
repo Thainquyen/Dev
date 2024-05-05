@@ -32,14 +32,14 @@ namespace VietChat.Services
                 string responseBody = await response.Content.ReadAsStringAsync();
                 res = JsonConvert.DeserializeObject<FriendApplyResponse>(responseBody);
 
-                if(res.err == 0 ) 
-                { 
+                if (res.err == 0)
+                {
                     return res;
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                return res;
             }
             return res;
         }
